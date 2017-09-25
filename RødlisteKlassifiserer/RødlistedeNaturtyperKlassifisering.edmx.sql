@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/25/2017 13:55:39
--- Generated from EDMX file: C:\Users\japed\source\repos\RødlistedeNaturområder\Forms_dev3\RødlistedeNaturtyperKlassifisering.edmx
+-- Date Created: 09/25/2017 14:22:22
+-- Generated from EDMX file: C:\Users\japed\source\repos\RødlistedeNaturområder\RødlisteKlassifiserer\RødlistedeNaturtyperKlassifisering.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [RødlistedeNaturområderKlassifisering];
+USE [RødlistedeNaturområderKlassifisering2];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -46,6 +46,9 @@ IF OBJECT_ID(N'[dbo].[FK_KriterieRødlisteKlassifisering_RødlisteKlassifisering
 GO
 IF OBJECT_ID(N'[dbo].[FK_PåvirkningRødlisteKlassifisering]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[RødlisteKlassifiseringSet] DROP CONSTRAINT [FK_PåvirkningRødlisteKlassifisering];
+GO
+IF OBJECT_ID(N'[dbo].[FK_RødlisteKlassifiseringRødlisteKlassifisering]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RødlisteKlassifiseringSet] DROP CONSTRAINT [FK_RødlisteKlassifiseringRødlisteKlassifisering];
 GO
 
 -- --------------------------------------------------
