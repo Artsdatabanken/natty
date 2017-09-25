@@ -30,10 +30,10 @@
         {
             this.UpdateButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBoxNaturområdetyper = new System.Windows.Forms.CheckedListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.checkedListBox2 = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBoxBeskrivelsesvariabler = new System.Windows.Forms.CheckedListBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
@@ -45,7 +45,7 @@
             this.UpdateButton.TabIndex = 0;
             this.UpdateButton.Text = "Update";
             this.UpdateButton.UseVisualStyleBackColor = true;
-            this.UpdateButton.Click += new System.EventHandler(this.button1_Click);
+            this.UpdateButton.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // textBox1
             // 
@@ -53,15 +53,15 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(97, 20);
             this.textBox1.TabIndex = 1;
-            this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
+            this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxNaturområdetyper_KeyUp);
             // 
-            // checkedListBox1
+            // checkedListBoxNaturområdetyper
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(30, 71);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(97, 454);
-            this.checkedListBox1.TabIndex = 2;
+            this.checkedListBoxNaturområdetyper.FormattingEnabled = true;
+            this.checkedListBoxNaturområdetyper.Location = new System.Drawing.Point(30, 71);
+            this.checkedListBoxNaturområdetyper.Name = "checkedListBoxNaturområdetyper";
+            this.checkedListBoxNaturområdetyper.Size = new System.Drawing.Size(97, 454);
+            this.checkedListBoxNaturområdetyper.TabIndex = 2;
             // 
             // label1
             // 
@@ -81,13 +81,13 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Beskrivelsesvariabel";
             // 
-            // checkedListBox2
+            // checkedListBoxBeskrivelsesvariabler
             // 
-            this.checkedListBox2.FormattingEnabled = true;
-            this.checkedListBox2.Location = new System.Drawing.Point(197, 71);
-            this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.Size = new System.Drawing.Size(97, 454);
-            this.checkedListBox2.TabIndex = 5;
+            this.checkedListBoxBeskrivelsesvariabler.FormattingEnabled = true;
+            this.checkedListBoxBeskrivelsesvariabler.Location = new System.Drawing.Point(197, 71);
+            this.checkedListBoxBeskrivelsesvariabler.Name = "checkedListBoxBeskrivelsesvariabler";
+            this.checkedListBoxBeskrivelsesvariabler.Size = new System.Drawing.Size(97, 454);
+            this.checkedListBoxBeskrivelsesvariabler.TabIndex = 5;
             // 
             // textBox2
             // 
@@ -95,7 +95,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(97, 20);
             this.textBox2.TabIndex = 4;
-            this.textBox2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox2_KeyUp);
+            this.textBox2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxBeskrivelsesvariabler_KeyUp);
             // 
             // Form1
             // 
@@ -103,10 +103,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 570);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.checkedListBox2);
+            this.Controls.Add(this.checkedListBoxBeskrivelsesvariabler);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.checkedListBox1);
+            this.Controls.Add(this.checkedListBoxNaturområdetyper);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.UpdateButton);
             this.Name = "Form1";
@@ -120,10 +120,10 @@
 
         private System.Windows.Forms.Button UpdateButton;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.CheckedListBox checkedListBoxNaturområdetyper;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.CheckedListBox checkedListBox2;
+        private System.Windows.Forms.CheckedListBox checkedListBoxBeskrivelsesvariabler;
         private System.Windows.Forms.TextBox textBox2;
     }
 }

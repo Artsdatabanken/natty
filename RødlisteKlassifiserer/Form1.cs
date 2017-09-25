@@ -12,32 +12,32 @@ namespace Forms_dev3
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonUpdate_Click(object sender, EventArgs e)
         {
             CodeDeserializer.UpdateNaturtypeFromWeb();
             CodeDeserializer.UpdateBeskrivelsesvariablerFromWeb();
         }
 
-        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        private void textBoxNaturområdetyper_KeyUp(object sender, KeyEventArgs e)
         {
-            checkedListBox1.Items.Clear();
-            using (var Context = new RødlistedeNaturtyperKlassifiseringContainer())
+            checkedListBoxNaturområdetyper.Items.Clear();
+            using (var context = new RødlistedeNaturtyperKlassifiseringContainer())
             {
-                foreach (var hit in Context.NaturområdeTypeKodeSet.Where(d => (d.verdi + "-" + d.KartleggingsKode.verdi).StartsWith(textBox1.Text.ToUpper()) && d.KartleggingsKode.nivå == "A"))
+                foreach (var hit in context.NaturområdeTypeKodeSet.Where(d => (d.verdi + "-" + d.KartleggingsKode.verdi).StartsWith(textBox1.Text.ToUpper()) && d.KartleggingsKode.nivå == "A"))
                 {
-                    checkedListBox1.Items.Add(hit.verdi + "-" + hit.KartleggingsKode.verdi);
+                    checkedListBoxNaturområdetyper.Items.Add(hit.verdi + "-" + hit.KartleggingsKode.verdi);
                 }
             }
         }
 
-        private void textBox2_KeyUp(object sender, KeyEventArgs e)
+        private void textBoxBeskrivelsesvariabler_KeyUp(object sender, KeyEventArgs e)
         {
-            checkedListBox2.Items.Clear();
-            using (var Context = new RødlistedeNaturtyperKlassifiseringContainer())
+            checkedListBoxBeskrivelsesvariabler.Items.Clear();
+            using (var context = new RødlistedeNaturtyperKlassifiseringContainer())
             {
-                foreach (var hit in Context.BeskrivelsesvariabelSet.Where(d => d.verdi.StartsWith(textBox2.Text)))
+                foreach (var hit in context.BeskrivelsesvariabelSet.Where(d => d.verdi.StartsWith(textBox2.Text)))
                 {
-                    checkedListBox2.Items.Add(hit.verdi);
+                    checkedListBoxBeskrivelsesvariabler.Items.Add(hit.verdi);
                 }
             }
         }
