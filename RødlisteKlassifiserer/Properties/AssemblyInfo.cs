@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("RødlistedeNaturområder")]
+[assembly: AssemblyTitle("Forms_dev3")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("RødlistedeNaturområder")]
+[assembly: AssemblyProduct("Forms_dev3")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("76727f69-5f38-4528-87f4-c9d8aab873f0")]
+[assembly: Guid("e754d18d-26a3-41ca-a079-fe86edcdb000")]
 
 // Version information for an assembly consists of the following four values:
 //
