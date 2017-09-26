@@ -80,25 +80,26 @@
     <Property Name="verdi" Type="nvarchar(max)" Nullable="false" />
     <Property Name="tema" Type="nvarchar(max)" Nullable="false" />
     <Property Name="versjon" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="parent_Id" Type="int" Nullable="false" />
+    <Property Name="kategori" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="nivå" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RødlisteVurderingsenhetRødlisteVurderingsenhet_RødlisteVurderingsenhet1_Id" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="KartleggingsKodeSet">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="verdi" Type="smallint" Nullable="false" />
-    <Property Name="nivå" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="verdi" Type="smallint" Nullable="true" />
+    <Property Name="nivå" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="RødlisteKlassifiseringSet">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="kategori" Type="nvarchar(max)" Nullable="false" />
     <Property Name="RødlisteVurderingsenhet_Id" Type="int" Nullable="false" />
     <Property Name="Påvirkning_Id" Type="int" Nullable="false" />
-    <Property Name="parent_Id" Type="int" Nullable="false" />
+    <Property Name="RødlisteKlassifiseringRødlisteKlassifisering_RødlisteKlassifisering1_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="BeskrivelsesvariabelSet">
     <Key>
@@ -145,14 +146,14 @@
     <Property Name="RødlisteKlassifisering_Id" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="RødlisteVurderingsenhetRødlisteVurderingsenhet">
-    <End Role="RødlisteVurderingsenhet" Type="RødlistedeNaturtyperKlassifisering.Store.RødlisteVurderingsenhetSet" Multiplicity="1" />
+    <End Role="RødlisteVurderingsenhet" Type="RødlistedeNaturtyperKlassifisering.Store.RødlisteVurderingsenhetSet" Multiplicity="0..1" />
     <End Role="RødlisteVurderingsenhet1" Type="RødlistedeNaturtyperKlassifisering.Store.RødlisteVurderingsenhetSet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="RødlisteVurderingsenhet">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="RødlisteVurderingsenhet1">
-        <PropertyRef Name="parent_Id" />
+        <PropertyRef Name="RødlisteVurderingsenhetRødlisteVurderingsenhet_RødlisteVurderingsenhet1_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -200,7 +201,7 @@
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="RødlisteKlassifisering1">
-        <PropertyRef Name="parent_Id" />
+        <PropertyRef Name="RødlisteKlassifiseringRødlisteKlassifisering_RødlisteKlassifisering1_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -340,22 +341,24 @@
           <Property Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
           <Property Name="verdi" Nullable="false" Type="String" />
           <NavigationProperty Name="children" Relationship="RødlistedeNaturtyperKlassifisering.RødlisteVurderingsenhetRødlisteVurderingsenhet" FromRole="RødlisteVurderingsenhet" ToRole="RødlisteVurderingsenhet1" />
-          <NavigationProperty Name="parent" Relationship="RødlistedeNaturtyperKlassifisering.RødlisteVurderingsenhetRødlisteVurderingsenhet" FromRole="RødlisteVurderingsenhet1" ToRole="RødlisteVurderingsenhet" />
+          <NavigationProperty Name="parent" Relationship="RødlistedeNaturtyperKlassifisering.RødlisteVurderingsenhetRødlisteVurderingsenhet" FromRole="RødlisteVurderingsenhet" ToRole="RødlisteVurderingsenhet1" />
           <NavigationProperty Name="RødlisteKlassifisering" Relationship="RødlistedeNaturtyperKlassifisering.RødlisteKlassifiseringRødlisteVurderingsenhet" FromRole="RødlisteVurderingsenhet" ToRole="RødlisteKlassifisering" />
           <Property Name="tema" Type="String" Nullable="false" />
           <Property Name="versjon" Type="String" Nullable="false" />
+          <Property Name="kategori" Type="String" Nullable="false" />
+          <Property Name="nivå" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="KartleggingsKode">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
-          <Property Name="verdi" Nullable="false" Type="Int16" />
+          <Property Name="verdi" Nullable="true" Type="Int16" />
           <NavigationProperty Name="NaturområdeTypeKode" Relationship="RødlistedeNaturtyperKlassifisering.KartleggingsKodeNaturområdeTypeKode" FromRole="KartleggingsKode" ToRole="NaturområdeTypeKode" />
-          <Property Name="nivå" Type="String" Nullable="false" />
+          <Property Name="nivå" Type="String" Nullable="true" />
         </EntityType>
         <Association Name="RødlisteVurderingsenhetRødlisteVurderingsenhet">
-          <End Type="RødlistedeNaturtyperKlassifisering.RødlisteVurderingsenhet" Multiplicity="1" Role="RødlisteVurderingsenhet" />
+          <End Type="RødlistedeNaturtyperKlassifisering.RødlisteVurderingsenhet" Multiplicity="0..1" Role="RødlisteVurderingsenhet" />
           <End Type="RødlistedeNaturtyperKlassifisering.RødlisteVurderingsenhet" Multiplicity="*" Role="RødlisteVurderingsenhet1" />
         </Association>
         <EntityType Name="RødlisteKlassifisering">
@@ -369,15 +372,14 @@
           <NavigationProperty Name="Kriterie" Relationship="RødlistedeNaturtyperKlassifisering.KriterieRødlisteKlassifisering" FromRole="RødlisteKlassifisering" ToRole="Kriterie" />
           <NavigationProperty Name="Påvirkning" Relationship="RødlistedeNaturtyperKlassifisering.PåvirkningRødlisteKlassifisering" FromRole="RødlisteKlassifisering" ToRole="Påvirkning" />
           <NavigationProperty Name="children" Relationship="RødlistedeNaturtyperKlassifisering.RødlisteKlassifiseringRødlisteKlassifisering" FromRole="RødlisteKlassifisering" ToRole="RødlisteKlassifisering1" />
-          <NavigationProperty Name="parent" Relationship="RødlistedeNaturtyperKlassifisering.RødlisteKlassifiseringRødlisteKlassifisering" FromRole="RødlisteKlassifisering1" ToRole="RødlisteKlassifisering" />
-          <Property Name="kategori" Type="String" Nullable="false" />
+          <NavigationProperty Name="parent" Relationship="RødlistedeNaturtyperKlassifisering.RødlisteKlassifiseringRødlisteKlassifisering" FromRole="RødlisteKlassifisering" ToRole="RødlisteKlassifisering1" />
         </EntityType>
         <Association Name="KartleggingsKodeNaturområdeTypeKode">
           <End Type="RødlistedeNaturtyperKlassifisering.KartleggingsKode" Multiplicity="1" Role="KartleggingsKode" />
           <End Type="RødlistedeNaturtyperKlassifisering.NaturområdeTypeKode" Multiplicity="*" Role="NaturområdeTypeKode" />
         </Association>
         <Association Name="RødlisteKlassifiseringRødlisteVurderingsenhet">
-          <End Type="RødlistedeNaturtyperKlassifisering.RødlisteKlassifisering" Multiplicity="1" Role="RødlisteKlassifisering" />
+          <End Type="RødlistedeNaturtyperKlassifisering.RødlisteKlassifisering" Multiplicity="0..1" Role="RødlisteKlassifisering" />
           <End Type="RødlistedeNaturtyperKlassifisering.RødlisteVurderingsenhet" Multiplicity="1" Role="RødlisteVurderingsenhet" />
         </Association>
         <Association Name="NaturområdeTypeKodeRødlisteKlassifisering">
@@ -421,7 +423,7 @@
         </Association>
         <Association Name="RødlisteKlassifiseringRødlisteKlassifisering">
           <End Type="RødlistedeNaturtyperKlassifisering.RødlisteKlassifisering" Role="RødlisteKlassifisering" Multiplicity="1" />
-          <End Type="RødlistedeNaturtyperKlassifisering.RødlisteKlassifisering" Role="RødlisteKlassifisering1" Multiplicity="*" />
+          <End Type="RødlistedeNaturtyperKlassifisering.RødlisteKlassifisering" Role="RødlisteKlassifisering1" Multiplicity="0..1" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -447,6 +449,8 @@
           <ScalarProperty Name="verdi" ColumnName="verdi" />
           <ScalarProperty Name="tema" ColumnName="tema" />
           <ScalarProperty Name="versjon" ColumnName="versjon" />
+          <ScalarProperty Name="kategori" ColumnName="kategori" />
+          <ScalarProperty Name="nivå" ColumnName="nivå" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -463,7 +467,6 @@
       <EntityTypeMapping TypeName="IsTypeOf(RødlistedeNaturtyperKlassifisering.RødlisteKlassifisering)">
         <MappingFragment StoreEntitySet="RødlisteKlassifiseringSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="kategori" ColumnName="kategori" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -492,11 +495,12 @@
     </EntitySetMapping>
     <AssociationSetMapping Name="RødlisteVurderingsenhetRødlisteVurderingsenhet" TypeName="RødlistedeNaturtyperKlassifisering.RødlisteVurderingsenhetRødlisteVurderingsenhet" StoreEntitySet="RødlisteVurderingsenhetSet">
       <EndProperty Name="RødlisteVurderingsenhet">
-        <ScalarProperty Name="Id" ColumnName="parent_Id" />
+        <ScalarProperty Name="Id" ColumnName="RødlisteVurderingsenhetRødlisteVurderingsenhet_RødlisteVurderingsenhet1_Id" />
       </EndProperty>
       <EndProperty Name="RødlisteVurderingsenhet1">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
+      <Condition ColumnName="RødlisteVurderingsenhetRødlisteVurderingsenhet_RødlisteVurderingsenhet1_Id" IsNull="false" />
     </AssociationSetMapping>
     <AssociationSetMapping Name="KartleggingsKodeNaturområdeTypeKode" TypeName="RødlistedeNaturtyperKlassifisering.KartleggingsKodeNaturområdeTypeKode" StoreEntitySet="NaturområdeTypeKodeSet">
       <EndProperty Name="KartleggingsKode">
@@ -548,7 +552,7 @@
     </AssociationSetMapping>
     <AssociationSetMapping Name="RødlisteKlassifiseringRødlisteKlassifisering" TypeName="RødlistedeNaturtyperKlassifisering.RødlisteKlassifiseringRødlisteKlassifisering" StoreEntitySet="RødlisteKlassifiseringSet">
       <EndProperty Name="RødlisteKlassifisering">
-        <ScalarProperty Name="Id" ColumnName="parent_Id" />
+        <ScalarProperty Name="Id" ColumnName="RødlisteKlassifiseringRødlisteKlassifisering_RødlisteKlassifisering1_Id" />
       </EndProperty>
       <EndProperty Name="RødlisteKlassifisering1">
         <ScalarProperty Name="Id" ColumnName="Id" />

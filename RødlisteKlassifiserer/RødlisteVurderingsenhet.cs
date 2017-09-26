@@ -18,16 +18,20 @@ namespace Forms_dev3
         public RødlisteVurderingsenhet()
         {
             this.children = new HashSet<RødlisteVurderingsenhet>();
+            this.parent = new HashSet<RødlisteVurderingsenhet>();
         }
     
         public int Id { get; set; }
         public string verdi { get; set; }
         public string tema { get; set; }
         public string versjon { get; set; }
+        public string kategori { get; set; }
+        public string nivå { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RødlisteVurderingsenhet> children { get; set; }
-        public virtual RødlisteVurderingsenhet parent { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RødlisteVurderingsenhet> parent { get; set; }
         public virtual RødlisteKlassifisering RødlisteKlassifisering { get; set; }
     }
 }

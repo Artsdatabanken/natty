@@ -12,7 +12,7 @@ namespace Forms_dev3
 {
     public static class CodeDeserializer
     {
-        private static readonly RødlistedeNaturtyperKlassifiseringContainer Context =
+        public static readonly RødlistedeNaturtyperKlassifiseringContainer Context =
             new RødlistedeNaturtyperKlassifiseringContainer();
 
         public static void UpdateNaturtypeFromWeb()

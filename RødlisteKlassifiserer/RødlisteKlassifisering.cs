@@ -20,11 +20,9 @@ namespace Forms_dev3
             this.NaturområdeTypeKode = new HashSet<NaturområdeTypeKode>();
             this.Beskrivelsesvariabel = new HashSet<Beskrivelsesvariabel>();
             this.Kriterie = new HashSet<Kriterie>();
-            this.children = new HashSet<RødlisteKlassifisering>();
         }
     
         public int Id { get; set; }
-        public string kategori { get; set; }
     
         public virtual RødlisteVurderingsenhet RødlisteVurderingsenhet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -34,8 +32,7 @@ namespace Forms_dev3
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Kriterie> Kriterie { get; set; }
         public virtual Påvirkning Påvirkning { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RødlisteKlassifisering> children { get; set; }
+        public virtual RødlisteKlassifisering children { get; set; }
         public virtual RødlisteKlassifisering parent { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/25/2017 14:22:22
+-- Date Created: 09/26/2017 13:15:45
 -- Generated from EDMX file: C:\Users\japed\source\repos\RødlistedeNaturområder\RødlisteKlassifiserer\RødlistedeNaturtyperKlassifisering.edmx
 -- --------------------------------------------------
 
@@ -107,25 +107,26 @@ CREATE TABLE [dbo].[RødlisteVurderingsenhetSet] (
     [verdi] nvarchar(max)  NOT NULL,
     [tema] nvarchar(max)  NOT NULL,
     [versjon] nvarchar(max)  NOT NULL,
-    [parent_Id] int  NOT NULL
+    [kategori] nvarchar(max)  NOT NULL,
+    [nivå] nvarchar(max)  NOT NULL,
+    [RødlisteVurderingsenhetRødlisteVurderingsenhet_RødlisteVurderingsenhet1_Id] int  NULL
 );
 GO
 
 -- Creating table 'KartleggingsKodeSet'
 CREATE TABLE [dbo].[KartleggingsKodeSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [verdi] smallint  NOT NULL,
-    [nivå] nvarchar(max)  NOT NULL
+    [verdi] smallint  NULL,
+    [nivå] nvarchar(max)  NULL
 );
 GO
 
 -- Creating table 'RødlisteKlassifiseringSet'
 CREATE TABLE [dbo].[RødlisteKlassifiseringSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [kategori] nvarchar(max)  NOT NULL,
     [RødlisteVurderingsenhet_Id] int  NOT NULL,
     [Påvirkning_Id] int  NOT NULL,
-    [parent_Id] int  NOT NULL
+    [RødlisteKlassifiseringRødlisteKlassifisering_RødlisteKlassifisering1_Id] int  NOT NULL
 );
 GO
 
@@ -238,10 +239,10 @@ GO
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [parent_Id] in table 'RødlisteVurderingsenhetSet'
+-- Creating foreign key on [RødlisteVurderingsenhetRødlisteVurderingsenhet_RødlisteVurderingsenhet1_Id] in table 'RødlisteVurderingsenhetSet'
 ALTER TABLE [dbo].[RødlisteVurderingsenhetSet]
 ADD CONSTRAINT [FK_RødlisteVurderingsenhetRødlisteVurderingsenhet]
-    FOREIGN KEY ([parent_Id])
+    FOREIGN KEY ([RødlisteVurderingsenhetRødlisteVurderingsenhet_RødlisteVurderingsenhet1_Id])
     REFERENCES [dbo].[RødlisteVurderingsenhetSet]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -250,7 +251,7 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_RødlisteVurderingsenhetRødlisteVurderingsenhet'
 CREATE INDEX [IX_FK_RødlisteVurderingsenhetRødlisteVurderingsenhet]
 ON [dbo].[RødlisteVurderingsenhetSet]
-    ([parent_Id]);
+    ([RødlisteVurderingsenhetRødlisteVurderingsenhet_RødlisteVurderingsenhet1_Id]);
 GO
 
 -- Creating foreign key on [KartleggingsKode_Id] in table 'NaturområdeTypeKodeSet'
@@ -370,10 +371,10 @@ ON [dbo].[RødlisteKlassifiseringSet]
     ([Påvirkning_Id]);
 GO
 
--- Creating foreign key on [parent_Id] in table 'RødlisteKlassifiseringSet'
+-- Creating foreign key on [RødlisteKlassifiseringRødlisteKlassifisering_RødlisteKlassifisering1_Id] in table 'RødlisteKlassifiseringSet'
 ALTER TABLE [dbo].[RødlisteKlassifiseringSet]
 ADD CONSTRAINT [FK_RødlisteKlassifiseringRødlisteKlassifisering]
-    FOREIGN KEY ([parent_Id])
+    FOREIGN KEY ([RødlisteKlassifiseringRødlisteKlassifisering_RødlisteKlassifisering1_Id])
     REFERENCES [dbo].[RødlisteKlassifiseringSet]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -382,7 +383,7 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_RødlisteKlassifiseringRødlisteKlassifisering'
 CREATE INDEX [IX_FK_RødlisteKlassifiseringRødlisteKlassifisering]
 ON [dbo].[RødlisteKlassifiseringSet]
-    ([parent_Id]);
+    ([RødlisteKlassifiseringRødlisteKlassifisering_RødlisteKlassifisering1_Id]);
 GO
 
 -- --------------------------------------------------
