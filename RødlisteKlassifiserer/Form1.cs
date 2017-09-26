@@ -52,6 +52,8 @@ namespace Forms_dev3
 
         private void buttonUpdateValideringsenheter_Click(object sender, EventArgs e)
         {
+            CodeDeserializer.Context.Database.ExecuteSqlCommand("DELETE FROM [dbo].RødlisteVurderingsenhetSet");
+            //CodeDeserializer.Context.SaveChanges();
             buttonUpdateValideringsenheter.Enabled = false;
             var location = System.Reflection.Assembly.GetExecutingAssembly().Location;
             var path = System.IO.Path.GetDirectoryName(location);
@@ -63,42 +65,38 @@ namespace Forms_dev3
                 Excel.XlRangeValueDataType.xlRangeValueDefault);
 
             var columns = new Dictionary<int, string>();
-            //using (var context = new RødlistedeNaturtyperKlassifiseringContainer())
+
+            var parentVurderingsenhet = new RødlisteVurderingsenhet();
+
+            for (var row = 1; row <= xlWorksheet.UsedRange.Rows.Count; ++row)
             {
-                var parentVurderingsenhet = new RødlisteVurderingsenhet();
-                for (var row = 1; row <= xlWorksheet.UsedRange.Rows.Count; ++row)
+                var rowValues = new Dictionary<string, string>();
+                for (var col = 1; col <= xlWorksheet.UsedRange.Columns.Count; ++col)
                 {
-                    var rowValues = new Dictionary<string, string>();
-                    for (var col = 1; col <= xlWorksheet.UsedRange.Columns.Count; ++col)
-                    {
-                        if (row == 1) columns[col] = valueArray[row, col].ToString();
-                        else rowValues[columns[col]] = valueArray[row, col]?.ToString();
-                    }
-                    if (row <= 1) continue;
-
-                    var rødlisteVurderingsenhet = new RødlisteVurderingsenhet
-                    {
-                        tema = rowValues["Tema"],
-                        versjon = rowValues["Rødlisteversjon"],
-                        verdi = rowValues["Vurderingsenhet"],
-                        kategori = rowValues["Rødlistekategori"],
-                        nivå = rowValues["Naturnivå"]
-                    };
-
-                    if (rødlisteVurderingsenhet.verdi.StartsWith("*"))
-                    {
-                        rødlisteVurderingsenhet.verdi = rødlisteVurderingsenhet.verdi.Replace("* ", "");
-                        parentVurderingsenhet.children.Add(rødlisteVurderingsenhet); 
-
-                    }
-                    else
-                    {
-                        parentVurderingsenhet = rødlisteVurderingsenhet;
-                    }
-                    CodeDeserializer.Context.RødlisteVurderingsenhetSet.Add(rødlisteVurderingsenhet);
+                    if (row == 1) columns[col] = valueArray[row, col].ToString();
+                    else rowValues[columns[col]] = valueArray[row, col]?.ToString();
                 }
-                CodeDeserializer.Context.SaveChanges();
+                if (row <= 1) continue;
+
+                var rødlisteVurderingsenhet = new RødlisteVurderingsenhet
+                {
+                    tema = rowValues["Tema"],
+                    versjon = rowValues["Rødlisteversjon"],
+                    verdi = rowValues["Vurderingsenhet"],
+                    kategori = rowValues["Rødlistekategori"],
+                    nivå = rowValues["Naturnivå"]
+                };
+
+                if (rødlisteVurderingsenhet.verdi.StartsWith("*"))
+                {
+                    rødlisteVurderingsenhet.verdi = rødlisteVurderingsenhet.verdi.Replace("* ", "");
+                    parentVurderingsenhet.children.Add(rødlisteVurderingsenhet);
+                }
+                else parentVurderingsenhet = rødlisteVurderingsenhet; 
+
+                CodeDeserializer.Context.RødlisteVurderingsenhetSet.Add(rødlisteVurderingsenhet);
             }
+            CodeDeserializer.Context.SaveChanges();
 
             xlWorkbook.Close(false);
             Marshal.ReleaseComObject(xlWorkbook);
