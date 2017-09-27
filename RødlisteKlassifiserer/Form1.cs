@@ -58,30 +58,30 @@ namespace Forms_dev3
             buttonUpdateKodelister.Enabled = true;
         }
 
-        private void textBoxNaturområdetyper_KeyUp(object sender, KeyEventArgs e)
-        {
-            checkedListBoxNaturområdetyper.Items.Clear();
-            foreach (var hit in CodeDeserializer.Context.NaturområdeTypeKodeSet.Where(d =>
-                d.verdi.StartsWith(textBox1.Text.ToUpper())))
-            {
-                foreach (var kartleggingsKode in hit.KartleggingsKode)
-                {
-                    if(kartleggingsKode.nivå == "A")
-                        checkedListBoxNaturområdetyper.Items.Add(hit.verdi + "-" + kartleggingsKode.verdi);
-                }
+        //private void textBoxNaturområdetyper_KeyUp(object sender, KeyEventArgs e)
+        //{
+        //    checkedListBoxNaturområdetyper.Items.Clear();
+        //    foreach (var hit in CodeDeserializer.Context.NaturområdeTypeKodeSet.Where(d =>
+        //        d.verdi.StartsWith(textBox1.Text.ToUpper())))
+        //    {
+        //        foreach (var kartleggingsKode in hit.KartleggingsKode)
+        //        {
+        //            if(kartleggingsKode.nivå == "A")
+        //                checkedListBoxNaturområdetyper.Items.Add(hit.verdi + "-" + kartleggingsKode.verdi);
+        //        }
                 
-            }
-        }
+        //    }
+        //}
 
-        private void textBoxBeskrivelsesvariabler_KeyUp(object sender, KeyEventArgs e)
-        {
-            checkedListBoxBeskrivelsesvariabler.Items.Clear();
-            foreach (var hit in CodeDeserializer.Context.BeskrivelsesvariabelSet.Where(d =>
-                d.verdi.StartsWith(textBox2.Text)))
-            {
-                checkedListBoxBeskrivelsesvariabler.Items.Add(hit.verdi);
-            }
-        }
+        //private void textBoxBeskrivelsesvariabler_KeyUp(object sender, KeyEventArgs e)
+        //{
+        //    checkedListBoxBeskrivelsesvariabler.Items.Clear();
+        //    foreach (var hit in CodeDeserializer.Context.BeskrivelsesvariabelSet.Where(d =>
+        //        d.verdi.StartsWith(textBox2.Text)))
+        //    {
+        //        checkedListBoxBeskrivelsesvariabler.Items.Add(hit.verdi);
+        //    }
+        //}
 
         private void buttonUpdateValideringsenheter_Click(object sender, EventArgs e)
         {
@@ -152,17 +152,24 @@ namespace Forms_dev3
                 {
                     if (rødlisteKlassifisering.KartleggingsKode.Any())
                     {
-                        checkedListBoxNaturområdetyper.Items.Clear();
+                        //checkedListBoxNaturområdetyper.Items.Clear();
                         foreach (var kartleggingsKode in rødlisteKlassifisering.KartleggingsKode)
                         {
-                            checkedListBoxNaturområdetyper.Items.Add(
-                                kartleggingsKode.NaturområdeTypeKode.verdi + "-" + kartleggingsKode.verdi);
+                            //checkedListBoxNaturområdetyper.Items.Add(kartleggingsKode.NaturområdeTypeKode.verdi + "-" + kartleggingsKode.verdi);
 
-                            treeViewNaturområdeType.Nodes.Add(kartleggingsKode.NaturområdeTypeKode.verdi,
-                                kartleggingsKode.verdi.ToString());
+                            var existingNode = treeViewNaturområdeType.Nodes
+                                .Find(kartleggingsKode.NaturområdeTypeKode.verdi, false);
+
+                            if (existingNode.Any())
+                            {
+                                existingNode.First().Nodes.Add(kartleggingsKode.verdi.ToString());
+                                continue;
+                            }
+                            treeViewNaturområdeType.Nodes.Add(kartleggingsKode.NaturområdeTypeKode.verdi).Nodes.Add(kartleggingsKode.verdi.ToString());
+                                
                         }
-                        for (var i = 0; i < checkedListBoxNaturområdetyper.Items.Count; i++)
-                            checkedListBoxNaturområdetyper.SetItemChecked(i, true);
+                        //for (var i = 0; i < checkedListBoxNaturområdetyper.Items.Count; i++)
+                        //    checkedListBoxNaturområdetyper.SetItemChecked(i, true);
                     }
 
                     if (!rødlisteKlassifisering.Beskrivelsesvariabel.Any()) continue;
@@ -210,9 +217,9 @@ namespace Forms_dev3
 
         private IEnumerable<KartleggingsKode> GetSelectedKartleggingsKoder()
         {
-            foreach (var item in checkedListBoxNaturområdetyper.CheckedItems)
+            foreach (var node in treeViewNaturområdeType.Nodes)
             {
-                var verdi = item.ToString().Split('-')[0];
+                var verdi = node.ToString();
                 yield return CodeDeserializer.Context.KartleggingsKodeSet.First(d =>
                     d.NaturområdeTypeKode.verdi == verdi);
             }

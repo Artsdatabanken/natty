@@ -30,7 +30,6 @@
         {
             this.buttonUpdateKodelister = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.checkedListBoxNaturområdetyper = new System.Windows.Forms.CheckedListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.checkedListBoxBeskrivelsesvariabler = new System.Windows.Forms.CheckedListBox();
@@ -60,15 +59,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(97, 20);
             this.textBox1.TabIndex = 1;
-            this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxNaturområdetyper_KeyUp);
-            // 
-            // checkedListBoxNaturområdetyper
-            // 
-            this.checkedListBoxNaturområdetyper.FormattingEnabled = true;
-            this.checkedListBoxNaturområdetyper.Location = new System.Drawing.Point(29, 192);
-            this.checkedListBoxNaturområdetyper.Name = "checkedListBoxNaturområdetyper";
-            this.checkedListBoxNaturområdetyper.Size = new System.Drawing.Size(97, 349);
-            this.checkedListBoxNaturområdetyper.TabIndex = 2;
             // 
             // label1
             // 
@@ -102,7 +92,6 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(97, 20);
             this.textBox2.TabIndex = 4;
-            this.textBox2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxBeskrivelsesvariabler_KeyUp);
             // 
             // label3
             // 
@@ -162,9 +151,9 @@
             // 
             // treeViewNaturområdeType
             // 
-            this.treeViewNaturområdeType.Location = new System.Drawing.Point(365, 192);
+            this.treeViewNaturområdeType.Location = new System.Drawing.Point(29, 186);
             this.treeViewNaturområdeType.Name = "treeViewNaturområdeType";
-            this.treeViewNaturområdeType.Size = new System.Drawing.Size(148, 349);
+            this.treeViewNaturområdeType.Size = new System.Drawing.Size(97, 349);
             this.treeViewNaturområdeType.TabIndex = 14;
             // 
             // Form1
@@ -183,7 +172,6 @@
             this.Controls.Add(this.checkedListBoxBeskrivelsesvariabler);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.checkedListBoxNaturområdetyper);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.buttonUpdateKodelister);
             this.Name = "Form1";
@@ -197,7 +185,6 @@
 
         private System.Windows.Forms.Button buttonUpdateKodelister;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.CheckedListBox checkedListBoxNaturområdetyper;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckedListBox checkedListBoxBeskrivelsesvariabler;
