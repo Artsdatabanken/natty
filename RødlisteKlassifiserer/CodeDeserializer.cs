@@ -21,8 +21,8 @@ namespace Forms_dev3
             {
                 var naturområdeType = ConvertToNaturområdeType(code);
                 var existingRow = Context.NaturområdeTypeKodeSet.Where(d =>
-                    d.KartleggingsKode.verdi == naturområdeType.KartleggingsKode.verdi &&
-                    d.KartleggingsKode.nivå == naturområdeType.KartleggingsKode.nivå &&
+                    //d.KartleggingsKode.verdi == naturområdeType.KartleggingsKode.verdi &&
+                    //d.KartleggingsKode.nivå == naturområdeType.KartleggingsKode.nivå &&
                     d.nivå == naturområdeType.nivå &&
                     d.verdi == naturområdeType.verdi &&
                     d.versjon == naturområdeType.versjon);
@@ -64,26 +64,39 @@ namespace Forms_dev3
             var codeSplit = code.Kode["Id"].Split(' ');
             var mappingSplit = codeSplit[1].Split('-');
 
+            var kartlaggingsKode = new KartleggingsKode {verdi = -1, nivå = "A", navn = code.Navn};
+
             var naturområdeTypeKode = new NaturområdeTypeKode
             {
-                KartleggingsKode = new KartleggingsKode { verdi = -1, nivå = "A" },
                 versjon = "2.1",
                 nivå = codeSplit[0],
-                verdi = mappingSplit[0],
-                navn = code.Navn
+                verdi = mappingSplit[0]
             };
 
             if (mappingSplit.Length > 2)
             {
-                naturområdeTypeKode.KartleggingsKode.nivå = mappingSplit[1];
-                naturområdeTypeKode.KartleggingsKode.verdi = short.Parse(mappingSplit[2]);
+                kartlaggingsKode.nivå = mappingSplit[1];
+                kartlaggingsKode.verdi = short.Parse(mappingSplit[2]);
             }
             else if (mappingSplit.Length > 1)
-                naturområdeTypeKode.KartleggingsKode.verdi = short.Parse(mappingSplit[1]);
+                kartlaggingsKode.verdi = short.Parse(mappingSplit[1]);
 
-            naturområdeTypeKode.KartleggingsKode = Context.KartleggingsKodeSet.AddIfNotExists(naturområdeTypeKode.KartleggingsKode, d =>
-                d.verdi == naturområdeTypeKode.KartleggingsKode.verdi &&
-                d.nivå == naturområdeTypeKode.KartleggingsKode.nivå);
+            var existingNaturområdeTypeKodes = Context.NaturområdeTypeKodeSet.Where(d =>
+                d.verdi == naturområdeTypeKode.verdi &&
+                d.nivå == naturområdeTypeKode.nivå &&
+                d.versjon == naturområdeTypeKode.versjon);
+
+            if (existingNaturområdeTypeKodes.Any())
+            {
+                var existingNaturområdeTypeKode = existingNaturområdeTypeKodes.First();
+                existingNaturområdeTypeKode.KartleggingsKode.Add(kartlaggingsKode);
+                return existingNaturområdeTypeKode;
+            }
+
+            naturområdeTypeKode.KartleggingsKode.Add(kartlaggingsKode);
+            //naturområdeTypeKode.KartleggingsKode = Context.KartleggingsKodeSet.Add(naturområdeTypeKode.KartleggingsKode, d =>
+            //    d.verdi == kartlaggingsKode.verdi &&
+            //    d.nivå == kartlaggingsKode.nivå);
 
             return naturområdeTypeKode;
         }

@@ -17,17 +17,15 @@ namespace Forms_dev3
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NaturområdeTypeKode()
         {
-            this.RødlisteKlassifisering = new HashSet<RødlisteKlassifisering>();
+            this.KartleggingsKode = new HashSet<KartleggingsKode>();
         }
     
         public int Id { get; set; }
         public string verdi { get; set; }
         public string versjon { get; set; }
         public string nivå { get; set; }
-        public string navn { get; set; }
     
-        public virtual KartleggingsKode KartleggingsKode { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RødlisteKlassifisering> RødlisteKlassifisering { get; set; }
+        public virtual ICollection<KartleggingsKode> KartleggingsKode { get; set; }
     }
 }

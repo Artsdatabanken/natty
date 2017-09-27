@@ -5,21 +5,21 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="a00ce03fbb5d4ce285cac00b6944ac68" Name="Diagram1" >
-        <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.NaturområdeTypeKode" Width="2.125" PointX="3.5" PointY="0.5" />
-        <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.RødlisteVurderingsenhet" Width="2.5" PointX="6.5" PointY="3.625" />
-        <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.KartleggingsKode" Width="1.875" PointX="0.5" PointY="0.75" />
+        <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.NaturområdeTypeKode" Width="2.125" PointX="0.5" PointY="0.625" />
+        <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.RødlisteVurderingsenhet" Width="2.5" PointX="6.75" PointY="0.5" />
+        <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.KartleggingsKode" Width="1.875" PointX="3.625" PointY="0.625" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.RødlisteVurderingsenhetRødlisteVurderingsenhet" />
         <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.RødlisteKlassifisering" Width="2" PointX="3.625" PointY="3.5" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.KartleggingsKodeNaturområdeTypeKode" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.RødlisteKlassifiseringRødlisteVurderingsenhet" />
-        <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.NaturområdeTypeKodeRødlisteKlassifisering" />
         <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.Beskrivelsesvariabel" Width="1.875" PointX="3.875" PointY="7.5" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.BeskrivelsesvariabelRødlisteKlassifisering" />
-        <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.Kriterie" Width="1.5" PointX="0.5" PointY="3.25" />
+        <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.Kriterie" Width="1.5" PointX="0.625" PointY="4" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.KriterieRødlisteKlassifisering" />
-        <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.Påvirkning" Width="1.5" PointX="0.5" PointY="5.375" />
+        <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.Påvirkning" Width="1.5" PointX="0.625" PointY="5.75" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.PåvirkningRødlisteKlassifisering" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.RødlisteKlassifiseringRødlisteKlassifisering" />
+        <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.KartleggingsKodeRødlisteKlassifisering" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -13,9 +13,9 @@
     <EntitySet Name="BeskrivelsesvariabelSet" EntityType="RødlistedeNaturtyperKlassifisering.Store.BeskrivelsesvariabelSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="KriterieSet" EntityType="RødlistedeNaturtyperKlassifisering.Store.KriterieSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="PåvirkningSet" EntityType="RødlistedeNaturtyperKlassifisering.Store.PåvirkningSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="NaturområdeTypeKodeRødlisteKlassifisering" EntityType="RødlistedeNaturtyperKlassifisering.Store.NaturområdeTypeKodeRødlisteKlassifisering" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="BeskrivelsesvariabelRødlisteKlassifisering" EntityType="RødlistedeNaturtyperKlassifisering.Store.BeskrivelsesvariabelRødlisteKlassifisering" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="KriterieRødlisteKlassifisering" EntityType="RødlistedeNaturtyperKlassifisering.Store.KriterieRødlisteKlassifisering" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="KartleggingsKodeRødlisteKlassifisering" EntityType="RødlistedeNaturtyperKlassifisering.Store.KartleggingsKodeRødlisteKlassifisering" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="RødlisteVurderingsenhetRødlisteVurderingsenhet" Association="RødlistedeNaturtyperKlassifisering.Store.RødlisteVurderingsenhetRødlisteVurderingsenhet">
       <End Role="RødlisteVurderingsenhet" EntitySet="RødlisteVurderingsenhetSet" />
       <End Role="RødlisteVurderingsenhet1" EntitySet="RødlisteVurderingsenhetSet" />
@@ -27,14 +27,6 @@
     <AssociationSet Name="RødlisteKlassifiseringRødlisteVurderingsenhet" Association="RødlistedeNaturtyperKlassifisering.Store.RødlisteKlassifiseringRødlisteVurderingsenhet">
       <End Role="RødlisteKlassifisering" EntitySet="RødlisteKlassifiseringSet" />
       <End Role="RødlisteVurderingsenhet" EntitySet="RødlisteVurderingsenhetSet" />
-    </AssociationSet>
-    <AssociationSet Name="FK_NaturområdeTypeKodeRødlisteKlassifisering_NaturområdeTypeKode" Association="RødlistedeNaturtyperKlassifisering.Store.FK_NaturområdeTypeKodeRødlisteKlassifisering_NaturområdeTypeKode">
-      <End Role="NaturområdeTypeKode" EntitySet="NaturområdeTypeKodeSet" />
-      <End Role="NaturområdeTypeKodeRødlisteKlassifisering" EntitySet="NaturområdeTypeKodeRødlisteKlassifisering" />
-    </AssociationSet>
-    <AssociationSet Name="FK_NaturområdeTypeKodeRødlisteKlassifisering_RødlisteKlassifisering" Association="RødlistedeNaturtyperKlassifisering.Store.FK_NaturområdeTypeKodeRødlisteKlassifisering_RødlisteKlassifisering">
-      <End Role="RødlisteKlassifisering" EntitySet="RødlisteKlassifiseringSet" />
-      <End Role="NaturområdeTypeKodeRødlisteKlassifisering" EntitySet="NaturområdeTypeKodeRødlisteKlassifisering" />
     </AssociationSet>
     <AssociationSet Name="FK_BeskrivelsesvariabelRødlisteKlassifisering_Beskrivelsesvariabel" Association="RødlistedeNaturtyperKlassifisering.Store.FK_BeskrivelsesvariabelRødlisteKlassifisering_Beskrivelsesvariabel">
       <End Role="Beskrivelsesvariabel" EntitySet="BeskrivelsesvariabelSet" />
@@ -60,6 +52,14 @@
       <End Role="RødlisteKlassifisering" EntitySet="RødlisteKlassifiseringSet" />
       <End Role="RødlisteKlassifisering1" EntitySet="RødlisteKlassifiseringSet" />
     </AssociationSet>
+    <AssociationSet Name="FK_KartleggingsKodeRødlisteKlassifisering_KartleggingsKode" Association="RødlistedeNaturtyperKlassifisering.Store.FK_KartleggingsKodeRødlisteKlassifisering_KartleggingsKode">
+      <End Role="KartleggingsKode" EntitySet="KartleggingsKodeSet" />
+      <End Role="KartleggingsKodeRødlisteKlassifisering" EntitySet="KartleggingsKodeRødlisteKlassifisering" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KartleggingsKodeRødlisteKlassifisering_RødlisteKlassifisering" Association="RødlistedeNaturtyperKlassifisering.Store.FK_KartleggingsKodeRødlisteKlassifisering_RødlisteKlassifisering">
+      <End Role="RødlisteKlassifisering" EntitySet="RødlisteKlassifiseringSet" />
+      <End Role="KartleggingsKodeRødlisteKlassifisering" EntitySet="KartleggingsKodeRødlisteKlassifisering" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="NaturområdeTypeKodeSet">
     <Key>
@@ -69,8 +69,6 @@
     <Property Name="verdi" Type="nvarchar(max)" Nullable="false" />
     <Property Name="versjon" Type="nvarchar(max)" Nullable="false" />
     <Property Name="nivå" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="navn" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="KartleggingsKode_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="RødlisteVurderingsenhetSet">
     <Key>
@@ -91,6 +89,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="verdi" Type="smallint" Nullable="true" />
     <Property Name="nivå" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="navn" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NaturområdeTypeKode_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="RødlisteKlassifiseringSet">
     <Key>
@@ -98,8 +98,8 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RødlisteVurderingsenhet_Id" Type="int" Nullable="false" />
-    <Property Name="Påvirkning_Id" Type="int" Nullable="false" />
-    <Property Name="RødlisteKlassifiseringRødlisteKlassifisering_RødlisteKlassifisering1_Id" Type="int" Nullable="false" />
+    <Property Name="Påvirkning_Id" Type="int" Nullable="true" />
+    <Property Name="RødlisteKlassifiseringRødlisteKlassifisering_RødlisteKlassifisering1_Id" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="BeskrivelsesvariabelSet">
     <Key>
@@ -121,14 +121,6 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
-  <EntityType Name="NaturområdeTypeKodeRødlisteKlassifisering">
-    <Key>
-      <PropertyRef Name="NaturområdeTypeKode_Id" />
-      <PropertyRef Name="RødlisteKlassifisering_Id" />
-    </Key>
-    <Property Name="NaturområdeTypeKode_Id" Type="int" Nullable="false" />
-    <Property Name="RødlisteKlassifisering_Id" Type="int" Nullable="false" />
-  </EntityType>
   <EntityType Name="BeskrivelsesvariabelRødlisteKlassifisering">
     <Key>
       <PropertyRef Name="Beskrivelsesvariabel_Id" />
@@ -145,6 +137,14 @@
     <Property Name="Kriterie_Id" Type="int" Nullable="false" />
     <Property Name="RødlisteKlassifisering_Id" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="KartleggingsKodeRødlisteKlassifisering">
+    <Key>
+      <PropertyRef Name="KartleggingsKode_Id" />
+      <PropertyRef Name="RødlisteKlassifisering_Id" />
+    </Key>
+    <Property Name="KartleggingsKode_Id" Type="int" Nullable="false" />
+    <Property Name="RødlisteKlassifisering_Id" Type="int" Nullable="false" />
+  </EntityType>
   <Association Name="RødlisteVurderingsenhetRødlisteVurderingsenhet">
     <End Role="RødlisteVurderingsenhet" Type="RødlistedeNaturtyperKlassifisering.Store.RødlisteVurderingsenhetSet" Multiplicity="0..1" />
     <End Role="RødlisteVurderingsenhet1" Type="RødlistedeNaturtyperKlassifisering.Store.RødlisteVurderingsenhetSet" Multiplicity="*" />
@@ -158,14 +158,14 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="KartleggingsKodeNaturområdeTypeKode">
-    <End Role="KartleggingsKode" Type="RødlistedeNaturtyperKlassifisering.Store.KartleggingsKodeSet" Multiplicity="1" />
-    <End Role="NaturområdeTypeKode" Type="RødlistedeNaturtyperKlassifisering.Store.NaturområdeTypeKodeSet" Multiplicity="*" />
+    <End Role="KartleggingsKode" Type="RødlistedeNaturtyperKlassifisering.Store.KartleggingsKodeSet" Multiplicity="*" />
+    <End Role="NaturområdeTypeKode" Type="RødlistedeNaturtyperKlassifisering.Store.NaturområdeTypeKodeSet" Multiplicity="1" />
     <ReferentialConstraint>
-      <Principal Role="KartleggingsKode">
+      <Principal Role="NaturområdeTypeKode">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="NaturområdeTypeKode">
-        <PropertyRef Name="KartleggingsKode_Id" />
+      <Dependent Role="KartleggingsKode">
+        <PropertyRef Name="NaturområdeTypeKode_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -182,7 +182,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="PåvirkningRødlisteKlassifisering">
-    <End Role="Påvirkning" Type="RødlistedeNaturtyperKlassifisering.Store.PåvirkningSet" Multiplicity="1" />
+    <End Role="Påvirkning" Type="RødlistedeNaturtyperKlassifisering.Store.PåvirkningSet" Multiplicity="0..1" />
     <End Role="RødlisteKlassifisering" Type="RødlistedeNaturtyperKlassifisering.Store.RødlisteKlassifiseringSet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Påvirkning">
@@ -194,7 +194,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="RødlisteKlassifiseringRødlisteKlassifisering">
-    <End Role="RødlisteKlassifisering" Type="RødlistedeNaturtyperKlassifisering.Store.RødlisteKlassifiseringSet" Multiplicity="1" />
+    <End Role="RødlisteKlassifisering" Type="RødlistedeNaturtyperKlassifisering.Store.RødlisteKlassifiseringSet" Multiplicity="0..1" />
     <End Role="RødlisteKlassifisering1" Type="RødlistedeNaturtyperKlassifisering.Store.RødlisteKlassifiseringSet" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="RødlisteKlassifisering">
@@ -202,30 +202,6 @@
       </Principal>
       <Dependent Role="RødlisteKlassifisering1">
         <PropertyRef Name="RødlisteKlassifiseringRødlisteKlassifisering_RødlisteKlassifisering1_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_NaturområdeTypeKodeRødlisteKlassifisering_NaturområdeTypeKode">
-    <End Role="NaturområdeTypeKode" Type="RødlistedeNaturtyperKlassifisering.Store.NaturområdeTypeKodeSet" Multiplicity="1" />
-    <End Role="NaturområdeTypeKodeRødlisteKlassifisering" Type="RødlistedeNaturtyperKlassifisering.Store.NaturområdeTypeKodeRødlisteKlassifisering" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="NaturområdeTypeKode">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="NaturområdeTypeKodeRødlisteKlassifisering">
-        <PropertyRef Name="NaturområdeTypeKode_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_NaturområdeTypeKodeRødlisteKlassifisering_RødlisteKlassifisering">
-    <End Role="NaturområdeTypeKodeRødlisteKlassifisering" Type="RødlistedeNaturtyperKlassifisering.Store.NaturområdeTypeKodeRødlisteKlassifisering" Multiplicity="*" />
-    <End Role="RødlisteKlassifisering" Type="RødlistedeNaturtyperKlassifisering.Store.RødlisteKlassifiseringSet" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="RødlisteKlassifisering">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="NaturområdeTypeKodeRødlisteKlassifisering">
-        <PropertyRef Name="RødlisteKlassifisering_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -277,6 +253,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_KartleggingsKodeRødlisteKlassifisering_KartleggingsKode">
+    <End Role="KartleggingsKode" Type="RødlistedeNaturtyperKlassifisering.Store.KartleggingsKodeSet" Multiplicity="1" />
+    <End Role="KartleggingsKodeRødlisteKlassifisering" Type="RødlistedeNaturtyperKlassifisering.Store.KartleggingsKodeRødlisteKlassifisering" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KartleggingsKode">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="KartleggingsKodeRødlisteKlassifisering">
+        <PropertyRef Name="KartleggingsKode_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KartleggingsKodeRødlisteKlassifisering_RødlisteKlassifisering">
+    <End Role="KartleggingsKodeRødlisteKlassifisering" Type="RødlistedeNaturtyperKlassifisering.Store.KartleggingsKodeRødlisteKlassifisering" Multiplicity="*" />
+    <End Role="RødlisteKlassifisering" Type="RødlistedeNaturtyperKlassifisering.Store.RødlisteKlassifiseringSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="RødlisteKlassifisering">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="KartleggingsKodeRødlisteKlassifisering">
+        <PropertyRef Name="RødlisteKlassifisering_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -298,10 +298,6 @@
             <End EntitySet="RødlisteKlassifiseringSet" Role="RødlisteKlassifisering" />
             <End EntitySet="RødlisteVurderingsenhetSet" Role="RødlisteVurderingsenhet" />
           </AssociationSet>
-          <AssociationSet Name="NaturområdeTypeKodeRødlisteKlassifisering" Association="RødlistedeNaturtyperKlassifisering.NaturområdeTypeKodeRødlisteKlassifisering">
-            <End EntitySet="NaturområdeTypeKodeSet" Role="NaturområdeTypeKode" />
-            <End EntitySet="RødlisteKlassifiseringSet" Role="RødlisteKlassifisering" />
-          </AssociationSet>
           <EntitySet Name="BeskrivelsesvariabelSet" EntityType="RødlistedeNaturtyperKlassifisering.Beskrivelsesvariabel" />
           <AssociationSet Name="BeskrivelsesvariabelRødlisteKlassifisering" Association="RødlistedeNaturtyperKlassifisering.BeskrivelsesvariabelRødlisteKlassifisering">
             <End EntitySet="BeskrivelsesvariabelSet" Role="Beskrivelsesvariabel" />
@@ -321,6 +317,10 @@
             <End Role="RødlisteKlassifisering" EntitySet="RødlisteKlassifiseringSet" />
             <End Role="RødlisteKlassifisering1" EntitySet="RødlisteKlassifiseringSet" />
           </AssociationSet>
+          <AssociationSet Name="KartleggingsKodeRødlisteKlassifisering" Association="RødlistedeNaturtyperKlassifisering.KartleggingsKodeRødlisteKlassifisering">
+            <End Role="KartleggingsKode" EntitySet="KartleggingsKodeSet" />
+            <End Role="RødlisteKlassifisering" EntitySet="RødlisteKlassifiseringSet" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="NaturområdeTypeKode">
           <Key>
@@ -328,11 +328,9 @@
           </Key>
           <Property Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
           <NavigationProperty Name="KartleggingsKode" Relationship="RødlistedeNaturtyperKlassifisering.KartleggingsKodeNaturområdeTypeKode" FromRole="NaturområdeTypeKode" ToRole="KartleggingsKode" />
-          <NavigationProperty Name="RødlisteKlassifisering" Relationship="RødlistedeNaturtyperKlassifisering.NaturområdeTypeKodeRødlisteKlassifisering" FromRole="NaturområdeTypeKode" ToRole="RødlisteKlassifisering" />
           <Property Name="verdi" Type="String" Nullable="false" />
           <Property Name="versjon" Type="String" Nullable="false" />
           <Property Name="nivå" Type="String" Nullable="false" />
-          <Property Name="navn" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="RødlisteVurderingsenhet">
           <Key>
@@ -356,6 +354,8 @@
           <Property Name="verdi" Nullable="true" Type="Int16" />
           <NavigationProperty Name="NaturområdeTypeKode" Relationship="RødlistedeNaturtyperKlassifisering.KartleggingsKodeNaturområdeTypeKode" FromRole="KartleggingsKode" ToRole="NaturområdeTypeKode" />
           <Property Name="nivå" Type="String" Nullable="true" />
+          <Property Name="navn" Type="String" Nullable="false" />
+          <NavigationProperty Name="RødlisteKlassifisering" Relationship="RødlistedeNaturtyperKlassifisering.KartleggingsKodeRødlisteKlassifisering" FromRole="KartleggingsKode" ToRole="RødlisteKlassifisering" />
         </EntityType>
         <Association Name="RødlisteVurderingsenhetRødlisteVurderingsenhet">
           <End Type="RødlistedeNaturtyperKlassifisering.RødlisteVurderingsenhet" Multiplicity="0..1" Role="RødlisteVurderingsenhet" />
@@ -367,24 +367,21 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="RødlisteVurderingsenhet" Relationship="RødlistedeNaturtyperKlassifisering.RødlisteKlassifiseringRødlisteVurderingsenhet" FromRole="RødlisteKlassifisering" ToRole="RødlisteVurderingsenhet" />
-          <NavigationProperty Name="NaturområdeTypeKode" Relationship="RødlistedeNaturtyperKlassifisering.NaturområdeTypeKodeRødlisteKlassifisering" FromRole="RødlisteKlassifisering" ToRole="NaturområdeTypeKode" />
           <NavigationProperty Name="Beskrivelsesvariabel" Relationship="RødlistedeNaturtyperKlassifisering.BeskrivelsesvariabelRødlisteKlassifisering" FromRole="RødlisteKlassifisering" ToRole="Beskrivelsesvariabel" />
           <NavigationProperty Name="Kriterie" Relationship="RødlistedeNaturtyperKlassifisering.KriterieRødlisteKlassifisering" FromRole="RødlisteKlassifisering" ToRole="Kriterie" />
           <NavigationProperty Name="Påvirkning" Relationship="RødlistedeNaturtyperKlassifisering.PåvirkningRødlisteKlassifisering" FromRole="RødlisteKlassifisering" ToRole="Påvirkning" />
           <NavigationProperty Name="children" Relationship="RødlistedeNaturtyperKlassifisering.RødlisteKlassifiseringRødlisteKlassifisering" FromRole="RødlisteKlassifisering" ToRole="RødlisteKlassifisering1" />
           <NavigationProperty Name="parent" Relationship="RødlistedeNaturtyperKlassifisering.RødlisteKlassifiseringRødlisteKlassifisering" FromRole="RødlisteKlassifisering" ToRole="RødlisteKlassifisering1" />
+          <NavigationProperty Name="KartleggingsKode" Relationship="RødlistedeNaturtyperKlassifisering.KartleggingsKodeRødlisteKlassifisering" FromRole="RødlisteKlassifisering" ToRole="KartleggingsKode" />
         </EntityType>
         <Association Name="KartleggingsKodeNaturområdeTypeKode">
-          <End Type="RødlistedeNaturtyperKlassifisering.KartleggingsKode" Multiplicity="1" Role="KartleggingsKode" />
-          <End Type="RødlistedeNaturtyperKlassifisering.NaturområdeTypeKode" Multiplicity="*" Role="NaturområdeTypeKode" />
+          <End Type="RødlistedeNaturtyperKlassifisering.KartleggingsKode" Multiplicity="*" Role="KartleggingsKode" />
+          <End Type="RødlistedeNaturtyperKlassifisering.NaturområdeTypeKode" Multiplicity="1" Role="NaturområdeTypeKode" />
         </Association>
         <Association Name="RødlisteKlassifiseringRødlisteVurderingsenhet">
-          <End Type="RødlistedeNaturtyperKlassifisering.RødlisteKlassifisering" Multiplicity="0..1" Role="RødlisteKlassifisering" />
+          <End Type="RødlistedeNaturtyperKlassifisering.RødlisteKlassifisering" Multiplicity="*" Role="RødlisteKlassifisering" >
+          </End>
           <End Type="RødlistedeNaturtyperKlassifisering.RødlisteVurderingsenhet" Multiplicity="1" Role="RødlisteVurderingsenhet" />
-        </Association>
-        <Association Name="NaturområdeTypeKodeRødlisteKlassifisering">
-          <End Type="RødlistedeNaturtyperKlassifisering.NaturområdeTypeKode" Multiplicity="*" Role="NaturområdeTypeKode" />
-          <End Type="RødlistedeNaturtyperKlassifisering.RødlisteKlassifisering" Multiplicity="*" Role="RødlisteKlassifisering" />
         </Association>
         <EntityType Name="Beskrivelsesvariabel">
           <Key>
@@ -418,12 +415,16 @@
           <NavigationProperty Name="RødlisteKlassifisering" Relationship="RødlistedeNaturtyperKlassifisering.PåvirkningRødlisteKlassifisering" FromRole="Påvirkning" ToRole="RødlisteKlassifisering" />
         </EntityType>
         <Association Name="PåvirkningRødlisteKlassifisering">
-          <End Type="RødlistedeNaturtyperKlassifisering.Påvirkning" Role="Påvirkning" Multiplicity="1" />
+          <End Type="RødlistedeNaturtyperKlassifisering.Påvirkning" Role="Påvirkning" Multiplicity="0..1" />
           <End Type="RødlistedeNaturtyperKlassifisering.RødlisteKlassifisering" Role="RødlisteKlassifisering" Multiplicity="*" />
         </Association>
         <Association Name="RødlisteKlassifiseringRødlisteKlassifisering">
-          <End Type="RødlistedeNaturtyperKlassifisering.RødlisteKlassifisering" Role="RødlisteKlassifisering" Multiplicity="1" />
+          <End Type="RødlistedeNaturtyperKlassifisering.RødlisteKlassifisering" Role="RødlisteKlassifisering" Multiplicity="0..1" />
           <End Type="RødlistedeNaturtyperKlassifisering.RødlisteKlassifisering" Role="RødlisteKlassifisering1" Multiplicity="0..1" />
+        </Association>
+        <Association Name="KartleggingsKodeRødlisteKlassifisering">
+          <End Type="RødlistedeNaturtyperKlassifisering.KartleggingsKode" Role="KartleggingsKode" Multiplicity="*" />
+          <End Type="RødlistedeNaturtyperKlassifisering.RødlisteKlassifisering" Role="RødlisteKlassifisering" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -438,7 +439,6 @@
           <ScalarProperty Name="verdi" ColumnName="verdi" />
           <ScalarProperty Name="versjon" ColumnName="versjon" />
           <ScalarProperty Name="nivå" ColumnName="nivå" />
-          <ScalarProperty Name="navn" ColumnName="navn" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -460,6 +460,7 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="verdi" ColumnName="verdi" />
           <ScalarProperty Name="nivå" ColumnName="nivå" />
+          <ScalarProperty Name="navn" ColumnName="navn" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -502,11 +503,11 @@
       </EndProperty>
       <Condition ColumnName="RødlisteVurderingsenhetRødlisteVurderingsenhet_RødlisteVurderingsenhet1_Id" IsNull="false" />
     </AssociationSetMapping>
-    <AssociationSetMapping Name="KartleggingsKodeNaturområdeTypeKode" TypeName="RødlistedeNaturtyperKlassifisering.KartleggingsKodeNaturområdeTypeKode" StoreEntitySet="NaturområdeTypeKodeSet">
-      <EndProperty Name="KartleggingsKode">
-        <ScalarProperty Name="Id" ColumnName="KartleggingsKode_Id" />
-      </EndProperty>
+    <AssociationSetMapping Name="KartleggingsKodeNaturområdeTypeKode" TypeName="RødlistedeNaturtyperKlassifisering.KartleggingsKodeNaturområdeTypeKode" StoreEntitySet="KartleggingsKodeSet">
       <EndProperty Name="NaturområdeTypeKode">
+        <ScalarProperty Name="Id" ColumnName="NaturområdeTypeKode_Id" />
+      </EndProperty>
+      <EndProperty Name="KartleggingsKode">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
@@ -516,14 +517,6 @@
       </EndProperty>
       <EndProperty Name="RødlisteKlassifisering">
         <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="NaturområdeTypeKodeRødlisteKlassifisering" TypeName="RødlistedeNaturtyperKlassifisering.NaturområdeTypeKodeRødlisteKlassifisering" StoreEntitySet="NaturområdeTypeKodeRødlisteKlassifisering">
-      <EndProperty Name="NaturområdeTypeKode">
-        <ScalarProperty Name="Id" ColumnName="NaturområdeTypeKode_Id" />
-      </EndProperty>
-      <EndProperty Name="RødlisteKlassifisering">
-        <ScalarProperty Name="Id" ColumnName="RødlisteKlassifisering_Id" />
       </EndProperty>
     </AssociationSetMapping>
     <AssociationSetMapping Name="BeskrivelsesvariabelRødlisteKlassifisering" TypeName="RødlistedeNaturtyperKlassifisering.BeskrivelsesvariabelRødlisteKlassifisering" StoreEntitySet="BeskrivelsesvariabelRødlisteKlassifisering">
@@ -549,6 +542,7 @@
       <EndProperty Name="RødlisteKlassifisering">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
+      <Condition ColumnName="Påvirkning_Id" IsNull="false" />
     </AssociationSetMapping>
     <AssociationSetMapping Name="RødlisteKlassifiseringRødlisteKlassifisering" TypeName="RødlistedeNaturtyperKlassifisering.RødlisteKlassifiseringRødlisteKlassifisering" StoreEntitySet="RødlisteKlassifiseringSet">
       <EndProperty Name="RødlisteKlassifisering">
@@ -556,6 +550,15 @@
       </EndProperty>
       <EndProperty Name="RødlisteKlassifisering1">
         <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="RødlisteKlassifiseringRødlisteKlassifisering_RødlisteKlassifisering1_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="KartleggingsKodeRødlisteKlassifisering" TypeName="RødlistedeNaturtyperKlassifisering.KartleggingsKodeRødlisteKlassifisering" StoreEntitySet="KartleggingsKodeRødlisteKlassifisering">
+      <EndProperty Name="KartleggingsKode">
+        <ScalarProperty Name="Id" ColumnName="KartleggingsKode_Id" />
+      </EndProperty>
+      <EndProperty Name="RødlisteKlassifisering">
+        <ScalarProperty Name="Id" ColumnName="RødlisteKlassifisering_Id" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

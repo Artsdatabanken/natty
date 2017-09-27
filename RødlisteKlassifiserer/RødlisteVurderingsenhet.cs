@@ -19,6 +19,7 @@ namespace Forms_dev3
         {
             this.children = new HashSet<RødlisteVurderingsenhet>();
             this.parent = new HashSet<RødlisteVurderingsenhet>();
+            this.RødlisteKlassifisering = new HashSet<RødlisteKlassifisering>();
         }
     
         public int Id { get; set; }
@@ -32,6 +33,7 @@ namespace Forms_dev3
         public virtual ICollection<RødlisteVurderingsenhet> children { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RødlisteVurderingsenhet> parent { get; set; }
-        public virtual RødlisteKlassifisering RødlisteKlassifisering { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RødlisteKlassifisering> RødlisteKlassifisering { get; set; }
     }
 }

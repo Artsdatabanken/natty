@@ -39,6 +39,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.buttonUpdateValideringsenheter = new System.Windows.Forms.Button();
             this.comboBoxVurderingsenhet = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.treeViewNaturområdeType = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
             // 
             // buttonUpdateKodelister
@@ -138,11 +141,40 @@
             this.comboBoxVurderingsenhet.TabIndex = 11;
             this.comboBoxVurderingsenhet.SelectedIndexChanged += new System.EventHandler(this.comboBoxVurderingsenhet_SelectedIndexChanged);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(29, 22);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(93, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Vurderingsenheter";
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Location = new System.Drawing.Point(350, 48);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.TabIndex = 13;
+            this.buttonSave.Text = "Save";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // treeViewNaturområdeType
+            // 
+            this.treeViewNaturområdeType.Location = new System.Drawing.Point(365, 192);
+            this.treeViewNaturområdeType.Name = "treeViewNaturområdeType";
+            this.treeViewNaturområdeType.Size = new System.Drawing.Size(148, 349);
+            this.treeViewNaturområdeType.TabIndex = 14;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 570);
+            this.Controls.Add(this.treeViewNaturområdeType);
+            this.Controls.Add(this.buttonSave);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBoxVurderingsenhet);
             this.Controls.Add(this.buttonUpdateValideringsenheter);
             this.Controls.Add(this.label4);
@@ -174,6 +206,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonUpdateValideringsenheter;
         private System.Windows.Forms.ComboBox comboBoxVurderingsenhet;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.TreeView treeViewNaturområdeType;
     }
 }
 

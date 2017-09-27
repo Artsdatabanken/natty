@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/26/2017 13:15:45
+-- Date Created: 09/27/2017 15:10:04
 -- Generated from EDMX file: C:\Users\japed\source\repos\RødlistedeNaturområder\RødlisteKlassifiserer\RødlistedeNaturtyperKlassifisering.edmx
 -- --------------------------------------------------
 
@@ -21,16 +21,10 @@ IF OBJECT_ID(N'[dbo].[FK_RødlisteVurderingsenhetRødlisteVurderingsenhet]', 'F'
     ALTER TABLE [dbo].[RødlisteVurderingsenhetSet] DROP CONSTRAINT [FK_RødlisteVurderingsenhetRødlisteVurderingsenhet];
 GO
 IF OBJECT_ID(N'[dbo].[FK_KartleggingsKodeNaturområdeTypeKode]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[NaturområdeTypeKodeSet] DROP CONSTRAINT [FK_KartleggingsKodeNaturområdeTypeKode];
+    ALTER TABLE [dbo].[KartleggingsKodeSet] DROP CONSTRAINT [FK_KartleggingsKodeNaturområdeTypeKode];
 GO
 IF OBJECT_ID(N'[dbo].[FK_RødlisteKlassifiseringRødlisteVurderingsenhet]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[RødlisteKlassifiseringSet] DROP CONSTRAINT [FK_RødlisteKlassifiseringRødlisteVurderingsenhet];
-GO
-IF OBJECT_ID(N'[dbo].[FK_NaturområdeTypeKodeRødlisteKlassifisering_NaturområdeTypeKode]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[NaturområdeTypeKodeRødlisteKlassifisering] DROP CONSTRAINT [FK_NaturområdeTypeKodeRødlisteKlassifisering_NaturområdeTypeKode];
-GO
-IF OBJECT_ID(N'[dbo].[FK_NaturområdeTypeKodeRødlisteKlassifisering_RødlisteKlassifisering]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[NaturområdeTypeKodeRødlisteKlassifisering] DROP CONSTRAINT [FK_NaturområdeTypeKodeRødlisteKlassifisering_RødlisteKlassifisering];
 GO
 IF OBJECT_ID(N'[dbo].[FK_BeskrivelsesvariabelRødlisteKlassifisering_Beskrivelsesvariabel]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[BeskrivelsesvariabelRødlisteKlassifisering] DROP CONSTRAINT [FK_BeskrivelsesvariabelRødlisteKlassifisering_Beskrivelsesvariabel];
@@ -76,9 +70,6 @@ GO
 IF OBJECT_ID(N'[dbo].[PåvirkningSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[PåvirkningSet];
 GO
-IF OBJECT_ID(N'[dbo].[NaturområdeTypeKodeRødlisteKlassifisering]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[NaturområdeTypeKodeRødlisteKlassifisering];
-GO
 IF OBJECT_ID(N'[dbo].[BeskrivelsesvariabelRødlisteKlassifisering]', 'U') IS NOT NULL
     DROP TABLE [dbo].[BeskrivelsesvariabelRødlisteKlassifisering];
 GO
@@ -95,9 +86,7 @@ CREATE TABLE [dbo].[NaturområdeTypeKodeSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [verdi] nvarchar(max)  NOT NULL,
     [versjon] nvarchar(max)  NOT NULL,
-    [nivå] nvarchar(max)  NOT NULL,
-    [navn] nvarchar(max)  NOT NULL,
-    [KartleggingsKode_Id] int  NOT NULL
+    [nivå] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -117,7 +106,9 @@ GO
 CREATE TABLE [dbo].[KartleggingsKodeSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [verdi] smallint  NULL,
-    [nivå] nvarchar(max)  NULL
+    [nivå] nvarchar(max)  NULL,
+    [navn] nvarchar(max)  NOT NULL,
+    [NaturområdeTypeKode_Id] int  NOT NULL
 );
 GO
 
@@ -125,8 +116,8 @@ GO
 CREATE TABLE [dbo].[RødlisteKlassifiseringSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [RødlisteVurderingsenhet_Id] int  NOT NULL,
-    [Påvirkning_Id] int  NOT NULL,
-    [RødlisteKlassifiseringRødlisteKlassifisering_RødlisteKlassifisering1_Id] int  NOT NULL
+    [Påvirkning_Id] int  NULL,
+    [RødlisteKlassifiseringRødlisteKlassifisering_RødlisteKlassifisering1_Id] int  NULL
 );
 GO
 
@@ -150,13 +141,6 @@ CREATE TABLE [dbo].[PåvirkningSet] (
 );
 GO
 
--- Creating table 'NaturområdeTypeKodeRødlisteKlassifisering'
-CREATE TABLE [dbo].[NaturområdeTypeKodeRødlisteKlassifisering] (
-    [NaturområdeTypeKode_Id] int  NOT NULL,
-    [RødlisteKlassifisering_Id] int  NOT NULL
-);
-GO
-
 -- Creating table 'BeskrivelsesvariabelRødlisteKlassifisering'
 CREATE TABLE [dbo].[BeskrivelsesvariabelRødlisteKlassifisering] (
     [Beskrivelsesvariabel_Id] int  NOT NULL,
@@ -167,6 +151,13 @@ GO
 -- Creating table 'KriterieRødlisteKlassifisering'
 CREATE TABLE [dbo].[KriterieRødlisteKlassifisering] (
     [Kriterie_Id] int  NOT NULL,
+    [RødlisteKlassifisering_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'KartleggingsKodeRødlisteKlassifisering'
+CREATE TABLE [dbo].[KartleggingsKodeRødlisteKlassifisering] (
+    [KartleggingsKode_Id] int  NOT NULL,
     [RødlisteKlassifisering_Id] int  NOT NULL
 );
 GO
@@ -217,12 +208,6 @@ ADD CONSTRAINT [PK_PåvirkningSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [NaturområdeTypeKode_Id], [RødlisteKlassifisering_Id] in table 'NaturområdeTypeKodeRødlisteKlassifisering'
-ALTER TABLE [dbo].[NaturområdeTypeKodeRødlisteKlassifisering]
-ADD CONSTRAINT [PK_NaturområdeTypeKodeRødlisteKlassifisering]
-    PRIMARY KEY CLUSTERED ([NaturområdeTypeKode_Id], [RødlisteKlassifisering_Id] ASC);
-GO
-
 -- Creating primary key on [Beskrivelsesvariabel_Id], [RødlisteKlassifisering_Id] in table 'BeskrivelsesvariabelRødlisteKlassifisering'
 ALTER TABLE [dbo].[BeskrivelsesvariabelRødlisteKlassifisering]
 ADD CONSTRAINT [PK_BeskrivelsesvariabelRødlisteKlassifisering]
@@ -233,6 +218,12 @@ GO
 ALTER TABLE [dbo].[KriterieRødlisteKlassifisering]
 ADD CONSTRAINT [PK_KriterieRødlisteKlassifisering]
     PRIMARY KEY CLUSTERED ([Kriterie_Id], [RødlisteKlassifisering_Id] ASC);
+GO
+
+-- Creating primary key on [KartleggingsKode_Id], [RødlisteKlassifisering_Id] in table 'KartleggingsKodeRødlisteKlassifisering'
+ALTER TABLE [dbo].[KartleggingsKodeRødlisteKlassifisering]
+ADD CONSTRAINT [PK_KartleggingsKodeRødlisteKlassifisering]
+    PRIMARY KEY CLUSTERED ([KartleggingsKode_Id], [RødlisteKlassifisering_Id] ASC);
 GO
 
 -- --------------------------------------------------
@@ -254,19 +245,19 @@ ON [dbo].[RødlisteVurderingsenhetSet]
     ([RødlisteVurderingsenhetRødlisteVurderingsenhet_RødlisteVurderingsenhet1_Id]);
 GO
 
--- Creating foreign key on [KartleggingsKode_Id] in table 'NaturområdeTypeKodeSet'
-ALTER TABLE [dbo].[NaturområdeTypeKodeSet]
+-- Creating foreign key on [NaturområdeTypeKode_Id] in table 'KartleggingsKodeSet'
+ALTER TABLE [dbo].[KartleggingsKodeSet]
 ADD CONSTRAINT [FK_KartleggingsKodeNaturområdeTypeKode]
-    FOREIGN KEY ([KartleggingsKode_Id])
-    REFERENCES [dbo].[KartleggingsKodeSet]
+    FOREIGN KEY ([NaturområdeTypeKode_Id])
+    REFERENCES [dbo].[NaturområdeTypeKodeSet]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_KartleggingsKodeNaturområdeTypeKode'
 CREATE INDEX [IX_FK_KartleggingsKodeNaturområdeTypeKode]
-ON [dbo].[NaturområdeTypeKodeSet]
-    ([KartleggingsKode_Id]);
+ON [dbo].[KartleggingsKodeSet]
+    ([NaturområdeTypeKode_Id]);
 GO
 
 -- Creating foreign key on [RødlisteVurderingsenhet_Id] in table 'RødlisteKlassifiseringSet'
@@ -282,30 +273,6 @@ GO
 CREATE INDEX [IX_FK_RødlisteKlassifiseringRødlisteVurderingsenhet]
 ON [dbo].[RødlisteKlassifiseringSet]
     ([RødlisteVurderingsenhet_Id]);
-GO
-
--- Creating foreign key on [NaturområdeTypeKode_Id] in table 'NaturområdeTypeKodeRødlisteKlassifisering'
-ALTER TABLE [dbo].[NaturområdeTypeKodeRødlisteKlassifisering]
-ADD CONSTRAINT [FK_NaturområdeTypeKodeRødlisteKlassifisering_NaturområdeTypeKode]
-    FOREIGN KEY ([NaturområdeTypeKode_Id])
-    REFERENCES [dbo].[NaturområdeTypeKodeSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating foreign key on [RødlisteKlassifisering_Id] in table 'NaturområdeTypeKodeRødlisteKlassifisering'
-ALTER TABLE [dbo].[NaturområdeTypeKodeRødlisteKlassifisering]
-ADD CONSTRAINT [FK_NaturområdeTypeKodeRødlisteKlassifisering_RødlisteKlassifisering]
-    FOREIGN KEY ([RødlisteKlassifisering_Id])
-    REFERENCES [dbo].[RødlisteKlassifiseringSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_NaturområdeTypeKodeRødlisteKlassifisering_RødlisteKlassifisering'
-CREATE INDEX [IX_FK_NaturområdeTypeKodeRødlisteKlassifisering_RødlisteKlassifisering]
-ON [dbo].[NaturområdeTypeKodeRødlisteKlassifisering]
-    ([RødlisteKlassifisering_Id]);
 GO
 
 -- Creating foreign key on [Beskrivelsesvariabel_Id] in table 'BeskrivelsesvariabelRødlisteKlassifisering'
@@ -384,6 +351,30 @@ GO
 CREATE INDEX [IX_FK_RødlisteKlassifiseringRødlisteKlassifisering]
 ON [dbo].[RødlisteKlassifiseringSet]
     ([RødlisteKlassifiseringRødlisteKlassifisering_RødlisteKlassifisering1_Id]);
+GO
+
+-- Creating foreign key on [KartleggingsKode_Id] in table 'KartleggingsKodeRødlisteKlassifisering'
+ALTER TABLE [dbo].[KartleggingsKodeRødlisteKlassifisering]
+ADD CONSTRAINT [FK_KartleggingsKodeRødlisteKlassifisering_KartleggingsKode]
+    FOREIGN KEY ([KartleggingsKode_Id])
+    REFERENCES [dbo].[KartleggingsKodeSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [RødlisteKlassifisering_Id] in table 'KartleggingsKodeRødlisteKlassifisering'
+ALTER TABLE [dbo].[KartleggingsKodeRødlisteKlassifisering]
+ADD CONSTRAINT [FK_KartleggingsKodeRødlisteKlassifisering_RødlisteKlassifisering]
+    FOREIGN KEY ([RødlisteKlassifisering_Id])
+    REFERENCES [dbo].[RødlisteKlassifiseringSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_KartleggingsKodeRødlisteKlassifisering_RødlisteKlassifisering'
+CREATE INDEX [IX_FK_KartleggingsKodeRødlisteKlassifisering_RødlisteKlassifisering]
+ON [dbo].[KartleggingsKodeRødlisteKlassifisering]
+    ([RødlisteKlassifisering_Id]);
 GO
 
 -- --------------------------------------------------
