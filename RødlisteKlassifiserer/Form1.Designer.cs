@@ -172,8 +172,9 @@
             this.Beskrivelsesvariabler});
             this.dataGridViewRødlisteKlassifisering.Location = new System.Drawing.Point(246, 160);
             this.dataGridViewRødlisteKlassifisering.Name = "dataGridViewRødlisteKlassifisering";
-            this.dataGridViewRødlisteKlassifisering.Size = new System.Drawing.Size(171, 306);
+            this.dataGridViewRødlisteKlassifisering.Size = new System.Drawing.Size(246, 306);
             this.dataGridViewRødlisteKlassifisering.TabIndex = 18;
+            this.dataGridViewRødlisteKlassifisering.SelectionChanged += new System.EventHandler(this.dataGridViewRødlisteKlassifisering_SelectionChanged);
             // 
             // NaturområdeTyper
             // 
@@ -189,7 +190,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(441, 556);
+            this.ClientSize = new System.Drawing.Size(590, 576);
             this.Controls.Add(this.dataGridViewRødlisteKlassifisering);
             this.Controls.Add(this.comboBoxNaturområdetyper);
             this.Controls.Add(this.checkedListBoxKartleggingsKode);

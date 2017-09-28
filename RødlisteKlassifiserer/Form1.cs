@@ -212,7 +212,7 @@ namespace Forms_dev3
                     {
                         naturområdeTyper = rødlisteKlassifisering.NaturområdeTypeKode.verdi;
                     }
-                    else if(rødlisteKlassifisering.KartleggingsKode.Count > 0)
+                    else if (rødlisteKlassifisering.KartleggingsKode.Count > 0)
                     {
                         naturområdeTyper = ConcatinateNaturområdetyper(rødlisteKlassifisering.KartleggingsKode);
                     }
@@ -299,6 +299,21 @@ namespace Forms_dev3
                 if (kartleggingsKode.verdi == null) continue;
                 checkedListBoxKartleggingsKode.Items.Add(kartleggingsKode.verdi);
 
+            }
+        }
+
+        private void dataGridViewRødlisteKlassifisering_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridViewRødlisteKlassifisering.SelectedRows.Count > 1) return;
+            foreach (DataGridViewRow row in dataGridViewRødlisteKlassifisering.SelectedRows)
+            {
+                if (row.Cells["NaturområdeTyper"].Value == row.Cells["Beskrivelsesvariabler"].Value) return;
+                var naturområdeTypeSplit = row.Cells["NaturområdeTyper"].Value.ToString().Split('-');
+                var naturområdeType = naturområdeTypeSplit[0];
+                string[] kartleggingsKoder;
+                if (naturområdeTypeSplit.Length > 1)
+                    kartleggingsKoder = naturområdeTypeSplit[1].Split(',');
+                var beskrivelsesvariabler = row.Cells["Beskrivelsesvariabler"].Value.ToString().Split(',');
             }
         }
     }
