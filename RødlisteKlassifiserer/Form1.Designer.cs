@@ -41,7 +41,10 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.checkedListBoxKartleggingsKode = new System.Windows.Forms.CheckedListBox();
             this.comboBoxNaturområdetyper = new System.Windows.Forms.ComboBox();
-            this.textBoxRødlisteKlassifisering = new System.Windows.Forms.TextBox();
+            this.dataGridViewRødlisteKlassifisering = new System.Windows.Forms.DataGridView();
+            this.NaturområdeTyper = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Beskrivelsesvariabler = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRødlisteKlassifisering)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonUpdateKodelister
@@ -151,7 +154,6 @@
             this.checkedListBoxKartleggingsKode.Name = "checkedListBoxKartleggingsKode";
             this.checkedListBoxKartleggingsKode.Size = new System.Drawing.Size(89, 349);
             this.checkedListBoxKartleggingsKode.TabIndex = 15;
-            this.checkedListBoxKartleggingsKode.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxKartleggingsKode_ItemCheck);
             // 
             // comboBoxNaturområdetyper
             // 
@@ -162,20 +164,33 @@
             this.comboBoxNaturområdetyper.TabIndex = 17;
             this.comboBoxNaturområdetyper.SelectedIndexChanged += new System.EventHandler(this.comboBoxNaturområdetyper_SelectedIndexChanged);
             // 
-            // textBoxRødlisteKlassifisering
+            // dataGridViewRødlisteKlassifisering
             // 
-            this.textBoxRødlisteKlassifisering.Location = new System.Drawing.Point(246, 160);
-            this.textBoxRødlisteKlassifisering.Multiline = true;
-            this.textBoxRødlisteKlassifisering.Name = "textBoxRødlisteKlassifisering";
-            this.textBoxRødlisteKlassifisering.Size = new System.Drawing.Size(171, 315);
-            this.textBoxRødlisteKlassifisering.TabIndex = 18;
+            this.dataGridViewRødlisteKlassifisering.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewRødlisteKlassifisering.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NaturområdeTyper,
+            this.Beskrivelsesvariabler});
+            this.dataGridViewRødlisteKlassifisering.Location = new System.Drawing.Point(246, 160);
+            this.dataGridViewRødlisteKlassifisering.Name = "dataGridViewRødlisteKlassifisering";
+            this.dataGridViewRødlisteKlassifisering.Size = new System.Drawing.Size(171, 306);
+            this.dataGridViewRødlisteKlassifisering.TabIndex = 18;
+            // 
+            // NaturområdeTyper
+            // 
+            this.NaturområdeTyper.HeaderText = "NaturområdeTyper";
+            this.NaturområdeTyper.Name = "NaturområdeTyper";
+            // 
+            // Beskrivelsesvariabler
+            // 
+            this.Beskrivelsesvariabler.HeaderText = "Beskrivelsesvariabler";
+            this.Beskrivelsesvariabler.Name = "Beskrivelsesvariabler";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(441, 556);
-            this.Controls.Add(this.textBoxRødlisteKlassifisering);
+            this.Controls.Add(this.dataGridViewRødlisteKlassifisering);
             this.Controls.Add(this.comboBoxNaturområdetyper);
             this.Controls.Add(this.checkedListBoxKartleggingsKode);
             this.Controls.Add(this.buttonSave);
@@ -191,6 +206,7 @@
             this.Controls.Add(this.buttonUpdateKodelister);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRødlisteKlassifisering)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,7 +227,9 @@
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.CheckedListBox checkedListBoxKartleggingsKode;
         private System.Windows.Forms.ComboBox comboBoxNaturområdetyper;
-        private System.Windows.Forms.TextBox textBoxRødlisteKlassifisering;
+        private System.Windows.Forms.DataGridView dataGridViewRødlisteKlassifisering;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NaturområdeTyper;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Beskrivelsesvariabler;
     }
 }
 

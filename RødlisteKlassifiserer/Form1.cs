@@ -137,6 +137,7 @@ namespace Forms_dev3
         {
             ClearAllCheckBoxes();
             PopulateNaturområdeComboBox();
+            UpdateGridView();
 
             var rødlisteKlassifiseringer = DataConnection.Context.RødlisteKlassifiseringSet.Where(d =>
                 d.RødlisteVurderingsenhet.verdi == comboBoxVurderingsenhet.SelectedItem.ToString());
@@ -145,8 +146,6 @@ namespace Forms_dev3
 
             foreach (var rødlisteKlassifisering in rødlisteKlassifiseringer)
             {
-
-                textBoxRødlisteKlassifisering.Text += rødlisteKlassifisering.Id;
                 if (rødlisteKlassifisering.KartleggingsKode.Any())
                 {
                     var activeIndex = comboBoxNaturområdetyper.Items.IndexOf(rødlisteKlassifisering.KartleggingsKode
@@ -196,6 +195,66 @@ namespace Forms_dev3
 
             DataConnection.Context.SaveChanges();
 
+            UpdateGridView();
+
+        }
+
+        private void UpdateGridView()
+        {
+            dataGridViewRødlisteKlassifisering.Rows.Clear();
+            foreach (var rødlisteVurderingsenhet in DataConnection.Context.RødlisteVurderingsenhetSet.Where(d =>
+                d.verdi == comboBoxVurderingsenhet.SelectedItem.ToString()))
+            {
+                foreach (var rødlisteKlassifisering in rødlisteVurderingsenhet.RødlisteKlassifisering)
+                {
+                    var naturområdeTyper = "";
+                    if (rødlisteKlassifisering.NaturområdeTypeKode != null)
+                    {
+                        naturområdeTyper = rødlisteKlassifisering.NaturområdeTypeKode.verdi;
+                    }
+                    else if(rødlisteKlassifisering.KartleggingsKode.Count > 0)
+                    {
+                        naturområdeTyper = ConcatinateNaturområdetyper(rødlisteKlassifisering.KartleggingsKode);
+                    }
+
+                    var dataGridRow = new DataGridViewRow
+                    {
+                        Cells =
+                        {
+                            new DataGridViewTextBoxCell
+                            {
+                                Value = naturområdeTyper
+                            },
+                            new DataGridViewTextBoxCell
+                            {
+                                Value = ConcatinateBeskrivelsesvariabel(rødlisteKlassifisering.Beskrivelsesvariabel)
+
+                            }
+                        }
+                    };
+                    dataGridViewRødlisteKlassifisering.Rows.Add(dataGridRow);
+                }
+            }
+        }
+
+        private string ConcatinateNaturområdetyper(ICollection<KartleggingsKode> KartleggingsKodeList)
+        {
+            var concatinatedString = KartleggingsKodeList.First().NaturområdeTypeKode.verdi + "-";
+            foreach (var kartleggingsKode in KartleggingsKodeList)
+            {
+                concatinatedString += kartleggingsKode.verdi + ",";
+            }
+            return concatinatedString.TrimEnd(',');
+        }
+
+        private string ConcatinateBeskrivelsesvariabel(ICollection<Beskrivelsesvariabel> beskrivelsesvariabelList)
+        {
+            var concatinatedString = "";
+            foreach (var beskrivelsesvariabel in beskrivelsesvariabelList)
+            {
+                concatinatedString += beskrivelsesvariabel.verdi + ",";
+            }
+            return concatinatedString.TrimEnd(',');
         }
 
         private IEnumerable<KartleggingsKode> GetSelectedKartleggingsKoder()
