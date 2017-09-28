@@ -39,9 +39,24 @@ namespace Forms_dev3
                 buttonUpdateValideringsenheter_Click(null, null);
                 buttonUpdateValideringsenheter.Enabled = true;
             }
-            PopulateComboBox();
+            PopulateVurderingsenhetComboBox();
 
             PopulateNaturområdeComboBox();
+
+            PopulateBeskrivelsesVariabler();
+        }
+
+        private void PopulateBeskrivelsesVariabler(ICollection<string> beskrivelsesvariabler = null)
+        {
+            checkedListBoxBeskrivelsesvariabler.Items.Clear();
+            foreach (var beskrivelsesvariabel in DataConnection.Context.BeskrivelsesvariabelSet)
+            {
+                if (beskrivelsesvariabler != null)
+                    checkedListBoxBeskrivelsesvariabler.Items.Add(beskrivelsesvariabel.verdi,
+                        beskrivelsesvariabler.Contains(beskrivelsesvariabel.verdi));
+                else
+                    checkedListBoxBeskrivelsesvariabler.Items.Add(beskrivelsesvariabel.verdi);
+            }
         }
 
         private void PopulateNaturområdeComboBox()
@@ -52,11 +67,28 @@ namespace Forms_dev3
             }
         }
 
-        private void PopulateComboBox()
+        private void PopulateVurderingsenhetComboBox()
         {
             foreach (var hit in DataConnection.Context.RødlisteVurderingsenhetSet)
             {
                 comboBoxVurderingsenhet.Items.Add(hit.verdi);
+            }
+        }
+
+        private void PopulateKartleggingsKoder(string naturområdeType, ICollection<string> kartleggingsKoder = null)
+        {
+            var selectedNaturområdeTypeKode = GetSelectedNaturområdeType(naturområdeType);
+            checkedListBoxKartleggingsKode.Items.Clear();
+
+            foreach (var kartleggingsKode in selectedNaturområdeTypeKode.KartleggingsKode)
+            {
+                if (kartleggingsKode.nivå != "A") continue;
+                if (kartleggingsKode.verdi == null) continue;
+                if (kartleggingsKoder != null)
+                    checkedListBoxKartleggingsKode.Items.Add(kartleggingsKode.verdi,
+                        kartleggingsKoder.Contains(kartleggingsKode.verdi.ToString()));
+                else
+                    checkedListBoxKartleggingsKode.Items.Add(kartleggingsKode.verdi);
             }
         }
 
@@ -138,34 +170,6 @@ namespace Forms_dev3
             ClearAllCheckBoxes();
             PopulateNaturområdeComboBox();
             UpdateGridView();
-
-            var rødlisteKlassifiseringer = DataConnection.Context.RødlisteKlassifiseringSet.Where(d =>
-                d.RødlisteVurderingsenhet.verdi == comboBoxVurderingsenhet.SelectedItem.ToString());
-
-            if (!rødlisteKlassifiseringer.Any()) return;
-
-            foreach (var rødlisteKlassifisering in rødlisteKlassifiseringer)
-            {
-                if (rødlisteKlassifisering.KartleggingsKode.Any())
-                {
-                    var activeIndex = comboBoxNaturområdetyper.Items.IndexOf(rødlisteKlassifisering.KartleggingsKode
-                        .First()
-                        .NaturområdeTypeKode.verdi);
-                    comboBoxNaturområdetyper.SelectedIndex = activeIndex;
-                }
-
-                if (!rødlisteKlassifisering.Beskrivelsesvariabel.Any()) continue;
-
-                checkedListBoxBeskrivelsesvariabler.Items.Clear();
-                foreach (var beskrivelsesvariabel in rødlisteKlassifisering.Beskrivelsesvariabel)
-                {
-                    checkedListBoxBeskrivelsesvariabler.Items.Add(beskrivelsesvariabel.verdi);
-                }
-            }
-
-            for (var i = 0; i < checkedListBoxBeskrivelsesvariabler.Items.Count; i++)
-                checkedListBoxBeskrivelsesvariabler.SetItemChecked(i, true);
-
         }
 
         private void ClearAllCheckBoxes()
@@ -294,23 +298,8 @@ namespace Forms_dev3
 
         private void comboBoxNaturområdetyper_SelectedIndexChanged(object sender, EventArgs e)
         {
-            UpdateKartleggingsKoder(comboBoxNaturområdetyper.Text);
-        }
-
-        private void UpdateKartleggingsKoder(string naturområdeType, List<string> kartleggingsKoder = null)
-        {
-            var selectedNaturområdeTypeKode = GetSelectedNaturområdeType(naturområdeType);
-            checkedListBoxKartleggingsKode.Items.Clear();
-
-            foreach (var kartleggingsKode in selectedNaturområdeTypeKode.KartleggingsKode)
-            {
-                if (kartleggingsKode.nivå != "A") continue;
-                if (kartleggingsKode.verdi == null) continue;
-                if(kartleggingsKoder != null)
-                    checkedListBoxKartleggingsKode.Items.Add(kartleggingsKode.verdi, kartleggingsKoder.Contains(kartleggingsKode.verdi.ToString()));
-                else
-                    checkedListBoxKartleggingsKode.Items.Add(kartleggingsKode.verdi);
-            }
+            if (comboBoxNaturområdetyper.Text == "") return;
+            PopulateKartleggingsKoder(comboBoxNaturområdetyper.Text);
         }
 
         private void dataGridViewRødlisteKlassifisering_SelectionChanged(object sender, EventArgs e)
@@ -327,18 +316,28 @@ namespace Forms_dev3
 
                 List<string> kartleggingsKoder = null;
 
-                if (naturområdeTypeSplit.Length > 1)  kartleggingsKoder = naturområdeTypeSplit[1].Split(',').ToList();
-                    
+                if (naturområdeTypeSplit.Length > 1) kartleggingsKoder = naturområdeTypeSplit[1].Split(',').ToList();
 
-                UpdateKartleggingsKoder(naturområdeType, kartleggingsKoder);
+                if(naturområdeType != "")
+                    PopulateKartleggingsKoder(naturområdeType, kartleggingsKoder);
 
                 var beskrivelsesvariabler = row.Cells["Beskrivelsesvariabler"].Value.ToString().Split(',');
-                checkedListBoxBeskrivelsesvariabler.Items.Clear();
-                foreach (var beskrivelsesvariabel in beskrivelsesvariabler)
-                {
-                    checkedListBoxBeskrivelsesvariabler.Items.Add(beskrivelsesvariabel, true);
-                }
+
+                PopulateBeskrivelsesVariabler(beskrivelsesvariabler);
             }
+        }
+
+        private void buttonDeleteRødlisteKlassifisering_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewRødlisteKlassifisering.SelectedRows.Count == 0) return;
+            foreach (DataGridViewRow row in dataGridViewRødlisteKlassifisering.SelectedRows)
+            {
+                var rødlisteKlassifisering =
+                    DataConnection.Context.RødlisteKlassifiseringSet.Find((int)row.Cells["RødlisteKlassifisering_id"].Value);
+                DataConnection.Context.RødlisteKlassifiseringSet.Remove(rødlisteKlassifisering);
+                UpdateGridView();
+            }
+            
         }
     }
 }
