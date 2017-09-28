@@ -34,5 +34,6 @@ namespace Forms_dev3
         public virtual RødlisteKlassifisering parent { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KartleggingsKode> KartleggingsKode { get; set; }
+        public virtual NaturområdeTypeKode NaturområdeTypeKode { get; set; }
     }
 }

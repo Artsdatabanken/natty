@@ -50,16 +50,18 @@ namespace Forms_dev3
 
             foreach (var jsonCodeValue in jsonCodeValues)
             {
-                if (jsonCodeValue.UnderordnetKoder == null) yield return jsonCodeValue;
+                if (jsonCodeValue.UnderordnetKoder == null)
+                    yield return jsonCodeValue;
             }
         }
 
         private static NaturområdeTypeKode ConvertToNaturområdeType(JsonCode code)
         {
             var codeSplit = code.Kode["Id"].Split(' ');
+            
             var mappingSplit = codeSplit[1].Split('-');
 
-            var kartlaggingsKode = new KartleggingsKode {verdi = -1, nivå = "A", navn = code.Navn};
+            var kartlaggingsKode = new KartleggingsKode {nivå = "A", navn = code.Navn};
 
             var naturområdeTypeKode = new NaturområdeTypeKode
             {

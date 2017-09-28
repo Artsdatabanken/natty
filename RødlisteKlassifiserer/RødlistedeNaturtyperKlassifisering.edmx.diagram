@@ -20,6 +20,7 @@
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.PåvirkningRødlisteKlassifisering" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.RødlisteKlassifiseringRødlisteKlassifisering" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.KartleggingsKodeRødlisteKlassifisering" />
+        <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.NaturområdeTypeKodeRødlisteKlassifisering" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
