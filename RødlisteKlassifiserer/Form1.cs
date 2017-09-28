@@ -49,13 +49,22 @@ namespace Forms_dev3
         private void PopulateBeskrivelsesVariabler(ICollection<string> beskrivelsesvariabler = null)
         {
             checkedListBoxBeskrivelsesvariabler.Items.Clear();
-            foreach (var beskrivelsesvariabel in DataConnection.Context.BeskrivelsesvariabelSet)
+            if (checkBoxShowAllBeskrivelsesvariabel.Checked)
+                foreach (var beskrivelsesvariabel in DataConnection.Context.BeskrivelsesvariabelSet)
+                {
+                    if (beskrivelsesvariabler != null)
+                        checkedListBoxBeskrivelsesvariabler.Items.Add(beskrivelsesvariabel.verdi,
+                            beskrivelsesvariabler.Contains(beskrivelsesvariabel.verdi));
+                    else
+                        checkedListBoxBeskrivelsesvariabler.Items.Add(beskrivelsesvariabel.verdi);
+                }
+            else
             {
-                if (beskrivelsesvariabler != null)
-                    checkedListBoxBeskrivelsesvariabler.Items.Add(beskrivelsesvariabel.verdi,
-                        beskrivelsesvariabler.Contains(beskrivelsesvariabel.verdi));
-                else
-                    checkedListBoxBeskrivelsesvariabler.Items.Add(beskrivelsesvariabel.verdi);
+                if (beskrivelsesvariabler == null) return;
+                foreach (var beskrivelsesvariabel in beskrivelsesvariabler)
+                {
+                    checkedListBoxBeskrivelsesvariabler.Items.Add(beskrivelsesvariabel, true);
+                }
             }
         }
 
@@ -318,7 +327,7 @@ namespace Forms_dev3
 
                 if (naturområdeTypeSplit.Length > 1) kartleggingsKoder = naturområdeTypeSplit[1].Split(',').ToList();
 
-                if(naturområdeType != "")
+                if (naturområdeType != "")
                     PopulateKartleggingsKoder(naturområdeType, kartleggingsKoder);
 
                 var beskrivelsesvariabler = row.Cells["Beskrivelsesvariabler"].Value.ToString().Split(',');
@@ -333,11 +342,43 @@ namespace Forms_dev3
             foreach (DataGridViewRow row in dataGridViewRødlisteKlassifisering.SelectedRows)
             {
                 var rødlisteKlassifisering =
-                    DataConnection.Context.RødlisteKlassifiseringSet.Find((int)row.Cells["RødlisteKlassifisering_id"].Value);
+                    DataConnection.Context.RødlisteKlassifiseringSet.Find((int) row.Cells["RødlisteKlassifisering_id"]
+                        .Value);
                 DataConnection.Context.RødlisteKlassifiseringSet.Remove(rødlisteKlassifisering);
+                DataConnection.Context.SaveChanges();
                 UpdateGridView();
             }
-            
+
+        }
+
+        private void buttonUpdateRødlisteKlassifisering_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            if (dataGridViewRødlisteKlassifisering.SelectedRows.Count == 0) return;
+            foreach (DataGridViewRow row in dataGridViewRødlisteKlassifisering.SelectedRows)
+            {
+                var rødlisteKlassifisering =
+                    DataConnection.Context.RødlisteKlassifiseringSet.Find((int) row.Cells["RødlisteKlassifisering_id"]
+                        .Value);
+
+                DataConnection.Context.SaveChanges();
+                UpdateGridView();
+            }
+        }
+
+        private void checkBoxShowAllBeskrivelsesvariabel_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkedListBoxBeskrivelsesvariabler.CheckedItems.Count == 0)
+            {
+                PopulateBeskrivelsesVariabler();
+                return;
+            }
+            List<string> beskrivelsesvariabler = new List<string>();
+            foreach (var beskrivelsesvariabel in checkedListBoxBeskrivelsesvariabler.CheckedItems)
+            {
+                beskrivelsesvariabler.Add(beskrivelsesvariabel.ToString());
+            }
+            PopulateBeskrivelsesVariabler(beskrivelsesvariabler);
         }
     }
 }

@@ -47,6 +47,7 @@
             this.RødlisteKlassifisering_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonUpdateRødlisteKlassifisering = new System.Windows.Forms.Button();
             this.buttonDeleteRødlisteKlassifisering = new System.Windows.Forms.Button();
+            this.checkBoxShowAllBeskrivelsesvariabel = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRødlisteKlassifisering)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,7 +91,7 @@
             // 
             this.textBoxBeskrivelsesvaiabler.Location = new System.Drawing.Point(127, 160);
             this.textBoxBeskrivelsesvaiabler.Name = "textBoxBeskrivelsesvaiabler";
-            this.textBoxBeskrivelsesvaiabler.Size = new System.Drawing.Size(124, 20);
+            this.textBoxBeskrivelsesvaiabler.Size = new System.Drawing.Size(61, 20);
             this.textBoxBeskrivelsesvaiabler.TabIndex = 4;
             this.textBoxBeskrivelsesvaiabler.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxBeskrivelsesvariabler_KeyUp);
             // 
@@ -204,6 +205,7 @@
             this.buttonUpdateRødlisteKlassifisering.TabIndex = 19;
             this.buttonUpdateRødlisteKlassifisering.Text = "Update";
             this.buttonUpdateRødlisteKlassifisering.UseVisualStyleBackColor = true;
+            this.buttonUpdateRødlisteKlassifisering.Click += new System.EventHandler(this.buttonUpdateRødlisteKlassifisering_Click);
             // 
             // buttonDeleteRødlisteKlassifisering
             // 
@@ -215,11 +217,23 @@
             this.buttonDeleteRødlisteKlassifisering.UseVisualStyleBackColor = true;
             this.buttonDeleteRødlisteKlassifisering.Click += new System.EventHandler(this.buttonDeleteRødlisteKlassifisering_Click);
             // 
+            // checkBoxShowAllBeskrivelsesvariabel
+            // 
+            this.checkBoxShowAllBeskrivelsesvariabel.AutoSize = true;
+            this.checkBoxShowAllBeskrivelsesvariabel.Location = new System.Drawing.Point(195, 162);
+            this.checkBoxShowAllBeskrivelsesvariabel.Name = "checkBoxShowAllBeskrivelsesvariabel";
+            this.checkBoxShowAllBeskrivelsesvariabel.Size = new System.Drawing.Size(59, 17);
+            this.checkBoxShowAllBeskrivelsesvariabel.TabIndex = 21;
+            this.checkBoxShowAllBeskrivelsesvariabel.Text = "Vis alle";
+            this.checkBoxShowAllBeskrivelsesvariabel.UseVisualStyleBackColor = true;
+            this.checkBoxShowAllBeskrivelsesvariabel.CheckedChanged += new System.EventHandler(this.checkBoxShowAllBeskrivelsesvariabel_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(590, 576);
+            this.Controls.Add(this.checkBoxShowAllBeskrivelsesvariabel);
             this.Controls.Add(this.buttonDeleteRødlisteKlassifisering);
             this.Controls.Add(this.buttonUpdateRødlisteKlassifisering);
             this.Controls.Add(this.dataGridViewRødlisteKlassifisering);
@@ -265,6 +279,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn RødlisteKlassifisering_id;
         private System.Windows.Forms.Button buttonUpdateRødlisteKlassifisering;
         private System.Windows.Forms.Button buttonDeleteRødlisteKlassifisering;
+        private System.Windows.Forms.CheckBox checkBoxShowAllBeskrivelsesvariabel;
     }
 }
 
