@@ -12,24 +12,19 @@ namespace Forms_dev3
 {
     public static class CodeDeserializer
     {
-        public static readonly RødlistedeNaturtyperKlassifiseringContainer Context =
-            new RødlistedeNaturtyperKlassifiseringContainer();
-
         public static void UpdateNaturtypeFromWeb()
         {
             foreach (var code in GetAllCodes("http://webtjenester.artsdatabanken.no/NiN/v2b/koder/alleKoder"))
             {
                 var naturområdeType = ConvertToNaturområdeType(code);
-                var existingRow = Context.NaturområdeTypeKodeSet.Where(d =>
-                    //d.KartleggingsKode.verdi == naturområdeType.KartleggingsKode.verdi &&
-                    //d.KartleggingsKode.nivå == naturområdeType.KartleggingsKode.nivå &&
+                var existingRow = DataConnection.Context.NaturområdeTypeKodeSet.Where(d =>
                     d.nivå == naturområdeType.nivå &&
                     d.verdi == naturområdeType.verdi &&
                     d.versjon == naturområdeType.versjon);
 
                 if(existingRow.Any()) continue;
-                Context.NaturområdeTypeKodeSet.Add(naturområdeType);
-                Context.SaveChanges();
+                DataConnection.Context.NaturområdeTypeKodeSet.Add(naturområdeType);
+                DataConnection.Context.SaveChanges();
             }
         }
 
@@ -38,12 +33,12 @@ namespace Forms_dev3
             foreach (var code in GetAllCodes("http://webtjenester.artsdatabanken.no/NiN/v2b/variasjon/allekoder"))
             {
                 var beskrivelsesvariabel = ConvertToBeskrivelsesvariablelType(code);
-                var existingRow = Context.BeskrivelsesvariabelSet.Where(d =>
+                var existingRow = DataConnection.Context.BeskrivelsesvariabelSet.Where(d =>
                     d.navn == beskrivelsesvariabel.navn);
 
                 if (existingRow.Any()) continue;
-                Context.BeskrivelsesvariabelSet.Add(beskrivelsesvariabel);
-                Context.SaveChanges();
+                DataConnection.Context.BeskrivelsesvariabelSet.Add(beskrivelsesvariabel);
+                DataConnection.Context.SaveChanges();
             }
         }
 
@@ -81,7 +76,7 @@ namespace Forms_dev3
             else if (mappingSplit.Length > 1)
                 kartlaggingsKode.verdi = short.Parse(mappingSplit[1]);
 
-            var existingNaturområdeTypeKodes = Context.NaturområdeTypeKodeSet.Where(d =>
+            var existingNaturområdeTypeKodes = DataConnection.Context.NaturområdeTypeKodeSet.Where(d =>
                 d.verdi == naturområdeTypeKode.verdi &&
                 d.nivå == naturområdeTypeKode.nivå &&
                 d.versjon == naturområdeTypeKode.versjon);
@@ -94,9 +89,6 @@ namespace Forms_dev3
             }
 
             naturområdeTypeKode.KartleggingsKode.Add(kartlaggingsKode);
-            //naturområdeTypeKode.KartleggingsKode = Context.KartleggingsKodeSet.Add(naturområdeTypeKode.KartleggingsKode, d =>
-            //    d.verdi == kartlaggingsKode.verdi &&
-            //    d.nivå == kartlaggingsKode.nivå);
 
             return naturområdeTypeKode;
         }
@@ -104,18 +96,6 @@ namespace Forms_dev3
         private static Beskrivelsesvariabel ConvertToBeskrivelsesvariablelType(JsonCode code)
         {
             return new Beskrivelsesvariabel {verdi = code.Kode["Id"], navn = code.Navn};
-        }
-
-        public static T AddIfNotExists<T>(this DbSet<T> dbSet, T entity, Expression<Func<T, bool>> predicate = null)
-            where T : class, new()
-        {
-            if (!dbSet.Any()) return dbSet.Add(entity);
-
-            var existingRows = dbSet.Where(predicate);
-            if (!existingRows.Any()) return dbSet.Add(entity);
-
-            Context.Entry(existingRows.First()).State = EntityState.Unchanged;
-            return existingRows.First();
         }
     }
 }

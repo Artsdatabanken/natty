@@ -12,7 +12,7 @@
         <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.RødlisteKlassifisering" Width="2" PointX="3.625" PointY="3.5" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.KartleggingsKodeNaturområdeTypeKode" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.RødlisteKlassifiseringRødlisteVurderingsenhet" />
-        <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.Beskrivelsesvariabel" Width="1.875" PointX="3.875" PointY="7.5" />
+        <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.Beskrivelsesvariabel" Width="1.875" PointX="6.625" PointY="6" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.BeskrivelsesvariabelRødlisteKlassifisering" />
         <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.Kriterie" Width="1.5" PointX="0.625" PointY="4" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.KriterieRødlisteKlassifisering" />

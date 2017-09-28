@@ -40,7 +40,8 @@
             this.comboBoxVurderingsenhet = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.treeViewNaturområdeType = new System.Windows.Forms.TreeView();
+            this.checkedListBoxNaturområdetyper = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBoxKartleggingsKode = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
             // buttonUpdateKodelister
@@ -72,7 +73,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(196, 134);
+            this.label2.Location = new System.Drawing.Point(304, 134);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(103, 13);
             this.label2.TabIndex = 6;
@@ -81,17 +82,18 @@
             // checkedListBoxBeskrivelsesvariabler
             // 
             this.checkedListBoxBeskrivelsesvariabler.FormattingEnabled = true;
-            this.checkedListBoxBeskrivelsesvariabler.Location = new System.Drawing.Point(196, 192);
+            this.checkedListBoxBeskrivelsesvariabler.Location = new System.Drawing.Point(304, 192);
             this.checkedListBoxBeskrivelsesvariabler.Name = "checkedListBoxBeskrivelsesvariabler";
             this.checkedListBoxBeskrivelsesvariabler.Size = new System.Drawing.Size(97, 349);
             this.checkedListBoxBeskrivelsesvariabler.TabIndex = 5;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(196, 160);
+            this.textBox2.Location = new System.Drawing.Point(304, 160);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(97, 20);
             this.textBox2.TabIndex = 4;
+            this.textBox2.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxBeskrivelsesvariabler_KeyUp);
             // 
             // label3
             // 
@@ -149,19 +151,31 @@
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // treeViewNaturområdeType
+            // checkedListBoxNaturområdetyper
             // 
-            this.treeViewNaturområdeType.Location = new System.Drawing.Point(29, 186);
-            this.treeViewNaturområdeType.Name = "treeViewNaturområdeType";
-            this.treeViewNaturområdeType.Size = new System.Drawing.Size(97, 349);
-            this.treeViewNaturområdeType.TabIndex = 14;
+            this.checkedListBoxNaturområdetyper.FormattingEnabled = true;
+            this.checkedListBoxNaturområdetyper.Location = new System.Drawing.Point(29, 192);
+            this.checkedListBoxNaturområdetyper.Name = "checkedListBoxNaturområdetyper";
+            this.checkedListBoxNaturområdetyper.Size = new System.Drawing.Size(97, 349);
+            this.checkedListBoxNaturområdetyper.TabIndex = 14;
+            this.checkedListBoxNaturområdetyper.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxNaturområdetyper_SelectedIndexChanged);
+            // 
+            // checkedListBoxKartleggingsKode
+            // 
+            this.checkedListBoxKartleggingsKode.FormattingEnabled = true;
+            this.checkedListBoxKartleggingsKode.Location = new System.Drawing.Point(163, 192);
+            this.checkedListBoxKartleggingsKode.Name = "checkedListBoxKartleggingsKode";
+            this.checkedListBoxKartleggingsKode.Size = new System.Drawing.Size(97, 349);
+            this.checkedListBoxKartleggingsKode.TabIndex = 15;
+            this.checkedListBoxKartleggingsKode.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxKartleggingsKode_ItemCheck);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 570);
-            this.Controls.Add(this.treeViewNaturområdeType);
+            this.Controls.Add(this.checkedListBoxKartleggingsKode);
+            this.Controls.Add(this.checkedListBoxNaturområdetyper);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBoxVurderingsenhet);
@@ -195,7 +209,8 @@
         private System.Windows.Forms.ComboBox comboBoxVurderingsenhet;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.TreeView treeViewNaturområdeType;
+        private System.Windows.Forms.CheckedListBox checkedListBoxNaturområdetyper;
+        private System.Windows.Forms.CheckedListBox checkedListBoxKartleggingsKode;
     }
 }
 

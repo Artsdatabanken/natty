@@ -351,7 +351,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
-          <Property Name="verdi" Nullable="true" Type="Int16" />
+          <Property Name="verdi" Nullable="false" Type="Int16" />
           <NavigationProperty Name="NaturområdeTypeKode" Relationship="RødlistedeNaturtyperKlassifisering.KartleggingsKodeNaturområdeTypeKode" FromRole="KartleggingsKode" ToRole="NaturområdeTypeKode" />
           <Property Name="nivå" Type="String" Nullable="true" />
           <Property Name="navn" Type="String" Nullable="false" />
