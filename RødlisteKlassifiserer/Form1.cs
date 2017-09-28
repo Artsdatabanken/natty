@@ -229,6 +229,10 @@ namespace Forms_dev3
                             {
                                 Value = ConcatinateBeskrivelsesvariabel(rødlisteKlassifisering.Beskrivelsesvariabel)
 
+                            },
+                            new DataGridViewTextBoxCell
+                            {
+                                Value = rødlisteKlassifisering.Id
                             }
                         }
                     };
@@ -282,23 +286,30 @@ namespace Forms_dev3
                     d.verdi == selectedBeskrivelsesvariabel.ToString());
         }
 
-        private NaturområdeTypeKode GetSelectedNaturområdeType()
+        private NaturområdeTypeKode GetSelectedNaturområdeType(string naturområdeType)
         {
             return DataConnection.Context.NaturområdeTypeKodeSet.First(d =>
-                d.verdi == comboBoxNaturområdetyper.SelectedItem.ToString());
+                d.verdi == naturområdeType);
         }
 
         private void comboBoxNaturområdetyper_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selectedNaturområdeTypeKode = GetSelectedNaturområdeType();
+            UpdateKartleggingsKoder(comboBoxNaturområdetyper.Text);
+        }
+
+        private void UpdateKartleggingsKoder(string naturområdeType, List<string> kartleggingsKoder = null)
+        {
+            var selectedNaturområdeTypeKode = GetSelectedNaturområdeType(naturområdeType);
             checkedListBoxKartleggingsKode.Items.Clear();
 
             foreach (var kartleggingsKode in selectedNaturområdeTypeKode.KartleggingsKode)
             {
                 if (kartleggingsKode.nivå != "A") continue;
                 if (kartleggingsKode.verdi == null) continue;
-                checkedListBoxKartleggingsKode.Items.Add(kartleggingsKode.verdi);
-
+                if(kartleggingsKoder != null)
+                    checkedListBoxKartleggingsKode.Items.Add(kartleggingsKode.verdi, kartleggingsKoder.Contains(kartleggingsKode.verdi.ToString()));
+                else
+                    checkedListBoxKartleggingsKode.Items.Add(kartleggingsKode.verdi);
             }
         }
 
@@ -310,10 +321,23 @@ namespace Forms_dev3
                 if (row.Cells["NaturområdeTyper"].Value == row.Cells["Beskrivelsesvariabler"].Value) return;
                 var naturområdeTypeSplit = row.Cells["NaturområdeTyper"].Value.ToString().Split('-');
                 var naturområdeType = naturområdeTypeSplit[0];
-                string[] kartleggingsKoder;
-                if (naturområdeTypeSplit.Length > 1)
-                    kartleggingsKoder = naturområdeTypeSplit[1].Split(',');
+
+                var activeIndex = comboBoxNaturområdetyper.Items.IndexOf(naturområdeType);
+                comboBoxNaturområdetyper.SelectedIndex = activeIndex;
+
+                List<string> kartleggingsKoder = null;
+
+                if (naturområdeTypeSplit.Length > 1)  kartleggingsKoder = naturområdeTypeSplit[1].Split(',').ToList();
+                    
+
+                UpdateKartleggingsKoder(naturområdeType, kartleggingsKoder);
+
                 var beskrivelsesvariabler = row.Cells["Beskrivelsesvariabler"].Value.ToString().Split(',');
+                checkedListBoxBeskrivelsesvariabler.Items.Clear();
+                foreach (var beskrivelsesvariabel in beskrivelsesvariabler)
+                {
+                    checkedListBoxBeskrivelsesvariabler.Items.Add(beskrivelsesvariabel, true);
+                }
             }
         }
     }

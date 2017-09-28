@@ -44,6 +44,7 @@
             this.dataGridViewRødlisteKlassifisering = new System.Windows.Forms.DataGridView();
             this.NaturområdeTyper = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Beskrivelsesvariabler = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RødlisteKlassifisering_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRødlisteKlassifisering)).BeginInit();
             this.SuspendLayout();
             // 
@@ -169,7 +170,8 @@
             this.dataGridViewRødlisteKlassifisering.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewRødlisteKlassifisering.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NaturområdeTyper,
-            this.Beskrivelsesvariabler});
+            this.Beskrivelsesvariabler,
+            this.RødlisteKlassifisering_id});
             this.dataGridViewRødlisteKlassifisering.Location = new System.Drawing.Point(246, 160);
             this.dataGridViewRødlisteKlassifisering.Name = "dataGridViewRødlisteKlassifisering";
             this.dataGridViewRødlisteKlassifisering.Size = new System.Drawing.Size(246, 306);
@@ -185,6 +187,12 @@
             // 
             this.Beskrivelsesvariabler.HeaderText = "Beskrivelsesvariabler";
             this.Beskrivelsesvariabler.Name = "Beskrivelsesvariabler";
+            // 
+            // RødlisteKlassifisering_id
+            // 
+            this.RødlisteKlassifisering_id.HeaderText = "RødlisteKlassifisering_id";
+            this.RødlisteKlassifisering_id.Name = "RødlisteKlassifisering_id";
+            this.RødlisteKlassifisering_id.Visible = false;
             // 
             // Form1
             // 
@@ -231,6 +239,7 @@
         private System.Windows.Forms.DataGridView dataGridViewRødlisteKlassifisering;
         private System.Windows.Forms.DataGridViewTextBoxColumn NaturområdeTyper;
         private System.Windows.Forms.DataGridViewTextBoxColumn Beskrivelsesvariabler;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RødlisteKlassifisering_id;
     }
 }
 
