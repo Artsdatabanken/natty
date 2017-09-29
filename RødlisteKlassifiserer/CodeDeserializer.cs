@@ -34,7 +34,8 @@ namespace Forms_dev3
             {
                 var beskrivelsesvariabel = ConvertToBeskrivelsesvariablelType(code);
                 var existingRow = DataConnection.Context.BeskrivelsesvariabelSet.Where(d =>
-                    d.navn == beskrivelsesvariabel.navn);
+                    d.navn == beskrivelsesvariabel.navn &&
+                    d.verdi == beskrivelsesvariabel.verdi);
 
                 if (existingRow.Any()) continue;
                 DataConnection.Context.BeskrivelsesvariabelSet.Add(beskrivelsesvariabel);

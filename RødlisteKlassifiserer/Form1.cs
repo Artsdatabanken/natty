@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -39,11 +38,25 @@ namespace Forms_dev3
                 buttonUpdateValideringsenheter_Click(null, null);
                 buttonUpdateValideringsenheter.Enabled = true;
             }
+
+            PopulateNaturnivåCombobox();
+
             PopulateVurderingsenhetComboBox();
 
             PopulateNaturområdeComboBox();
 
             PopulateBeskrivelsesVariabler();
+        }
+
+        private void PopulateNaturnivåCombobox()
+        {
+            var uniqueNaturNivåDictionary= new Dictionary<string, bool>();
+            foreach (var rødlisteVurderingsenhetSet in DataConnection.Context.RødlisteVurderingsenhetSet)
+            {
+                uniqueNaturNivåDictionary[rødlisteVurderingsenhetSet.nivå] = true;
+            }
+            comboBoxNaturnivå.Items.AddRange(uniqueNaturNivåDictionary.Keys.ToArray());
+            comboBoxNaturnivå.SelectedItem = "NA";
         }
 
         private void PopulateBeskrivelsesVariabler(ICollection<string> beskrivelsesvariabler = null)
@@ -78,7 +91,7 @@ namespace Forms_dev3
 
         private void PopulateVurderingsenhetComboBox()
         {
-            foreach (var hit in DataConnection.Context.RødlisteVurderingsenhetSet)
+            foreach (var hit in DataConnection.Context.RødlisteVurderingsenhetSet.Where(d => d.nivå == comboBoxNaturnivå.SelectedItem.ToString()))
             {
                 comboBoxVurderingsenhet.Items.Add(hit.verdi);
             }
@@ -197,13 +210,18 @@ namespace Forms_dev3
 
             var selectedRødlisteVurderingsenhet = GetSelectedRødlisteVurderingsEnhet();
 
-            var rødlisteKlassifisering = new RødlisteKlassifisering
-            {
-                RødlisteVurderingsenhet = selectedRødlisteVurderingsenhet,
-                KartleggingsKode = selectedKartleggingsKoder.ToList(),
-                Beskrivelsesvariabel = selectedBeskrivelsesvariabler.ToList()
-            };
+            var rødlisteKlassifisering = new RødlisteKlassifisering();
 
+            if (!selectedKartleggingsKoder.Any()) rødlisteKlassifisering.NaturområdeTypeKode =
+                    DataConnection.Context.NaturområdeTypeKodeSet.First(d =>
+                        d.verdi == comboBoxNaturområdetyper.SelectedItem);
+            
+            else
+                rødlisteKlassifisering.KartleggingsKode = selectedKartleggingsKoder.ToList();
+
+            rødlisteKlassifisering.RødlisteVurderingsenhet = selectedRødlisteVurderingsenhet;
+            rødlisteKlassifisering.Beskrivelsesvariabel = selectedBeskrivelsesvariabler.ToList();
+            
             DataConnection.Context.RødlisteKlassifiseringSet.Add(rødlisteKlassifisering);
 
             DataConnection.Context.SaveChanges();
@@ -373,7 +391,7 @@ namespace Forms_dev3
                 PopulateBeskrivelsesVariabler();
                 return;
             }
-            List<string> beskrivelsesvariabler = new List<string>();
+            var beskrivelsesvariabler = new List<string>();
             foreach (var beskrivelsesvariabel in checkedListBoxBeskrivelsesvariabler.CheckedItems)
             {
                 beskrivelsesvariabler.Add(beskrivelsesvariabel.ToString());

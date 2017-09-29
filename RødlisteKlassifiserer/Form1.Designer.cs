@@ -48,6 +48,8 @@
             this.buttonUpdateRødlisteKlassifisering = new System.Windows.Forms.Button();
             this.buttonDeleteRødlisteKlassifisering = new System.Windows.Forms.Button();
             this.checkBoxShowAllBeskrivelsesvariabel = new System.Windows.Forms.CheckBox();
+            this.comboBoxNaturnivå = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRødlisteKlassifisering)).BeginInit();
             this.SuspendLayout();
             // 
@@ -205,6 +207,7 @@
             this.buttonUpdateRødlisteKlassifisering.TabIndex = 19;
             this.buttonUpdateRødlisteKlassifisering.Text = "Update";
             this.buttonUpdateRødlisteKlassifisering.UseVisualStyleBackColor = true;
+            this.buttonUpdateRødlisteKlassifisering.Visible = false;
             this.buttonUpdateRødlisteKlassifisering.Click += new System.EventHandler(this.buttonUpdateRødlisteKlassifisering_Click);
             // 
             // buttonDeleteRødlisteKlassifisering
@@ -228,11 +231,30 @@
             this.checkBoxShowAllBeskrivelsesvariabel.UseVisualStyleBackColor = true;
             this.checkBoxShowAllBeskrivelsesvariabel.CheckedChanged += new System.EventHandler(this.checkBoxShowAllBeskrivelsesvariabel_CheckedChanged);
             // 
+            // comboBoxNaturnivå
+            // 
+            this.comboBoxNaturnivå.FormattingEnabled = true;
+            this.comboBoxNaturnivå.Location = new System.Drawing.Point(195, 51);
+            this.comboBoxNaturnivå.Name = "comboBoxNaturnivå";
+            this.comboBoxNaturnivå.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxNaturnivå.TabIndex = 22;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(196, 22);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 13);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "Naturnivå";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(590, 576);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.comboBoxNaturnivå);
             this.Controls.Add(this.checkBoxShowAllBeskrivelsesvariabel);
             this.Controls.Add(this.buttonDeleteRødlisteKlassifisering);
             this.Controls.Add(this.buttonUpdateRødlisteKlassifisering);
@@ -280,6 +302,8 @@
         private System.Windows.Forms.Button buttonUpdateRødlisteKlassifisering;
         private System.Windows.Forms.Button buttonDeleteRødlisteKlassifisering;
         private System.Windows.Forms.CheckBox checkBoxShowAllBeskrivelsesvariabel;
+        private System.Windows.Forms.ComboBox comboBoxNaturnivå;
+        private System.Windows.Forms.Label label6;
     }
 }
 
