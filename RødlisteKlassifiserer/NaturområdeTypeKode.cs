@@ -23,12 +23,12 @@ namespace Forms_dev3
     
         public int Id { get; set; }
         public string verdi { get; set; }
-        public string versjon { get; set; }
         public string nivå { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KartleggingsKode> KartleggingsKode { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RødlisteKlassifisering> RødlisteKlassifisering { get; set; }
+        public virtual KodeVersjon KodeVersjon { get; set; }
     }
 }

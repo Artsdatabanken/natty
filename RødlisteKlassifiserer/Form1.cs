@@ -50,12 +50,11 @@ namespace Forms_dev3
 
         private void PopulateNaturnivåCombobox()
         {
-            var uniqueNaturNivåDictionary= new Dictionary<string, bool>();
-            foreach (var rødlisteVurderingsenhetSet in DataConnection.Context.RødlisteVurderingsenhetSet)
+            foreach (var naturnivå in DataConnection.Context.NaturnivåSet)
             {
-                uniqueNaturNivåDictionary[rødlisteVurderingsenhetSet.nivå] = true;
+                comboBoxNaturnivå.Items.Add(naturnivå.verdi);
             }
-            comboBoxNaturnivå.Items.AddRange(uniqueNaturNivåDictionary.Keys.ToArray());
+            
             comboBoxNaturnivå.SelectedItem = "NA";
         }
 
@@ -63,7 +62,7 @@ namespace Forms_dev3
         {
             checkedListBoxBeskrivelsesvariabler.Items.Clear();
             if (checkBoxShowAllBeskrivelsesvariabel.Checked)
-                foreach (var beskrivelsesvariabel in DataConnection.Context.BeskrivelsesvariabelSet)
+                foreach (var beskrivelsesvariabel in DataConnection.Context.BeskrivelsesvariabelSet.OrderBy(d => d.verdi))
                 {
                     if (beskrivelsesvariabler != null)
                         checkedListBoxBeskrivelsesvariabler.Items.Add(beskrivelsesvariabel.verdi,
@@ -91,7 +90,7 @@ namespace Forms_dev3
 
         private void PopulateVurderingsenhetComboBox()
         {
-            foreach (var hit in DataConnection.Context.RødlisteVurderingsenhetSet.Where(d => d.nivå == comboBoxNaturnivå.SelectedItem.ToString()))
+            foreach (var hit in DataConnection.Context.RødlisteVurderingsenhetSet.Where(d => d.Naturnivå.verdi == comboBoxNaturnivå.SelectedItem.ToString()).OrderBy(d => d.Id))
             {
                 comboBoxVurderingsenhet.Items.Add(hit.verdi);
             }
@@ -101,11 +100,17 @@ namespace Forms_dev3
         {
             var selectedNaturområdeTypeKode = GetSelectedNaturområdeType(naturområdeType);
             checkedListBoxKartleggingsKode.Items.Clear();
+            var kartleggingsKodeList = new List<KartleggingsKode>();
 
             foreach (var kartleggingsKode in selectedNaturområdeTypeKode.KartleggingsKode)
             {
                 if (kartleggingsKode.nivå != "A") continue;
                 if (kartleggingsKode.verdi == null) continue;
+                kartleggingsKodeList.Add(kartleggingsKode);
+                
+            }
+            foreach (var kartleggingsKode in kartleggingsKodeList)
+            {
                 if (kartleggingsKoder != null)
                     checkedListBoxKartleggingsKode.Items.Add(kartleggingsKode.verdi,
                         kartleggingsKoder.Contains(kartleggingsKode.verdi.ToString()));
@@ -152,10 +157,10 @@ namespace Forms_dev3
                 var rødlisteVurderingsenhet = new RødlisteVurderingsenhet
                 {
                     tema = rowValues["Tema"],
-                    versjon = rowValues["Rødlisteversjon"],
+                    RødlisteVurdeingsenhetVersjon = DataConnection.Context.RødlisteVurdeingsenhetVersjonSet.AddIfNotExists( new RødlisteVurdeingsenhetVersjon{ verdi = rowValues["Rødlisteversjon"] }) ,
                     verdi = rowValues["Vurderingsenhet"],
                     kategori = rowValues["Rødlistekategori"],
-                    nivå = rowValues["Naturnivå"]
+                    Naturnivå = DataConnection.Context.NaturnivåSet.AddIfNotExists(new Naturnivå { verdi = rowValues["Naturnivå"] })
                 };
 
                 if (rødlisteVurderingsenhet.verdi.StartsWith("*"))

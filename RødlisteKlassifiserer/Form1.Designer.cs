@@ -145,7 +145,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(503, 22);
+            this.buttonSave.Location = new System.Drawing.Point(503, 80);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 13;
@@ -212,7 +212,7 @@
             // 
             // buttonDeleteRødlisteKlassifisering
             // 
-            this.buttonDeleteRødlisteKlassifisering.Location = new System.Drawing.Point(503, 80);
+            this.buttonDeleteRødlisteKlassifisering.Location = new System.Drawing.Point(503, 109);
             this.buttonDeleteRødlisteKlassifisering.Name = "buttonDeleteRødlisteKlassifisering";
             this.buttonDeleteRødlisteKlassifisering.Size = new System.Drawing.Size(75, 23);
             this.buttonDeleteRødlisteKlassifisering.TabIndex = 20;

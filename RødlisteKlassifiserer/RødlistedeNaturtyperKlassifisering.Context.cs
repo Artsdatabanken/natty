@@ -32,5 +32,8 @@ namespace Forms_dev3
         public virtual DbSet<Beskrivelsesvariabel> BeskrivelsesvariabelSet { get; set; }
         public virtual DbSet<Kriterie> KriterieSet { get; set; }
         public virtual DbSet<Påvirkning> PåvirkningSet { get; set; }
+        public virtual DbSet<RødlisteVurdeingsenhetVersjon> RødlisteVurdeingsenhetVersjonSet { get; set; }
+        public virtual DbSet<Naturnivå> NaturnivåSet { get; set; }
+        public virtual DbSet<KodeVersjon> KodeVersjonSet { get; set; }
     }
 }

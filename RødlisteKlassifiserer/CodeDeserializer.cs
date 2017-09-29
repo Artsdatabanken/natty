@@ -9,9 +9,13 @@ using System.Text;
 using Newtonsoft.Json;
 
 namespace Forms_dev3
+
+    
 {
     public static class CodeDeserializer
     {
+        private const string KodeVersjonVerdi = "2.1";
+
         public static void UpdateNaturtypeFromWeb()
         {
             foreach (var code in GetAllCodes("http://webtjenester.artsdatabanken.no/NiN/v2b/koder/alleKoder"))
@@ -20,7 +24,7 @@ namespace Forms_dev3
                 var existingRow = DataConnection.Context.NaturområdeTypeKodeSet.Where(d =>
                     d.nivå == naturområdeType.nivå &&
                     d.verdi == naturområdeType.verdi &&
-                    d.versjon == naturområdeType.versjon);
+                    d.KodeVersjon.verdi == naturområdeType.KodeVersjon.verdi);
 
                 if(existingRow.Any()) continue;
                 DataConnection.Context.NaturområdeTypeKodeSet.Add(naturområdeType);
@@ -59,14 +63,14 @@ namespace Forms_dev3
         private static NaturområdeTypeKode ConvertToNaturområdeType(JsonCode code)
         {
             var codeSplit = code.Kode["Id"].Split(' ');
-            
+
             var mappingSplit = codeSplit[1].Split('-');
 
-            var kartlaggingsKode = new KartleggingsKode {nivå = "A", navn = code.Navn};
+            var kartlaggingsKode = new KartleggingsKode { nivå = "A", navn = code.Navn };
 
             var naturområdeTypeKode = new NaturområdeTypeKode
             {
-                versjon = "2.1",
+                KodeVersjon = GetKodeVersjon(),
                 nivå = codeSplit[0],
                 verdi = mappingSplit[0]
             };
@@ -82,7 +86,7 @@ namespace Forms_dev3
             var existingNaturområdeTypeKodes = DataConnection.Context.NaturområdeTypeKodeSet.Where(d =>
                 d.verdi == naturområdeTypeKode.verdi &&
                 d.nivå == naturområdeTypeKode.nivå &&
-                d.versjon == naturområdeTypeKode.versjon);
+                d.KodeVersjon.verdi == naturområdeTypeKode.KodeVersjon.verdi);
 
             if (existingNaturområdeTypeKodes.Any())
             {
@@ -96,9 +100,14 @@ namespace Forms_dev3
             return naturområdeTypeKode;
         }
 
+        private static KodeVersjon GetKodeVersjon()
+        {
+            return DataConnection.Context.KodeVersjonSet.AddIfNotExists(new KodeVersjon { verdi = KodeVersjonVerdi });
+        }
+
         private static Beskrivelsesvariabel ConvertToBeskrivelsesvariablelType(JsonCode code)
         {
-            return new Beskrivelsesvariabel {verdi = code.Kode["Id"], navn = code.Navn};
+            return new Beskrivelsesvariabel {verdi = code.Kode["Id"], navn = code.Navn, KodeVersjon = GetKodeVersjon() };
         }
     }
 }

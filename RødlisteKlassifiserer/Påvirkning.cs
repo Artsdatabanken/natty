@@ -17,12 +17,13 @@ namespace Forms_dev3
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Påvirkning()
         {
-            this.RødlisteKlassifisering = new HashSet<RødlisteKlassifisering>();
+            this.RødlisteVurderingsenhet = new HashSet<RødlisteVurderingsenhet>();
         }
     
         public int Id { get; set; }
+        public string verdi { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RødlisteKlassifisering> RødlisteKlassifisering { get; set; }
+        public virtual ICollection<RødlisteVurderingsenhet> RødlisteVurderingsenhet { get; set; }
     }
 }

@@ -20,14 +20,14 @@ namespace Forms_dev3
             this.children = new HashSet<RødlisteVurderingsenhet>();
             this.parent = new HashSet<RødlisteVurderingsenhet>();
             this.RødlisteKlassifisering = new HashSet<RødlisteKlassifisering>();
+            this.Kriterie = new HashSet<Kriterie>();
+            this.Påvirkning = new HashSet<Påvirkning>();
         }
     
         public int Id { get; set; }
         public string verdi { get; set; }
         public string tema { get; set; }
-        public string versjon { get; set; }
         public string kategori { get; set; }
-        public string nivå { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RødlisteVurderingsenhet> children { get; set; }
@@ -35,5 +35,11 @@ namespace Forms_dev3
         public virtual ICollection<RødlisteVurderingsenhet> parent { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RødlisteKlassifisering> RødlisteKlassifisering { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Kriterie> Kriterie { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Påvirkning> Påvirkning { get; set; }
+        public virtual RødlisteVurdeingsenhetVersjon RødlisteVurdeingsenhetVersjon { get; set; }
+        public virtual Naturnivå Naturnivå { get; set; }
     }
 }

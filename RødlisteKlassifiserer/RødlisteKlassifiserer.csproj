@@ -80,6 +80,9 @@
     <Compile Include="Kriterie.cs">
       <DependentUpon>RødlistedeNaturtyperKlassifisering.tt</DependentUpon>
     </Compile>
+    <Compile Include="Naturnivå.cs">
+      <DependentUpon>RødlistedeNaturtyperKlassifisering.tt</DependentUpon>
+    </Compile>
     <Compile Include="NaturområdeTypeKode.cs">
       <DependentUpon>RødlistedeNaturtyperKlassifisering.tt</DependentUpon>
     </Compile>
@@ -104,6 +107,9 @@
       <DependentUpon>RødlistedeNaturtyperKlassifisering.edmx</DependentUpon>
     </Compile>
     <Compile Include="RødlisteKlassifisering.cs">
+      <DependentUpon>RødlistedeNaturtyperKlassifisering.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RødlisteVurdeingsenhetVersjon.cs">
       <DependentUpon>RødlistedeNaturtyperKlassifisering.tt</DependentUpon>
     </Compile>
     <Compile Include="RødlisteVurderingsenhet.cs">

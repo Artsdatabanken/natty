@@ -12,22 +12,18 @@ namespace Forms_dev3
     using System;
     using System.Collections.Generic;
     
-    public partial class RødlisteKlassifisering
+    public partial class Naturnivå
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public RødlisteKlassifisering()
+        public Naturnivå()
         {
-            this.Beskrivelsesvariabel = new HashSet<Beskrivelsesvariabel>();
-            this.KartleggingsKode = new HashSet<KartleggingsKode>();
+            this.RødlisteVurderingsenhet = new HashSet<RødlisteVurderingsenhet>();
         }
     
         public int Id { get; set; }
+        public string verdi { get; set; }
     
-        public virtual RødlisteVurderingsenhet RødlisteVurderingsenhet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Beskrivelsesvariabel> Beskrivelsesvariabel { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KartleggingsKode> KartleggingsKode { get; set; }
-        public virtual NaturområdeTypeKode NaturområdeTypeKode { get; set; }
+        public virtual ICollection<RødlisteVurderingsenhet> RødlisteVurderingsenhet { get; set; }
     }
 }

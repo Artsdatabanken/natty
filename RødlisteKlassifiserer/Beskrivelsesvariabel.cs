@@ -26,5 +26,6 @@ namespace Forms_dev3
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RødlisteKlassifisering> RødlisteKlassifisering { get; set; }
+        public virtual KodeVersjon KodeVersjon { get; set; }
     }
 }
