@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/29/2017 13:58:45
+-- Date Created: 09/29/2017 14:14:24
 -- Generated from EDMX file: C:\Users\japed\source\repos\RødlistedeNaturområder\RødlisteKlassifiserer\RødlistedeNaturtyperKlassifisering.edmx
 -- --------------------------------------------------
 
@@ -65,6 +65,12 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_KodeVersjonBeskrivelsesvariabel]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[BeskrivelsesvariabelSet] DROP CONSTRAINT [FK_KodeVersjonBeskrivelsesvariabel];
 GO
+IF OBJECT_ID(N'[dbo].[FK_BeskrivelsesvariabelRødlisteKlassifisering1_Beskrivelsesvariabel]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[BeskrivelsesvariabelRødlisteKlassifisering1] DROP CONSTRAINT [FK_BeskrivelsesvariabelRødlisteKlassifisering1_Beskrivelsesvariabel];
+GO
+IF OBJECT_ID(N'[dbo].[FK_BeskrivelsesvariabelRødlisteKlassifisering1_RødlisteKlassifisering]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[BeskrivelsesvariabelRødlisteKlassifisering1] DROP CONSTRAINT [FK_BeskrivelsesvariabelRødlisteKlassifisering1_RødlisteKlassifisering];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -111,6 +117,9 @@ IF OBJECT_ID(N'[dbo].[KriterieRødlisteVurderingsenhet]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[PåvirkningRødlisteVurderingsenhet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[PåvirkningRødlisteVurderingsenhet];
+GO
+IF OBJECT_ID(N'[dbo].[BeskrivelsesvariabelRødlisteKlassifisering1]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[BeskrivelsesvariabelRødlisteKlassifisering1];
 GO
 
 -- --------------------------------------------------
