@@ -42,20 +42,25 @@
             this.checkedListBoxKartleggingsKode = new System.Windows.Forms.CheckedListBox();
             this.comboBoxNaturområdetyper = new System.Windows.Forms.ComboBox();
             this.dataGridViewRødlisteKlassifisering = new System.Windows.Forms.DataGridView();
-            this.NaturområdeTyper = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Beskrivelsesvariabler = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RødlisteKlassifisering_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonUpdateRødlisteKlassifisering = new System.Windows.Forms.Button();
             this.buttonDeleteRødlisteKlassifisering = new System.Windows.Forms.Button();
             this.checkBoxShowAllBeskrivelsesvariabel = new System.Windows.Forms.CheckBox();
             this.comboBoxNaturnivå = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.labelInnsnevrendeBeskrivelsesvariabel = new System.Windows.Forms.Label();
+            this.checkedListBoxInnsnevrendeBeskrivelsesvariabel = new System.Windows.Forms.CheckedListBox();
+            this.textBoxInnsnevrendeBeskrivelsesvariabel = new System.Windows.Forms.TextBox();
+            this.NaturområdeTyper = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Beskrivelsesvariabler = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RødlisteKlassifisering_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InnsnevrendeBeskrivelsesvariabel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRødlisteKlassifisering)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonUpdateKodelister
             // 
-            this.buttonUpdateKodelister.Location = new System.Drawing.Point(503, 541);
+            this.buttonUpdateKodelister.Location = new System.Drawing.Point(805, 541);
             this.buttonUpdateKodelister.Name = "buttonUpdateKodelister";
             this.buttonUpdateKodelister.Size = new System.Drawing.Size(75, 23);
             this.buttonUpdateKodelister.TabIndex = 0;
@@ -100,7 +105,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(444, 546);
+            this.label3.Location = new System.Drawing.Point(746, 546);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 8;
@@ -109,7 +114,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(264, 546);
+            this.label4.Location = new System.Drawing.Point(566, 546);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(93, 13);
             this.label4.TabIndex = 9;
@@ -117,7 +122,7 @@
             // 
             // buttonUpdateValideringsenheter
             // 
-            this.buttonUpdateValideringsenheter.Location = new System.Drawing.Point(363, 541);
+            this.buttonUpdateValideringsenheter.Location = new System.Drawing.Point(665, 541);
             this.buttonUpdateValideringsenheter.Name = "buttonUpdateValideringsenheter";
             this.buttonUpdateValideringsenheter.Size = new System.Drawing.Size(75, 23);
             this.buttonUpdateValideringsenheter.TabIndex = 10;
@@ -145,7 +150,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(503, 80);
+            this.buttonSave.Location = new System.Drawing.Point(805, 81);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 13;
@@ -172,36 +177,24 @@
             // 
             // dataGridViewRødlisteKlassifisering
             // 
+            this.dataGridViewRødlisteKlassifisering.AllowUserToAddRows = false;
+            this.dataGridViewRødlisteKlassifisering.AllowUserToDeleteRows = false;
             this.dataGridViewRødlisteKlassifisering.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewRødlisteKlassifisering.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NaturområdeTyper,
             this.Beskrivelsesvariabler,
-            this.RødlisteKlassifisering_id});
-            this.dataGridViewRødlisteKlassifisering.Location = new System.Drawing.Point(267, 160);
+            this.RødlisteKlassifisering_id,
+            this.InnsnevrendeBeskrivelsesvariabel});
+            this.dataGridViewRødlisteKlassifisering.Location = new System.Drawing.Point(502, 160);
             this.dataGridViewRødlisteKlassifisering.Name = "dataGridViewRødlisteKlassifisering";
-            this.dataGridViewRødlisteKlassifisering.Size = new System.Drawing.Size(311, 366);
+            this.dataGridViewRødlisteKlassifisering.ReadOnly = true;
+            this.dataGridViewRødlisteKlassifisering.Size = new System.Drawing.Size(378, 366);
             this.dataGridViewRødlisteKlassifisering.TabIndex = 18;
             this.dataGridViewRødlisteKlassifisering.SelectionChanged += new System.EventHandler(this.dataGridViewRødlisteKlassifisering_SelectionChanged);
             // 
-            // NaturområdeTyper
-            // 
-            this.NaturområdeTyper.HeaderText = "NaturområdeTyper";
-            this.NaturområdeTyper.Name = "NaturområdeTyper";
-            // 
-            // Beskrivelsesvariabler
-            // 
-            this.Beskrivelsesvariabler.HeaderText = "Beskrivelsesvariabler";
-            this.Beskrivelsesvariabler.Name = "Beskrivelsesvariabler";
-            // 
-            // RødlisteKlassifisering_id
-            // 
-            this.RødlisteKlassifisering_id.HeaderText = "RødlisteKlassifisering_id";
-            this.RødlisteKlassifisering_id.Name = "RødlisteKlassifisering_id";
-            this.RødlisteKlassifisering_id.Visible = false;
-            // 
             // buttonUpdateRødlisteKlassifisering
             // 
-            this.buttonUpdateRødlisteKlassifisering.Location = new System.Drawing.Point(503, 51);
+            this.buttonUpdateRødlisteKlassifisering.Location = new System.Drawing.Point(805, 52);
             this.buttonUpdateRødlisteKlassifisering.Name = "buttonUpdateRødlisteKlassifisering";
             this.buttonUpdateRødlisteKlassifisering.Size = new System.Drawing.Size(75, 23);
             this.buttonUpdateRødlisteKlassifisering.TabIndex = 19;
@@ -212,7 +205,7 @@
             // 
             // buttonDeleteRødlisteKlassifisering
             // 
-            this.buttonDeleteRødlisteKlassifisering.Location = new System.Drawing.Point(503, 109);
+            this.buttonDeleteRødlisteKlassifisering.Location = new System.Drawing.Point(805, 110);
             this.buttonDeleteRødlisteKlassifisering.Name = "buttonDeleteRødlisteKlassifisering";
             this.buttonDeleteRødlisteKlassifisering.Size = new System.Drawing.Size(75, 23);
             this.buttonDeleteRødlisteKlassifisering.TabIndex = 20;
@@ -234,7 +227,7 @@
             // comboBoxNaturnivå
             // 
             this.comboBoxNaturnivå.FormattingEnabled = true;
-            this.comboBoxNaturnivå.Location = new System.Drawing.Point(195, 51);
+            this.comboBoxNaturnivå.Location = new System.Drawing.Point(199, 51);
             this.comboBoxNaturnivå.Name = "comboBoxNaturnivå";
             this.comboBoxNaturnivå.Size = new System.Drawing.Size(121, 21);
             this.comboBoxNaturnivå.TabIndex = 22;
@@ -248,11 +241,70 @@
             this.label6.TabIndex = 23;
             this.label6.Text = "Naturnivå";
             // 
+            // labelInnsnevrendeBeskrivelsesvariabel
+            // 
+            this.labelInnsnevrendeBeskrivelsesvariabel.AutoSize = true;
+            this.labelInnsnevrendeBeskrivelsesvariabel.Location = new System.Drawing.Point(257, 134);
+            this.labelInnsnevrendeBeskrivelsesvariabel.Name = "labelInnsnevrendeBeskrivelsesvariabel";
+            this.labelInnsnevrendeBeskrivelsesvariabel.Size = new System.Drawing.Size(171, 13);
+            this.labelInnsnevrendeBeskrivelsesvariabel.TabIndex = 26;
+            this.labelInnsnevrendeBeskrivelsesvariabel.Text = "Innsvevrende Beskrivelsesvariabel";
+            // 
+            // checkedListBoxInnsnevrendeBeskrivelsesvariabel
+            // 
+            this.checkedListBoxInnsnevrendeBeskrivelsesvariabel.FormattingEnabled = true;
+            this.checkedListBoxInnsnevrendeBeskrivelsesvariabel.Location = new System.Drawing.Point(257, 192);
+            this.checkedListBoxInnsnevrendeBeskrivelsesvariabel.Name = "checkedListBoxInnsnevrendeBeskrivelsesvariabel";
+            this.checkedListBoxInnsnevrendeBeskrivelsesvariabel.Size = new System.Drawing.Size(124, 334);
+            this.checkedListBoxInnsnevrendeBeskrivelsesvariabel.TabIndex = 25;
+            // 
+            // textBoxInnsnevrendeBeskrivelsesvariabel
+            // 
+            this.textBoxInnsnevrendeBeskrivelsesvariabel.Location = new System.Drawing.Point(257, 160);
+            this.textBoxInnsnevrendeBeskrivelsesvariabel.Name = "textBoxInnsnevrendeBeskrivelsesvariabel";
+            this.textBoxInnsnevrendeBeskrivelsesvariabel.Size = new System.Drawing.Size(61, 20);
+            this.textBoxInnsnevrendeBeskrivelsesvariabel.TabIndex = 24;
+            // 
+            // NaturområdeTyper
+            // 
+            this.NaturområdeTyper.HeaderText = "NaturområdeTyper";
+            this.NaturområdeTyper.Name = "NaturområdeTyper";
+            // 
+            // Beskrivelsesvariabler
+            // 
+            this.Beskrivelsesvariabler.HeaderText = "Beskrivelsesvariabler";
+            this.Beskrivelsesvariabler.Name = "Beskrivelsesvariabler";
+            // 
+            // RødlisteKlassifisering_id
+            // 
+            this.RødlisteKlassifisering_id.HeaderText = "RødlisteKlassifisering_id";
+            this.RødlisteKlassifisering_id.Name = "RødlisteKlassifisering_id";
+            this.RødlisteKlassifisering_id.Visible = false;
+            // 
+            // InnsnevrendeBeskrivelsesvariabel
+            // 
+            this.InnsnevrendeBeskrivelsesvariabel.HeaderText = "InnsnevrendeBeskrivelsesvariabel";
+            this.InnsnevrendeBeskrivelsesvariabel.Name = "InnsnevrendeBeskrivelsesvariabel";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(324, 162);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(59, 17);
+            this.checkBox1.TabIndex = 27;
+            this.checkBox1.Text = "Vis alle";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(590, 576);
+            this.ClientSize = new System.Drawing.Size(892, 601);
+            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.labelInnsnevrendeBeskrivelsesvariabel);
+            this.Controls.Add(this.checkedListBoxInnsnevrendeBeskrivelsesvariabel);
+            this.Controls.Add(this.textBoxInnsnevrendeBeskrivelsesvariabel);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBoxNaturnivå);
             this.Controls.Add(this.checkBoxShowAllBeskrivelsesvariabel);
@@ -296,14 +348,19 @@
         private System.Windows.Forms.CheckedListBox checkedListBoxKartleggingsKode;
         private System.Windows.Forms.ComboBox comboBoxNaturområdetyper;
         private System.Windows.Forms.DataGridView dataGridViewRødlisteKlassifisering;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NaturområdeTyper;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Beskrivelsesvariabler;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RødlisteKlassifisering_id;
         private System.Windows.Forms.Button buttonUpdateRødlisteKlassifisering;
         private System.Windows.Forms.Button buttonDeleteRødlisteKlassifisering;
         private System.Windows.Forms.CheckBox checkBoxShowAllBeskrivelsesvariabel;
         private System.Windows.Forms.ComboBox comboBoxNaturnivå;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label labelInnsnevrendeBeskrivelsesvariabel;
+        private System.Windows.Forms.CheckedListBox checkedListBoxInnsnevrendeBeskrivelsesvariabel;
+        private System.Windows.Forms.TextBox textBoxInnsnevrendeBeskrivelsesvariabel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NaturområdeTyper;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Beskrivelsesvariabler;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RødlisteKlassifisering_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn InnsnevrendeBeskrivelsesvariabel;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

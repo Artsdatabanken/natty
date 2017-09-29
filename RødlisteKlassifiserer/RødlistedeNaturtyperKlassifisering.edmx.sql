@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 09/29/2017 13:24:58
+-- Date Created: 09/29/2017 13:58:45
 -- Generated from EDMX file: C:\Users\japed\source\repos\RødlistedeNaturområder\RødlisteKlassifiserer\RødlistedeNaturtyperKlassifisering.edmx
 -- --------------------------------------------------
 
@@ -228,6 +228,13 @@ CREATE TABLE [dbo].[PåvirkningRødlisteVurderingsenhet] (
 );
 GO
 
+-- Creating table 'BeskrivelsesvariabelRødlisteKlassifisering1'
+CREATE TABLE [dbo].[BeskrivelsesvariabelRødlisteKlassifisering1] (
+    [InnsnevrendeBeskrivelsesvariabel_Id] int  NOT NULL,
+    [RødlisteKlassifiseringInnsnevring_Id] int  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -314,6 +321,12 @@ GO
 ALTER TABLE [dbo].[PåvirkningRødlisteVurderingsenhet]
 ADD CONSTRAINT [PK_PåvirkningRødlisteVurderingsenhet]
     PRIMARY KEY CLUSTERED ([Påvirkning_Id], [RødlisteVurderingsenhet_Id] ASC);
+GO
+
+-- Creating primary key on [InnsnevrendeBeskrivelsesvariabel_Id], [RødlisteKlassifiseringInnsnevring_Id] in table 'BeskrivelsesvariabelRødlisteKlassifisering1'
+ALTER TABLE [dbo].[BeskrivelsesvariabelRødlisteKlassifisering1]
+ADD CONSTRAINT [PK_BeskrivelsesvariabelRødlisteKlassifisering1]
+    PRIMARY KEY CLUSTERED ([InnsnevrendeBeskrivelsesvariabel_Id], [RødlisteKlassifiseringInnsnevring_Id] ASC);
 GO
 
 -- --------------------------------------------------
@@ -534,6 +547,30 @@ GO
 CREATE INDEX [IX_FK_KodeVersjonBeskrivelsesvariabel]
 ON [dbo].[BeskrivelsesvariabelSet]
     ([KodeVersjon_Id]);
+GO
+
+-- Creating foreign key on [InnsnevrendeBeskrivelsesvariabel_Id] in table 'BeskrivelsesvariabelRødlisteKlassifisering1'
+ALTER TABLE [dbo].[BeskrivelsesvariabelRødlisteKlassifisering1]
+ADD CONSTRAINT [FK_BeskrivelsesvariabelRødlisteKlassifisering1_Beskrivelsesvariabel]
+    FOREIGN KEY ([InnsnevrendeBeskrivelsesvariabel_Id])
+    REFERENCES [dbo].[BeskrivelsesvariabelSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating foreign key on [RødlisteKlassifiseringInnsnevring_Id] in table 'BeskrivelsesvariabelRødlisteKlassifisering1'
+ALTER TABLE [dbo].[BeskrivelsesvariabelRødlisteKlassifisering1]
+ADD CONSTRAINT [FK_BeskrivelsesvariabelRødlisteKlassifisering1_RødlisteKlassifisering]
+    FOREIGN KEY ([RødlisteKlassifiseringInnsnevring_Id])
+    REFERENCES [dbo].[RødlisteKlassifiseringSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_BeskrivelsesvariabelRødlisteKlassifisering1_RødlisteKlassifisering'
+CREATE INDEX [IX_FK_BeskrivelsesvariabelRødlisteKlassifisering1_RødlisteKlassifisering]
+ON [dbo].[BeskrivelsesvariabelRødlisteKlassifisering1]
+    ([RødlisteKlassifiseringInnsnevring_Id]);
 GO
 
 -- --------------------------------------------------

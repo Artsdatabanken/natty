@@ -20,13 +20,14 @@
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.NaturområdeTypeKodeRødlisteKlassifisering" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.KriterieRødlisteVurderingsenhet" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.PåvirkningRødlisteVurderingsenhet" />
-        <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.RødlisteVurdeingsenhetVersjon" Width="2.25" PointX="6.625" PointY="6.875" />
+        <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.RødlisteVurdeingsenhetVersjon" Width="2.25" PointX="6.75" PointY="6.75" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.RødlisteVurdeingsenhetVersjonRødlisteVurderingsenhet" />
         <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.Naturnivå" Width="1.5" PointX="10" PointY="4.375" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.NaturnivåRødlisteVurderingsenhet" />
         <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.KodeVersjon" Width="1.5" PointX="0.5" PointY="5.125" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.KodeVersjonNaturområdeTypeKode" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.KodeVersjonBeskrivelsesvariabel" />
+        <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.BeskrivelsesvariabelRødlisteKlassifisering1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

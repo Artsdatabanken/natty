@@ -102,7 +102,8 @@ namespace Forms_dev3
 
         private static KodeVersjon GetKodeVersjon()
         {
-            return DataConnection.Context.KodeVersjonSet.AddIfNotExists(new KodeVersjon { verdi = KodeVersjonVerdi });
+            var kodeVersjon = new KodeVersjon {verdi = KodeVersjonVerdi};
+            return DataConnection.Context.KodeVersjonSet.AddIfNotExists(kodeVersjon, d => d.verdi == kodeVersjon.verdi);
         }
 
         private static Beskrivelsesvariabel ConvertToBeskrivelsesvariablelType(JsonCode code)

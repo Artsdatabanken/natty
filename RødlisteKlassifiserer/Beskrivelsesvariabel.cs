@@ -18,6 +18,7 @@ namespace Forms_dev3
         public Beskrivelsesvariabel()
         {
             this.RødlisteKlassifisering = new HashSet<RødlisteKlassifisering>();
+            this.RødlisteKlassifiseringInnsnevring = new HashSet<RødlisteKlassifisering>();
         }
     
         public int Id { get; set; }
@@ -27,5 +28,7 @@ namespace Forms_dev3
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RødlisteKlassifisering> RødlisteKlassifisering { get; set; }
         public virtual KodeVersjon KodeVersjon { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RødlisteKlassifisering> RødlisteKlassifiseringInnsnevring { get; set; }
     }
 }

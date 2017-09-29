@@ -19,6 +19,7 @@ namespace Forms_dev3
         {
             this.Beskrivelsesvariabel = new HashSet<Beskrivelsesvariabel>();
             this.KartleggingsKode = new HashSet<KartleggingsKode>();
+            this.InnsnevrendeBeskrivelsesvariabel = new HashSet<Beskrivelsesvariabel>();
         }
     
         public int Id { get; set; }
@@ -29,5 +30,7 @@ namespace Forms_dev3
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KartleggingsKode> KartleggingsKode { get; set; }
         public virtual NaturområdeTypeKode NaturområdeTypeKode { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Beskrivelsesvariabel> InnsnevrendeBeskrivelsesvariabel { get; set; }
     }
 }
