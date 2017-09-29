@@ -80,6 +80,28 @@ namespace Forms_dev3
             }
         }
 
+        private void PopulateInnsnevrendeBeskrivelsesVariabler(ICollection<string> beskrivelsesvariabler = null)
+        {
+            checkedListBoxInnsnevrendeBeskrivelsesvariabel.Items.Clear();
+            if (checkBoxInnsnevrendeBeskrivelsesvariabel.Checked)
+                foreach (var beskrivelsesvariabel in DataConnection.Context.BeskrivelsesvariabelSet.OrderBy(d => d.verdi))
+                {
+                    if (beskrivelsesvariabler != null)
+                        checkedListBoxInnsnevrendeBeskrivelsesvariabel.Items.Add(beskrivelsesvariabel.verdi,
+                            beskrivelsesvariabler.Contains(beskrivelsesvariabel.verdi));
+                    else
+                        checkedListBoxInnsnevrendeBeskrivelsesvariabel.Items.Add(beskrivelsesvariabel.verdi);
+                }
+            else
+            {
+                if (beskrivelsesvariabler == null) return;
+                foreach (var beskrivelsesvariabel in beskrivelsesvariabler)
+                {
+                    checkedListBoxInnsnevrendeBeskrivelsesvariabel.Items.Add(beskrivelsesvariabel, true);
+                }
+            }
+        }
+
         private void PopulateNaturområdeComboBox()
         {
             foreach (var naturområdeType in DataConnection.Context.NaturområdeTypeKodeSet)
@@ -215,6 +237,8 @@ namespace Forms_dev3
 
             var selectedRødlisteVurderingsenhet = GetSelectedRødlisteVurderingsEnhet();
 
+            var selectedInnsnevrendeBeskrivelsesvariabler = GetSelectedInnsnevrendeBeskrivelsesvariablerValues();
+
             var rødlisteKlassifisering = new RødlisteKlassifisering();
 
             if (!selectedKartleggingsKoder.Any()) rødlisteKlassifisering.NaturområdeTypeKode =
@@ -226,6 +250,9 @@ namespace Forms_dev3
 
             rødlisteKlassifisering.RødlisteVurderingsenhet = selectedRødlisteVurderingsenhet;
             rødlisteKlassifisering.Beskrivelsesvariabel = selectedBeskrivelsesvariabler.ToList();
+
+            if (selectedInnsnevrendeBeskrivelsesvariabler.Any())
+                rødlisteKlassifisering.InnsnevrendeBeskrivelsesvariabel = selectedInnsnevrendeBeskrivelsesvariabler.ToList();
             
             DataConnection.Context.RødlisteKlassifiseringSet.Add(rødlisteKlassifisering);
 
@@ -233,6 +260,15 @@ namespace Forms_dev3
 
             UpdateGridView();
 
+        }
+
+        private IEnumerable<Beskrivelsesvariabel> GetSelectedInnsnevrendeBeskrivelsesvariablerValues()
+        {
+            foreach (string innsnevrendeBeskrivelsesvariabel in checkedListBoxInnsnevrendeBeskrivelsesvariabel.CheckedItems)
+            {
+                yield return DataConnection.Context.BeskrivelsesvariabelSet.First(d =>
+                    d.verdi == innsnevrendeBeskrivelsesvariabel);
+            }
         }
 
         private void UpdateGridView()
@@ -253,6 +289,11 @@ namespace Forms_dev3
                         naturområdeTyper = ConcatinateNaturområdetyper(rødlisteKlassifisering.KartleggingsKode);
                     }
 
+                    var innsnevrendeBeskrivelsesvariabler = "";
+                    if (rødlisteKlassifisering.InnsnevrendeBeskrivelsesvariabel.Count > 0)
+                        innsnevrendeBeskrivelsesvariabler =
+                            ConcatinateInnsnevrendeBeskrivelsesvariabler(rødlisteKlassifisering
+                                .InnsnevrendeBeskrivelsesvariabel);
                     var dataGridRow = new DataGridViewRow
                     {
                         Cells =
@@ -269,12 +310,26 @@ namespace Forms_dev3
                             new DataGridViewTextBoxCell
                             {
                                 Value = rødlisteKlassifisering.Id
+                            },
+                            new DataGridViewTextBoxCell
+                            {
+                                Value = innsnevrendeBeskrivelsesvariabler
                             }
                         }
                     };
                     dataGridViewRødlisteKlassifisering.Rows.Add(dataGridRow);
                 }
             }
+        }
+
+        private string ConcatinateInnsnevrendeBeskrivelsesvariabler(ICollection<Beskrivelsesvariabel> InnsnevrendeBeskrivelsesvariabler)
+        {
+            var concatinatedString = "";
+            foreach (var innsnevrendeBeskrivelsesvariabel in InnsnevrendeBeskrivelsesvariabler)
+            {
+                concatinatedString += innsnevrendeBeskrivelsesvariabel.verdi + ",";
+            }
+            return concatinatedString.TrimEnd(',');
         }
 
         private string ConcatinateNaturområdetyper(ICollection<KartleggingsKode> KartleggingsKodeList)
@@ -356,6 +411,10 @@ namespace Forms_dev3
                 var beskrivelsesvariabler = row.Cells["Beskrivelsesvariabler"].Value.ToString().Split(',');
 
                 PopulateBeskrivelsesVariabler(beskrivelsesvariabler);
+
+                var innsnevrendeBeskrivelsesvariabler = row.Cells["InnsnevrendeBeskrivelsesvariabel"].Value.ToString().Split(',');
+
+                PopulateInnsnevrendeBeskrivelsesVariabler(innsnevrendeBeskrivelsesvariabler);
             }
         }
 
@@ -402,6 +461,31 @@ namespace Forms_dev3
                 beskrivelsesvariabler.Add(beskrivelsesvariabel.ToString());
             }
             PopulateBeskrivelsesVariabler(beskrivelsesvariabler);
+        }
+
+        private void textBoxInnsnevrendeBeskrivelsesvariabel_KeyUp(object sender, KeyEventArgs e)
+        {
+            checkedListBoxInnsnevrendeBeskrivelsesvariabel.Items.Clear();
+            foreach (var hit in DataConnection.Context.BeskrivelsesvariabelSet.Where(d =>
+                d.verdi.StartsWith(textBoxBeskrivelsesvaiabler.Text)))
+            {
+                checkedListBoxInnsnevrendeBeskrivelsesvariabel.Items.Add(hit.verdi);
+            }
+        }
+
+        private void checkBoxInnsnevrendeBeskrivelsesvariabel_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkedListBoxInnsnevrendeBeskrivelsesvariabel.CheckedItems.Count == 0)
+            {
+                PopulateInnsnevrendeBeskrivelsesVariabler();
+                return;
+            }
+            var beskrivelsesvariabler = new List<string>();
+            foreach (var beskrivelsesvariabel in checkedListBoxInnsnevrendeBeskrivelsesvariabel.CheckedItems)
+            {
+                beskrivelsesvariabler.Add(beskrivelsesvariabel.ToString());
+            }
+            PopulateInnsnevrendeBeskrivelsesVariabler(beskrivelsesvariabler);
         }
     }
 }
