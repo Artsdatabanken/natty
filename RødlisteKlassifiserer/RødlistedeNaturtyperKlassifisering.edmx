@@ -15,6 +15,7 @@
     <EntitySet Name="PåvirkningSet" EntityType="RødlistedeNaturtyperKlassifisering.Store.PåvirkningSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="RødlisteVurdeingsenhetVersjonSet" EntityType="RødlistedeNaturtyperKlassifisering.Store.RødlisteVurdeingsenhetVersjonSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="NaturnivåSet" EntityType="RødlistedeNaturtyperKlassifisering.Store.NaturnivåSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="KodeVersjonSet" EntityType="RødlistedeNaturtyperKlassifisering.Store.KodeVersjonSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="BeskrivelsesvariabelRødlisteKlassifisering" EntityType="RødlistedeNaturtyperKlassifisering.Store.BeskrivelsesvariabelRødlisteKlassifisering" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="KartleggingsKodeRødlisteKlassifisering" EntityType="RødlistedeNaturtyperKlassifisering.Store.KartleggingsKodeRødlisteKlassifisering" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="KriterieRødlisteVurderingsenhet" EntityType="RødlistedeNaturtyperKlassifisering.Store.KriterieRødlisteVurderingsenhet" store:Type="Tables" Schema="dbo" />
@@ -75,6 +76,14 @@
       <End Role="Naturnivå" EntitySet="NaturnivåSet" />
       <End Role="RødlisteVurderingsenhet" EntitySet="RødlisteVurderingsenhetSet" />
     </AssociationSet>
+    <AssociationSet Name="KodeVersjonNaturområdeTypeKode" Association="RødlistedeNaturtyperKlassifisering.Store.KodeVersjonNaturområdeTypeKode">
+      <End Role="KodeVersjon" EntitySet="KodeVersjonSet" />
+      <End Role="NaturområdeTypeKode" EntitySet="NaturområdeTypeKodeSet" />
+    </AssociationSet>
+    <AssociationSet Name="KodeVersjonBeskrivelsesvariabel" Association="RødlistedeNaturtyperKlassifisering.Store.KodeVersjonBeskrivelsesvariabel">
+      <End Role="KodeVersjon" EntitySet="KodeVersjonSet" />
+      <End Role="Beskrivelsesvariabel" EntitySet="BeskrivelsesvariabelSet" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="NaturområdeTypeKodeSet">
     <Key>
@@ -82,8 +91,8 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="verdi" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="versjon" Type="nvarchar(max)" Nullable="false" />
     <Property Name="nivå" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="KodeVersjon_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="RødlisteVurderingsenhetSet">
     <Key>
@@ -122,6 +131,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="verdi" Type="nvarchar(max)" Nullable="false" />
     <Property Name="navn" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="KodeVersjon_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="KriterieSet">
     <Key>
@@ -145,6 +155,13 @@
     <Property Name="verdi" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="NaturnivåSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="verdi" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KodeVersjonSet">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -252,6 +269,30 @@
       </Principal>
       <Dependent Role="RødlisteVurderingsenhet">
         <PropertyRef Name="Naturnivå_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KodeVersjonNaturområdeTypeKode">
+    <End Role="KodeVersjon" Type="RødlistedeNaturtyperKlassifisering.Store.KodeVersjonSet" Multiplicity="1" />
+    <End Role="NaturområdeTypeKode" Type="RødlistedeNaturtyperKlassifisering.Store.NaturområdeTypeKodeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KodeVersjon">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NaturområdeTypeKode">
+        <PropertyRef Name="KodeVersjon_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KodeVersjonBeskrivelsesvariabel">
+    <End Role="KodeVersjon" Type="RødlistedeNaturtyperKlassifisering.Store.KodeVersjonSet" Multiplicity="1" />
+    <End Role="Beskrivelsesvariabel" Type="RødlistedeNaturtyperKlassifisering.Store.BeskrivelsesvariabelSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KodeVersjon">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Beskrivelsesvariabel">
+        <PropertyRef Name="KodeVersjon_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -646,6 +687,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="KodeVersjonSet">
+      <EntityTypeMapping TypeName="IsTypeOf(RødlistedeNaturtyperKlassifisering.KodeVersjon)">
+        <MappingFragment StoreEntitySet="KodeVersjonSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="verdi" ColumnName="verdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="RødlisteVurderingsenhetRødlisteVurderingsenhet" TypeName="RødlistedeNaturtyperKlassifisering.RødlisteVurderingsenhetRødlisteVurderingsenhet" StoreEntitySet="RødlisteVurderingsenhetSet">
       <EndProperty Name="RødlisteVurderingsenhet">
         <ScalarProperty Name="Id" ColumnName="RødlisteVurderingsenhetRødlisteVurderingsenhet_RødlisteVurderingsenhet1_Id" />
@@ -725,6 +774,22 @@
         <ScalarProperty Name="Id" ColumnName="Naturnivå_Id" />
       </EndProperty>
       <EndProperty Name="RødlisteVurderingsenhet">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="KodeVersjonNaturområdeTypeKode" TypeName="RødlistedeNaturtyperKlassifisering.KodeVersjonNaturområdeTypeKode" StoreEntitySet="NaturområdeTypeKodeSet">
+      <EndProperty Name="KodeVersjon">
+        <ScalarProperty Name="Id" ColumnName="KodeVersjon_Id" />
+      </EndProperty>
+      <EndProperty Name="NaturområdeTypeKode">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="KodeVersjonBeskrivelsesvariabel" TypeName="RødlistedeNaturtyperKlassifisering.KodeVersjonBeskrivelsesvariabel" StoreEntitySet="BeskrivelsesvariabelSet">
+      <EndProperty Name="KodeVersjon">
+        <ScalarProperty Name="Id" ColumnName="KodeVersjon_Id" />
+      </EndProperty>
+      <EndProperty Name="Beskrivelsesvariabel">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>

@@ -77,6 +77,9 @@
     <Compile Include="KartleggingsKode.cs">
       <DependentUpon>RødlistedeNaturtyperKlassifisering.tt</DependentUpon>
     </Compile>
+    <Compile Include="KodeVersjon.cs">
+      <DependentUpon>RødlistedeNaturtyperKlassifisering.tt</DependentUpon>
+    </Compile>
     <Compile Include="Kriterie.cs">
       <DependentUpon>RødlistedeNaturtyperKlassifisering.tt</DependentUpon>
     </Compile>
