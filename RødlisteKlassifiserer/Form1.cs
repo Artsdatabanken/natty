@@ -54,7 +54,7 @@ namespace Forms_dev3
             {
                 comboBoxNaturnivå.Items.Add(naturnivå.verdi);
             }
-            
+
             comboBoxNaturnivå.SelectedItem = "NA";
         }
 
@@ -62,7 +62,8 @@ namespace Forms_dev3
         {
             checkedListBoxBeskrivelsesvariabler.Items.Clear();
             if (checkBoxShowAllBeskrivelsesvariabel.Checked)
-                foreach (var beskrivelsesvariabel in DataConnection.Context.BeskrivelsesvariabelSet.OrderBy(d => d.verdi))
+                foreach (var beskrivelsesvariabel in DataConnection.Context.BeskrivelsesvariabelSet.OrderBy(
+                    d => d.verdi))
                 {
                     if (beskrivelsesvariabler != null)
                         checkedListBoxBeskrivelsesvariabler.Items.Add(beskrivelsesvariabel.verdi,
@@ -84,7 +85,8 @@ namespace Forms_dev3
         {
             checkedListBoxInnsnevrendeBeskrivelsesvariabel.Items.Clear();
             if (checkBoxInnsnevrendeBeskrivelsesvariabel.Checked)
-                foreach (var beskrivelsesvariabel in DataConnection.Context.BeskrivelsesvariabelSet.OrderBy(d => d.verdi))
+                foreach (var beskrivelsesvariabel in DataConnection.Context.BeskrivelsesvariabelSet.OrderBy(
+                    d => d.verdi))
                 {
                     if (beskrivelsesvariabler != null)
                         checkedListBoxInnsnevrendeBeskrivelsesvariabel.Items.Add(beskrivelsesvariabel.verdi,
@@ -112,7 +114,8 @@ namespace Forms_dev3
 
         private void PopulateVurderingsenhetComboBox()
         {
-            foreach (var hit in DataConnection.Context.RødlisteVurderingsenhetSet.Where(d => d.Naturnivå.verdi == comboBoxNaturnivå.SelectedItem.ToString()).OrderBy(d => d.Id))
+            foreach (var hit in DataConnection.Context.RødlisteVurderingsenhetSet
+                .Where(d => d.Naturnivå.verdi == comboBoxNaturnivå.SelectedItem.ToString()).OrderBy(d => d.Id))
             {
                 comboBoxVurderingsenhet.Items.Add(hit.verdi);
             }
@@ -129,7 +132,7 @@ namespace Forms_dev3
                 if (kartleggingsKode.nivå != "A") continue;
                 if (kartleggingsKode.verdi == null) continue;
                 kartleggingsKodeList.Add(kartleggingsKode);
-                
+
             }
             foreach (var kartleggingsKode in kartleggingsKodeList)
             {
@@ -179,10 +182,15 @@ namespace Forms_dev3
                 var rødlisteVurderingsenhet = new RødlisteVurderingsenhet
                 {
                     tema = rowValues["Tema"],
-                    RødlisteVurdeingsenhetVersjon = DataConnection.Context.RødlisteVurdeingsenhetVersjonSet.AddIfNotExists( new RødlisteVurdeingsenhetVersjon{ verdi = rowValues["Rødlisteversjon"] }) ,
+                    RødlisteVurdeingsenhetVersjon =
+                        DataConnection.Context.RødlisteVurdeingsenhetVersjonSet.AddIfNotExists(
+                            new RødlisteVurdeingsenhetVersjon {verdi = rowValues["Rødlisteversjon"]}),
                     verdi = rowValues["Vurderingsenhet"],
                     kategori = rowValues["Rødlistekategori"],
-                    Naturnivå = DataConnection.Context.NaturnivåSet.AddIfNotExists(new Naturnivå { verdi = rowValues["Naturnivå"] })
+                    Naturnivå = DataConnection.Context.NaturnivåSet.AddIfNotExists(new Naturnivå
+                    {
+                        verdi = rowValues["Naturnivå"]
+                    })
                 };
 
                 if (rødlisteVurderingsenhet.verdi.StartsWith("*"))
@@ -241,10 +249,11 @@ namespace Forms_dev3
 
             var rødlisteKlassifisering = new RødlisteKlassifisering();
 
-            if (!selectedKartleggingsKoder.Any()) rødlisteKlassifisering.NaturområdeTypeKode =
+            if (!selectedKartleggingsKoder.Any())
+                rødlisteKlassifisering.NaturområdeTypeKode =
                     DataConnection.Context.NaturområdeTypeKodeSet.First(d =>
                         d.verdi == comboBoxNaturområdetyper.SelectedItem);
-            
+
             else
                 rødlisteKlassifisering.KartleggingsKode = selectedKartleggingsKoder.ToList();
 
@@ -252,8 +261,9 @@ namespace Forms_dev3
             rødlisteKlassifisering.Beskrivelsesvariabel = selectedBeskrivelsesvariabler.ToList();
 
             if (selectedInnsnevrendeBeskrivelsesvariabler.Any())
-                rødlisteKlassifisering.InnsnevrendeBeskrivelsesvariabel = selectedInnsnevrendeBeskrivelsesvariabler.ToList();
-            
+                rødlisteKlassifisering.InnsnevrendeBeskrivelsesvariabel =
+                    selectedInnsnevrendeBeskrivelsesvariabler.ToList();
+
             DataConnection.Context.RødlisteKlassifiseringSet.Add(rødlisteKlassifisering);
 
             DataConnection.Context.SaveChanges();
@@ -264,7 +274,8 @@ namespace Forms_dev3
 
         private IEnumerable<Beskrivelsesvariabel> GetSelectedInnsnevrendeBeskrivelsesvariablerValues()
         {
-            foreach (string innsnevrendeBeskrivelsesvariabel in checkedListBoxInnsnevrendeBeskrivelsesvariabel.CheckedItems)
+            foreach (string innsnevrendeBeskrivelsesvariabel in checkedListBoxInnsnevrendeBeskrivelsesvariabel
+                .CheckedItems)
             {
                 yield return DataConnection.Context.BeskrivelsesvariabelSet.First(d =>
                     d.verdi == innsnevrendeBeskrivelsesvariabel);
@@ -322,7 +333,8 @@ namespace Forms_dev3
             }
         }
 
-        private string ConcatinateInnsnevrendeBeskrivelsesvariabler(ICollection<Beskrivelsesvariabel> InnsnevrendeBeskrivelsesvariabler)
+        private string ConcatinateInnsnevrendeBeskrivelsesvariabler(
+            ICollection<Beskrivelsesvariabel> InnsnevrendeBeskrivelsesvariabler)
         {
             var concatinatedString = "";
             foreach (var innsnevrendeBeskrivelsesvariabel in InnsnevrendeBeskrivelsesvariabler)
@@ -412,7 +424,8 @@ namespace Forms_dev3
 
                 PopulateBeskrivelsesVariabler(beskrivelsesvariabler);
 
-                var innsnevrendeBeskrivelsesvariabler = row.Cells["InnsnevrendeBeskrivelsesvariabel"].Value.ToString().Split(',');
+                var innsnevrendeBeskrivelsesvariabler =
+                    row.Cells["InnsnevrendeBeskrivelsesvariabel"].Value.ToString().Split(',');
 
                 PopulateInnsnevrendeBeskrivelsesVariabler(innsnevrendeBeskrivelsesvariabler);
             }

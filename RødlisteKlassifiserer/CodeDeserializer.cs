@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Core.Common.CommandTrees;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Net;
 using System.Text;
 using Newtonsoft.Json;
 
 namespace Forms_dev3
-
-    
 {
     public static class CodeDeserializer
     {
@@ -26,7 +20,7 @@ namespace Forms_dev3
                     d.verdi == naturområdeType.verdi &&
                     d.KodeVersjon.verdi == naturområdeType.KodeVersjon.verdi);
 
-                if(existingRow.Any()) continue;
+                if (existingRow.Any()) continue;
                 DataConnection.Context.NaturområdeTypeKodeSet.Add(naturområdeType);
                 DataConnection.Context.SaveChanges();
             }
@@ -49,7 +43,7 @@ namespace Forms_dev3
 
         private static IEnumerable<JsonCode> GetAllCodes(string url)
         {
-            var json = new WebClient { Encoding = Encoding.UTF8 }.DownloadString(url);
+            var json = new WebClient {Encoding = Encoding.UTF8}.DownloadString(url);
 
             var jsonCodeValues = JsonConvert.DeserializeObject<JsonCode[]>(json);
 
@@ -66,7 +60,7 @@ namespace Forms_dev3
 
             var mappingSplit = codeSplit[1].Split('-');
 
-            var kartlaggingsKode = new KartleggingsKode { nivå = "A", navn = code.Navn };
+            var kartlaggingsKode = new KartleggingsKode {nivå = "A", navn = code.Navn};
 
             var naturområdeTypeKode = new NaturområdeTypeKode
             {
@@ -108,7 +102,7 @@ namespace Forms_dev3
 
         private static Beskrivelsesvariabel ConvertToBeskrivelsesvariablelType(JsonCode code)
         {
-            return new Beskrivelsesvariabel {verdi = code.Kode["Id"], navn = code.Navn, KodeVersjon = GetKodeVersjon() };
+            return new Beskrivelsesvariabel {verdi = code.Kode["Id"], navn = code.Navn, KodeVersjon = GetKodeVersjon()};
         }
     }
 }
