@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.buttonUpdateKodelister = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -330,8 +331,9 @@
             this.Controls.Add(this.textBoxBeskrivelsesvaiabler);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonUpdateKodelister);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "RødlisteKlassifiserer";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRødlisteKlassifisering)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

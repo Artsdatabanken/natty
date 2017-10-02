@@ -260,7 +260,7 @@ namespace Forms_dev3
             rødlisteKlassifisering.RødlisteVurderingsenhet = selectedRødlisteVurderingsenhet;
             rødlisteKlassifisering.Beskrivelsesvariabel = selectedBeskrivelsesvariabler.ToList();
 
-            if (selectedInnsnevrendeBeskrivelsesvariabler.Any())
+            if (checkedListBoxInnsnevrendeBeskrivelsesvariabel.CheckedItems.Count != 0)
                 rødlisteKlassifisering.InnsnevrendeBeskrivelsesvariabel =
                     selectedInnsnevrendeBeskrivelsesvariabler.ToList();
 
@@ -277,6 +277,7 @@ namespace Forms_dev3
             foreach (string innsnevrendeBeskrivelsesvariabel in checkedListBoxInnsnevrendeBeskrivelsesvariabel
                 .CheckedItems)
             {
+                if(innsnevrendeBeskrivelsesvariabel == "") continue;
                 yield return DataConnection.Context.BeskrivelsesvariabelSet.First(d =>
                     d.verdi == innsnevrendeBeskrivelsesvariabel);
             }
@@ -480,7 +481,7 @@ namespace Forms_dev3
         {
             checkedListBoxInnsnevrendeBeskrivelsesvariabel.Items.Clear();
             foreach (var hit in DataConnection.Context.BeskrivelsesvariabelSet.Where(d =>
-                d.verdi.StartsWith(textBoxBeskrivelsesvaiabler.Text)))
+                d.verdi.StartsWith(textBoxInnsnevrendeBeskrivelsesvariabel.Text)))
             {
                 checkedListBoxInnsnevrendeBeskrivelsesvariabel.Items.Add(hit.verdi);
             }
