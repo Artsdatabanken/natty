@@ -134,7 +134,8 @@ namespace Forms_dev3
                 kartleggingsKodeList.Add(kartleggingsKode);
 
             }
-            foreach (var kartleggingsKode in kartleggingsKodeList)
+
+            foreach (var kartleggingsKode in kartleggingsKodeList.OrderBy(d => d.verdi))
             {
                 if (kartleggingsKoder != null)
                     checkedListBoxKartleggingsKode.Items.Add(kartleggingsKode.verdi,
@@ -246,76 +247,15 @@ namespace Forms_dev3
             var selectedRødlisteVurderingsenhet = GetSelectedRødlisteVurderingsEnhet();
 
             var selectedInnsnevrendeBeskrivelsesvariabler = GetSelectedInnsnevrendeBeskrivelsesvariablerValues();
-
-
-
-            if (checkBoxPermutations.Checked)
+            
+            if (checkBoxANDPermutations.Checked)
             {
-
-                
-                if (!selectedKartleggingsKoder.Any())
-                    selectedKartleggingsKoder = DataConnection.Context.NaturområdeTypeKodeSet.First(d =>
-                        d.verdi == comboBoxNaturområdetyper.SelectedItem).KartleggingsKode;
-
-
-                var beskrivelsesVariabelDictionary = new Dictionary<string, List<Beskrivelsesvariabel>>();
-                foreach (var beskrivelsesvariabel in selectedBeskrivelsesvariabler.ToList())
-                {
-                    var key = beskrivelsesvariabel.verdi.Split('_')[0];
-                    if(!beskrivelsesVariabelDictionary.ContainsKey(key)) beskrivelsesVariabelDictionary[key] = new List<Beskrivelsesvariabel>();
-                    beskrivelsesVariabelDictionary[key].Add(beskrivelsesvariabel);
-                }
-
-                
-
-                foreach (var kartlegginsKode in selectedKartleggingsKoder.ToList())
-                {
-                    var addedDict = new Dictionary<Tuple<Beskrivelsesvariabel, Beskrivelsesvariabel>, bool>();
-                    if (beskrivelsesVariabelDictionary.Keys.Count > 0)
-                        foreach (var uniqueBeskrivelsesvariabel1 in beskrivelsesVariabelDictionary)
-                        {
-                            foreach (var uniqueBeskrivelsesvariabel2 in beskrivelsesVariabelDictionary)
-                            {
-                                if (uniqueBeskrivelsesvariabel1.Key == uniqueBeskrivelsesvariabel2.Key) continue;
-                                foreach (var beskrivelsesvariabel1 in uniqueBeskrivelsesvariabel1.Value)
-                                {
-                                    foreach (var beskrivelsesvariabel2 in uniqueBeskrivelsesvariabel2.Value)
-                                    {
-                                        if (beskrivelsesvariabel1.Id == beskrivelsesvariabel2.Id) continue;
-                                        var tupleKey = new Tuple<Beskrivelsesvariabel, Beskrivelsesvariabel>(beskrivelsesvariabel1, beskrivelsesvariabel2);
-                                        var tupleKeyReversed = new Tuple<Beskrivelsesvariabel, Beskrivelsesvariabel>(beskrivelsesvariabel2, beskrivelsesvariabel1);
-                                        if (addedDict.ContainsKey(tupleKey) || addedDict.ContainsKey(tupleKeyReversed))
-                                            continue;
-                                        var rødlisteKlassifisering = new RødlisteKlassifisering
-                                        {
-                                            KartleggingsKode = new List<KartleggingsKode> {kartlegginsKode},
-                                            RødlisteVurderingsenhet = selectedRødlisteVurderingsenhet,
-                                            Beskrivelsesvariabel = new List<Beskrivelsesvariabel> {beskrivelsesvariabel1, beskrivelsesvariabel2}
-                                        };
-                                        if (selectedInnsnevrendeBeskrivelsesvariabler.Any())
-                                            rødlisteKlassifisering.InnsnevrendeBeskrivelsesvariabel =
-                                                selectedInnsnevrendeBeskrivelsesvariabler.ToList();
-                                        DataConnection.Context.RødlisteKlassifiseringSet.Add(rødlisteKlassifisering);
-                                        addedDict[tupleKey] = true;
-                                    }
-                                }
-                            }
-                        }
-                    else
-                    {
-                        var rødlisteKlassifisering = new RødlisteKlassifisering
-                        {
-                            KartleggingsKode = new List<KartleggingsKode> {kartlegginsKode},
-                            RødlisteVurderingsenhet = selectedRødlisteVurderingsenhet
-                        };
-
-
-                        if (checkedListBoxInnsnevrendeBeskrivelsesvariabel.CheckedItems.Count != 0)
-                            rødlisteKlassifisering.InnsnevrendeBeskrivelsesvariabel =
-                                selectedInnsnevrendeBeskrivelsesvariabler.ToList();
-                        DataConnection.Context.RødlisteKlassifiseringSet.Add(rødlisteKlassifisering);
-                    }
-                }
+                AddANDPermutation(selectedKartleggingsKoder, selectedBeskrivelsesvariabler, selectedRødlisteVurderingsenhet, selectedInnsnevrendeBeskrivelsesvariabler);
+            }
+            else if (checkBoxORPermutations.Checked)
+            {
+                AddORPermutation(selectedKartleggingsKoder, selectedBeskrivelsesvariabler,
+                    selectedRødlisteVurderingsenhet, selectedInnsnevrendeBeskrivelsesvariabler);
             }
             else
             {
@@ -343,6 +283,106 @@ namespace Forms_dev3
 
             UpdateGridView();
 
+        }
+
+        private void AddORPermutation(IEnumerable<KartleggingsKode> selectedKartleggingsKoder, IEnumerable<Beskrivelsesvariabel> selectedBeskrivelsesvariabler, RødlisteVurderingsenhet selectedRødlisteVurderingsenhet, IEnumerable<Beskrivelsesvariabel> selectedInnsnevrendeBeskrivelsesvariabler)
+        {
+            selectedKartleggingsKoder = GetKartleggingskoderForPermutations(selectedKartleggingsKoder);
+            foreach (var kartleggingsKode in selectedKartleggingsKoder.ToList())
+            {
+                if (!selectedBeskrivelsesvariabler.Any())
+                {
+                    AddRødlisteKlassifisering(kartleggingsKode, selectedRødlisteVurderingsenhet,
+                        selectedInnsnevrendeBeskrivelsesvariabler);
+                }
+                else
+                {
+                    foreach (var beskrivelsesvariabel in selectedBeskrivelsesvariabler.ToList())
+                    {
+                        AddRødlisteKlassifisering(kartleggingsKode, selectedRødlisteVurderingsenhet,
+                            selectedInnsnevrendeBeskrivelsesvariabler,
+                            new List<Beskrivelsesvariabel> {beskrivelsesvariabel});
+                    }
+                }
+                
+            }
+        }
+
+        private void AddANDPermutation(IEnumerable<KartleggingsKode> selectedKartleggingsKoder, IEnumerable<Beskrivelsesvariabel> selectedBeskrivelsesvariabler, RødlisteVurderingsenhet selectedRødlisteVurderingsenhet, IEnumerable<Beskrivelsesvariabel> selectedInnsnevrendeBeskrivelsesvariabler)
+        {
+            selectedKartleggingsKoder = GetKartleggingskoderForPermutations(selectedKartleggingsKoder);
+
+            var beskrivelsesVariabelDictionary = new Dictionary<string, List<Beskrivelsesvariabel>>();
+            foreach (var beskrivelsesvariabel in selectedBeskrivelsesvariabler.ToList())
+            {
+                var key = beskrivelsesvariabel.verdi.Split('_')[0];
+                if (!beskrivelsesVariabelDictionary.ContainsKey(key)) beskrivelsesVariabelDictionary[key] = new List<Beskrivelsesvariabel>();
+                beskrivelsesVariabelDictionary[key].Add(beskrivelsesvariabel);
+            }
+
+
+            foreach (var kartleggingsKode in selectedKartleggingsKoder.ToList())
+            {
+                var addedDict = new Dictionary<Tuple<Beskrivelsesvariabel, Beskrivelsesvariabel>, bool>();
+                if (beskrivelsesVariabelDictionary.Keys.Count > 0)
+                    foreach (var uniqueBeskrivelsesvariabel1 in beskrivelsesVariabelDictionary)
+                    {
+                        foreach (var uniqueBeskrivelsesvariabel2 in beskrivelsesVariabelDictionary)
+                        {
+                            if (uniqueBeskrivelsesvariabel1.Key == uniqueBeskrivelsesvariabel2.Key) continue;
+                            foreach (var beskrivelsesvariabel1 in uniqueBeskrivelsesvariabel1.Value)
+                            {
+                                foreach (var beskrivelsesvariabel2 in uniqueBeskrivelsesvariabel2.Value)
+                                {
+                                    if (beskrivelsesvariabel1.Id == beskrivelsesvariabel2.Id) continue;
+                                    var tupleKey = new Tuple<Beskrivelsesvariabel, Beskrivelsesvariabel>(beskrivelsesvariabel1, beskrivelsesvariabel2);
+                                    var tupleKeyReversed = new Tuple<Beskrivelsesvariabel, Beskrivelsesvariabel>(beskrivelsesvariabel2, beskrivelsesvariabel1);
+                                    if (addedDict.ContainsKey(tupleKey) || addedDict.ContainsKey(tupleKeyReversed))
+                                        continue;
+                                    AddRødlisteKlassifisering(kartleggingsKode, selectedRødlisteVurderingsenhet, selectedInnsnevrendeBeskrivelsesvariabler, new List<Beskrivelsesvariabel>{beskrivelsesvariabel1, beskrivelsesvariabel2});
+                                    addedDict[tupleKey] = true;
+                                }
+                            }
+                        }
+                    }
+                else
+                {
+                    var rødlisteKlassifisering = new RødlisteKlassifisering
+                    {
+                        KartleggingsKode = new List<KartleggingsKode> { kartleggingsKode },
+                        RødlisteVurderingsenhet = selectedRødlisteVurderingsenhet
+                    };
+
+
+                    if (checkedListBoxInnsnevrendeBeskrivelsesvariabel.CheckedItems.Count != 0)
+                        rødlisteKlassifisering.InnsnevrendeBeskrivelsesvariabel =
+                            selectedInnsnevrendeBeskrivelsesvariabler.ToList();
+                    DataConnection.Context.RødlisteKlassifiseringSet.Add(rødlisteKlassifisering);
+                }
+            }
+        }
+
+        private static void AddRødlisteKlassifisering(KartleggingsKode kartleggingsKode, RødlisteVurderingsenhet selectedRødlisteVurderingsenhet, IEnumerable<Beskrivelsesvariabel> selectedInnsnevrendeBeskrivelsesvariabler = null, List<Beskrivelsesvariabel> beskrivelsesvariabelList = null)
+        {
+            var rødlisteKlassifisering = new RødlisteKlassifisering
+            {
+                KartleggingsKode = new List<KartleggingsKode> { kartleggingsKode },
+                RødlisteVurderingsenhet = selectedRødlisteVurderingsenhet,
+                Beskrivelsesvariabel = beskrivelsesvariabelList
+            };
+            if (selectedInnsnevrendeBeskrivelsesvariabler != null)
+                if (selectedInnsnevrendeBeskrivelsesvariabler.Any())
+                rødlisteKlassifisering.InnsnevrendeBeskrivelsesvariabel =
+                    selectedInnsnevrendeBeskrivelsesvariabler.ToList();
+            DataConnection.Context.RødlisteKlassifiseringSet.Add(rødlisteKlassifisering);
+        }
+
+        private IEnumerable<KartleggingsKode> GetKartleggingskoderForPermutations(IEnumerable<KartleggingsKode> selectedKartleggingsKoder)
+        {
+            if (!selectedKartleggingsKoder.Any())
+                selectedKartleggingsKoder = DataConnection.Context.NaturområdeTypeKodeSet.First(d =>
+                    d.verdi == comboBoxNaturområdetyper.SelectedItem).KartleggingsKode;
+            return selectedKartleggingsKoder;
         }
 
         private IEnumerable<Beskrivelsesvariabel> GetSelectedInnsnevrendeBeskrivelsesvariablerValues()
@@ -433,6 +473,7 @@ namespace Forms_dev3
         private string ConcatinateBeskrivelsesvariabel(ICollection<Beskrivelsesvariabel> beskrivelsesvariabelList)
         {
             var concatinatedString = "";
+            if(beskrivelsesvariabelList != null)
             foreach (var beskrivelsesvariabel in beskrivelsesvariabelList)
             {
                 concatinatedString += beskrivelsesvariabel.verdi + ",";

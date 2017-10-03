@@ -58,7 +58,8 @@
             this.checkBoxInnsnevrendeBeskrivelsesvariabel = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
             this.labelAntallKlasser = new System.Windows.Forms.Label();
-            this.checkBoxPermutations = new System.Windows.Forms.CheckBox();
+            this.checkBoxANDPermutations = new System.Windows.Forms.CheckBox();
+            this.checkBoxORPermutations = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRødlisteKlassifisering)).BeginInit();
             this.SuspendLayout();
             // 
@@ -324,22 +325,33 @@
             this.labelAntallKlasser.TabIndex = 29;
             this.labelAntallKlasser.Text = "0";
             // 
-            // checkBoxPermutations
+            // checkBoxANDPermutations
             // 
-            this.checkBoxPermutations.AutoSize = true;
-            this.checkBoxPermutations.Location = new System.Drawing.Point(130, 532);
-            this.checkBoxPermutations.Name = "checkBoxPermutations";
-            this.checkBoxPermutations.Size = new System.Drawing.Size(151, 17);
-            this.checkBoxPermutations.TabIndex = 30;
-            this.checkBoxPermutations.Text = "Lage permutasjoner (AND)";
-            this.checkBoxPermutations.UseVisualStyleBackColor = true;
+            this.checkBoxANDPermutations.AutoSize = true;
+            this.checkBoxANDPermutations.Location = new System.Drawing.Point(130, 532);
+            this.checkBoxANDPermutations.Name = "checkBoxANDPermutations";
+            this.checkBoxANDPermutations.Size = new System.Drawing.Size(151, 17);
+            this.checkBoxANDPermutations.TabIndex = 30;
+            this.checkBoxANDPermutations.Text = "Lage permutasjoner (AND)";
+            this.checkBoxANDPermutations.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxORPermutations
+            // 
+            this.checkBoxORPermutations.AutoSize = true;
+            this.checkBoxORPermutations.Location = new System.Drawing.Point(130, 555);
+            this.checkBoxORPermutations.Name = "checkBoxORPermutations";
+            this.checkBoxORPermutations.Size = new System.Drawing.Size(144, 17);
+            this.checkBoxORPermutations.TabIndex = 31;
+            this.checkBoxORPermutations.Text = "Lage permutasjoner (OR)";
+            this.checkBoxORPermutations.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(892, 601);
-            this.Controls.Add(this.checkBoxPermutations);
+            this.Controls.Add(this.checkBoxORPermutations);
+            this.Controls.Add(this.checkBoxANDPermutations);
             this.Controls.Add(this.labelAntallKlasser);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.checkBoxInnsnevrendeBeskrivelsesvariabel);
@@ -405,7 +417,8 @@
         private System.Windows.Forms.CheckBox checkBoxInnsnevrendeBeskrivelsesvariabel;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label labelAntallKlasser;
-        private System.Windows.Forms.CheckBox checkBoxPermutations;
+        private System.Windows.Forms.CheckBox checkBoxANDPermutations;
+        private System.Windows.Forms.CheckBox checkBoxORPermutations;
     }
 }
 
