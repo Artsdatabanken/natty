@@ -56,6 +56,9 @@
             this.checkedListBoxInnsnevrendeBeskrivelsesvariabel = new System.Windows.Forms.CheckedListBox();
             this.textBoxInnsnevrendeBeskrivelsesvariabel = new System.Windows.Forms.TextBox();
             this.checkBoxInnsnevrendeBeskrivelsesvariabel = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.labelAntallKlasser = new System.Windows.Forms.Label();
+            this.checkBoxPermutations = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRødlisteKlassifisering)).BeginInit();
             this.SuspendLayout();
             // 
@@ -151,7 +154,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(805, 81);
+            this.buttonSave.Location = new System.Drawing.Point(400, 503);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 13;
@@ -220,7 +223,7 @@
             // 
             // buttonUpdateRødlisteKlassifisering
             // 
-            this.buttonUpdateRødlisteKlassifisering.Location = new System.Drawing.Point(805, 52);
+            this.buttonUpdateRødlisteKlassifisering.Location = new System.Drawing.Point(805, 49);
             this.buttonUpdateRødlisteKlassifisering.Name = "buttonUpdateRødlisteKlassifisering";
             this.buttonUpdateRødlisteKlassifisering.Size = new System.Drawing.Size(75, 23);
             this.buttonUpdateRødlisteKlassifisering.TabIndex = 19;
@@ -231,7 +234,7 @@
             // 
             // buttonDeleteRødlisteKlassifisering
             // 
-            this.buttonDeleteRødlisteKlassifisering.Location = new System.Drawing.Point(805, 110);
+            this.buttonDeleteRødlisteKlassifisering.Location = new System.Drawing.Point(805, 114);
             this.buttonDeleteRødlisteKlassifisering.Name = "buttonDeleteRødlisteKlassifisering";
             this.buttonDeleteRødlisteKlassifisering.Size = new System.Drawing.Size(75, 23);
             this.buttonDeleteRødlisteKlassifisering.TabIndex = 20;
@@ -303,11 +306,42 @@
             this.checkBoxInnsnevrendeBeskrivelsesvariabel.UseVisualStyleBackColor = true;
             this.checkBoxInnsnevrendeBeskrivelsesvariabel.CheckedChanged += new System.EventHandler(this.checkBoxInnsnevrendeBeskrivelsesvariabel_CheckedChanged);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(502, 119);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(140, 13);
+            this.label7.TabIndex = 28;
+            this.label7.Text = "Antall definisjoner for klasse:";
+            // 
+            // labelAntallKlasser
+            // 
+            this.labelAntallKlasser.AutoSize = true;
+            this.labelAntallKlasser.Location = new System.Drawing.Point(662, 119);
+            this.labelAntallKlasser.Name = "labelAntallKlasser";
+            this.labelAntallKlasser.Size = new System.Drawing.Size(13, 13);
+            this.labelAntallKlasser.TabIndex = 29;
+            this.labelAntallKlasser.Text = "0";
+            // 
+            // checkBoxPermutations
+            // 
+            this.checkBoxPermutations.AutoSize = true;
+            this.checkBoxPermutations.Location = new System.Drawing.Point(130, 532);
+            this.checkBoxPermutations.Name = "checkBoxPermutations";
+            this.checkBoxPermutations.Size = new System.Drawing.Size(151, 17);
+            this.checkBoxPermutations.TabIndex = 30;
+            this.checkBoxPermutations.Text = "Lage permutasjoner (AND)";
+            this.checkBoxPermutations.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(892, 601);
+            this.Controls.Add(this.checkBoxPermutations);
+            this.Controls.Add(this.labelAntallKlasser);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.checkBoxInnsnevrendeBeskrivelsesvariabel);
             this.Controls.Add(this.labelInnsnevrendeBeskrivelsesvariabel);
             this.Controls.Add(this.checkedListBoxInnsnevrendeBeskrivelsesvariabel);
@@ -369,6 +403,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn RødlisteKlassifisering_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn InnsnevrendeBeskrivelsesvariabel;
         private System.Windows.Forms.CheckBox checkBoxInnsnevrendeBeskrivelsesvariabel;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelAntallKlasser;
+        private System.Windows.Forms.CheckBox checkBoxPermutations;
     }
 }
 

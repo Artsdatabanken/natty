@@ -247,24 +247,97 @@ namespace Forms_dev3
 
             var selectedInnsnevrendeBeskrivelsesvariabler = GetSelectedInnsnevrendeBeskrivelsesvariablerValues();
 
-            var rødlisteKlassifisering = new RødlisteKlassifisering();
 
-            if (!selectedKartleggingsKoder.Any())
-                rødlisteKlassifisering.NaturområdeTypeKode =
-                    DataConnection.Context.NaturområdeTypeKodeSet.First(d =>
-                        d.verdi == comboBoxNaturområdetyper.SelectedItem);
 
+            if (checkBoxPermutations.Checked)
+            {
+
+                
+                if (!selectedKartleggingsKoder.Any())
+                    selectedKartleggingsKoder = DataConnection.Context.NaturområdeTypeKodeSet.First(d =>
+                        d.verdi == comboBoxNaturområdetyper.SelectedItem).KartleggingsKode;
+
+
+                var beskrivelsesVariabelDictionary = new Dictionary<string, List<Beskrivelsesvariabel>>();
+                foreach (var beskrivelsesvariabel in selectedBeskrivelsesvariabler.ToList())
+                {
+                    var key = beskrivelsesvariabel.verdi.Split('_')[0];
+                    if(!beskrivelsesVariabelDictionary.ContainsKey(key)) beskrivelsesVariabelDictionary[key] = new List<Beskrivelsesvariabel>();
+                    beskrivelsesVariabelDictionary[key].Add(beskrivelsesvariabel);
+                }
+
+                
+
+                foreach (var kartlegginsKode in selectedKartleggingsKoder.ToList())
+                {
+                    var addedDict = new Dictionary<Tuple<Beskrivelsesvariabel, Beskrivelsesvariabel>, bool>();
+                    if (beskrivelsesVariabelDictionary.Keys.Count > 0)
+                        foreach (var uniqueBeskrivelsesvariabel1 in beskrivelsesVariabelDictionary)
+                        {
+                            foreach (var uniqueBeskrivelsesvariabel2 in beskrivelsesVariabelDictionary)
+                            {
+                                if (uniqueBeskrivelsesvariabel1.Key == uniqueBeskrivelsesvariabel2.Key) continue;
+                                foreach (var beskrivelsesvariabel1 in uniqueBeskrivelsesvariabel1.Value)
+                                {
+                                    foreach (var beskrivelsesvariabel2 in uniqueBeskrivelsesvariabel2.Value)
+                                    {
+                                        if (beskrivelsesvariabel1.Id == beskrivelsesvariabel2.Id) continue;
+                                        var tupleKey = new Tuple<Beskrivelsesvariabel, Beskrivelsesvariabel>(beskrivelsesvariabel1, beskrivelsesvariabel2);
+                                        var tupleKeyReversed = new Tuple<Beskrivelsesvariabel, Beskrivelsesvariabel>(beskrivelsesvariabel2, beskrivelsesvariabel1);
+                                        if (addedDict.ContainsKey(tupleKey) || addedDict.ContainsKey(tupleKeyReversed))
+                                            continue;
+                                        var rødlisteKlassifisering = new RødlisteKlassifisering
+                                        {
+                                            KartleggingsKode = new List<KartleggingsKode> {kartlegginsKode},
+                                            RødlisteVurderingsenhet = selectedRødlisteVurderingsenhet,
+                                            Beskrivelsesvariabel = new List<Beskrivelsesvariabel> {beskrivelsesvariabel1, beskrivelsesvariabel2}
+                                        };
+                                        if (selectedInnsnevrendeBeskrivelsesvariabler.Any())
+                                            rødlisteKlassifisering.InnsnevrendeBeskrivelsesvariabel =
+                                                selectedInnsnevrendeBeskrivelsesvariabler.ToList();
+                                        DataConnection.Context.RødlisteKlassifiseringSet.Add(rødlisteKlassifisering);
+                                        addedDict[tupleKey] = true;
+                                    }
+                                }
+                            }
+                        }
+                    else
+                    {
+                        var rødlisteKlassifisering = new RødlisteKlassifisering
+                        {
+                            KartleggingsKode = new List<KartleggingsKode> {kartlegginsKode},
+                            RødlisteVurderingsenhet = selectedRødlisteVurderingsenhet
+                        };
+
+
+                        if (checkedListBoxInnsnevrendeBeskrivelsesvariabel.CheckedItems.Count != 0)
+                            rødlisteKlassifisering.InnsnevrendeBeskrivelsesvariabel =
+                                selectedInnsnevrendeBeskrivelsesvariabler.ToList();
+                        DataConnection.Context.RødlisteKlassifiseringSet.Add(rødlisteKlassifisering);
+                    }
+                }
+            }
             else
-                rødlisteKlassifisering.KartleggingsKode = selectedKartleggingsKoder.ToList();
+            {
+                var rødlisteKlassifisering = new RødlisteKlassifisering();
+                if (!selectedKartleggingsKoder.Any())
+                    rødlisteKlassifisering.NaturområdeTypeKode =
+                        DataConnection.Context.NaturområdeTypeKodeSet.First(d =>
+                            d.verdi == comboBoxNaturområdetyper.SelectedItem);
 
-            rødlisteKlassifisering.RødlisteVurderingsenhet = selectedRødlisteVurderingsenhet;
-            rødlisteKlassifisering.Beskrivelsesvariabel = selectedBeskrivelsesvariabler.ToList();
+                else
+                    rødlisteKlassifisering.KartleggingsKode = selectedKartleggingsKoder.ToList();
 
-            if (checkedListBoxInnsnevrendeBeskrivelsesvariabel.CheckedItems.Count != 0)
-                rødlisteKlassifisering.InnsnevrendeBeskrivelsesvariabel =
-                    selectedInnsnevrendeBeskrivelsesvariabler.ToList();
+                rødlisteKlassifisering.RødlisteVurderingsenhet = selectedRødlisteVurderingsenhet;
+                rødlisteKlassifisering.Beskrivelsesvariabel = selectedBeskrivelsesvariabler.ToList();
 
-            DataConnection.Context.RødlisteKlassifiseringSet.Add(rødlisteKlassifisering);
+                if (checkedListBoxInnsnevrendeBeskrivelsesvariabel.CheckedItems.Count != 0)
+                    rødlisteKlassifisering.InnsnevrendeBeskrivelsesvariabel =
+                        selectedInnsnevrendeBeskrivelsesvariabler.ToList();
+                DataConnection.Context.RødlisteKlassifiseringSet.Add(rødlisteKlassifisering);
+            }
+
+
 
             DataConnection.Context.SaveChanges();
 
@@ -332,6 +405,8 @@ namespace Forms_dev3
                     dataGridViewRødlisteKlassifisering.Rows.Add(dataGridRow);
                 }
             }
+
+            labelAntallKlasser.Text = dataGridViewRødlisteKlassifisering.Rows.Count.ToString();
         }
 
         private string ConcatinateInnsnevrendeBeskrivelsesvariabler(
@@ -441,9 +516,9 @@ namespace Forms_dev3
                     DataConnection.Context.RødlisteKlassifiseringSet.Find((int) row.Cells["RødlisteKlassifisering_id"]
                         .Value);
                 DataConnection.Context.RødlisteKlassifiseringSet.Remove(rødlisteKlassifisering);
-                DataConnection.Context.SaveChanges();
-                UpdateGridView();
             }
+            DataConnection.Context.SaveChanges();
+            UpdateGridView();
 
         }
 
