@@ -168,6 +168,7 @@
       <LastGenOutput>RødlistedeNaturtyperKlassifisering.cs</LastGenOutput>
       <DependentUpon>RødlistedeNaturtyperKlassifisering.edmx</DependentUpon>
     </Content>
+    <Content Include="SQL\naturområdetype_rødlisteklassifisering.sql" />
     <Content Include="SQL\naturområde_beskrivelsesvariabel.sql" />
   </ItemGroup>
   <ItemGroup>
