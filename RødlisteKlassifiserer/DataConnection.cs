@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace RødlisteKlassifiserer
 {
-    internal static class DataConnection
+    public static class DataConnection
     {
         public static readonly RødlistedeNaturtyperKlassifiseringContainer Context =
             new RødlistedeNaturtyperKlassifiseringContainer();

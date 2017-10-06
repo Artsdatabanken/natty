@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0485952d3c4448528b975451f0c8487c" Name="Diagram1">
+        <EntityTypeShape EntityType="NiNCore_norskModel.Beskrivelsesvariabel" Width="1.5" PointX="6" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NiNCore_norskModel.Dataleveranse" Width="1.5" PointX="3" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NiNCore_norskModel.Dokument" Width="1.5" PointX="13.5" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NiNCore_norskModel.EgendefinertVariabel" Width="1.5" PointX="15" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NiNCore_norskModel.EgendefinertVariabelDefinisjon" Width="1.5" PointX="10.5" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="NiNCore_norskModel.KartlagtOmråde" Width="1.5" PointX="8.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NiNCore_norskModel.Kontakt" Width="1.5" PointX="0.75" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="NiNCore_norskModel.Naturnivå" Width="1.5" PointX="8.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="NiNCore_norskModel.Naturområde" Width="1.5" PointX="10.5" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NiNCore_norskModel.NaturområdeType" Width="1.5" PointX="12.75" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NiNCore_norskModel.Område" Width="1.5" PointX="15.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NiNCore_norskModel.Områdekart" Width="1.5" PointX="18" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NiNCore_norskModel.OmrådekartType" Width="1.5" PointX="3" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NiNCore_norskModel.OmrådeType" Width="1.5" PointX="13.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="NiNCore_norskModel.Rutenett" Width="1.5" PointX="3" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NiNCore_norskModel.Rutenettkart" Width="1.5" PointX="5.25" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NiNCore_norskModel.RutenettkartType" Width="1.5" PointX="3" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NiNCore_norskModel.Rutenettype" Width="1.5" PointX="0.75" PointY="29.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NiNCore_norskModel.Standardvariabel" Width="1.5" PointX="10.5" PointY="28.75" IsExpanded="true" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_Beskrivelsesvariabel_Kontakt" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_Beskrivelsesvariabel_Naturområde" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_Beskrivelsesvariabel_NaturområdeType" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_Dataleveranse_Kontakt" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_KartlagtOmråde_Dataleveranse" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_Dokument_KartlagtOmråde" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_Dokument_Kontakt" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_Dokument_Naturområde" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_Dokument_OmrådekartType" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_Dokument_RutenettkartType" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_EgendefinertVariabel_NaturområdeType" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_EgendefinertVariabelDefinisjon_KartlagtOmråde" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_KartlagtOmrådeOwner_Kontakt" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_Naturområde_KartlagtOmråde" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_Standardvariabel_KartlagtOmråde" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_Naturområde_Kontakt" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_NaturområdeType_Kontakt" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_OmrådekartType_Kontakt" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_RutenettkartType_Kontakt" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_Naturområde_Naturnivå" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_NaturområdeType_Naturområdea" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_Område_OmrådeType" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_Områdekart_Område" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_Områdekart_OmrådekartType" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_Rutenett_Rutenettype" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_Rutenettkart_Rutenett" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.FK_Rutenettkart_RutenettkartType" ManuallyRouted="false" />
+        <AssociationConnector Association="NiNCore_norskModel.OmrådeLink" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

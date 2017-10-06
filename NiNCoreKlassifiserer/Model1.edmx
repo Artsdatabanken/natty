@@ -1,0 +1,1853 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NiNCore_norskModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Beskrivelsesvariabel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naturområde_id" Type="int" />
+          <Property Name="naturområdetype_id" Type="int" />
+          <Property Name="tematiskId" Type="nvarchar(max)" />
+          <Property Name="kode" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="kartlegger_id" Type="int" />
+          <Property Name="kartlagt" Type="datetime" />
+          <Property Name="trinn" Type="nvarchar(max)" />
+          <Property Name="beskrivelse" Type="nvarchar(max)" />
+          <Property Name="opprinneligKode" Type="varchar" MaxLength="16" />
+          <Property Name="totalklassifikasjonskvalitet" Type="int" Nullable="false" />
+          <Property Name="localId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Dataleveranse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="doc_id" Type="int" Nullable="false" />
+          <Property Name="navn" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="leveranseDato" Type="datetime" Nullable="false" />
+          <Property Name="operatør_id" Type="int" Nullable="false" />
+          <Property Name="begrunnelseForEndring" Type="nvarchar(max)" />
+          <Property Name="beskrivelse" Type="nvarchar(max)" />
+          <Property Name="parent_id" Type="int" />
+          <Property Name="opprettet" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Dokument">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="doc_guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="kartlagtOmråde_id" Type="int" />
+          <Property Name="naturområde_id" Type="int" />
+          <Property Name="områdeKartType_id" Type="int" />
+          <Property Name="rutenettkartType_id" Type="int" />
+          <Property Name="tittel" Type="nvarchar(max)" />
+          <Property Name="beskrivelse" Type="nvarchar(max)" />
+          <Property Name="kartlegger_id" Type="int" />
+          <Property Name="filsti" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EgendefinertVariabel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naturområdetype_id" Type="int" Nullable="false" />
+          <Property Name="spesifikasjon" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="trinn" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="kartlegger_id" Type="int" />
+          <Property Name="localId" Type="uniqueidentifier" />
+          <Property Name="tematiskId" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="EgendefinertVariabelDefinisjon">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kartlagtOmråde_id" Type="int" Nullable="false" />
+          <Property Name="spesifikasjon" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="beskrivelse" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KartlagtOmråde">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dataleveranse_id" Type="int" Nullable="false" />
+          <Property Name="localId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="navnerom" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="versjonId" Type="nvarchar(max)" />
+          <Property Name="opprinneligReferansesystem" Type="nvarchar(max)" />
+          <Property Name="program" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="prosjekt" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="prosjektbeskrivelse" Type="nvarchar(max)" />
+          <Property Name="formål" Type="nvarchar(max)" />
+          <Property Name="oppdragsgiver_id" Type="int" Nullable="false" />
+          <Property Name="eier_id" Type="int" Nullable="false" />
+          <Property Name="kartlagtFraDato" Type="datetime" Nullable="false" />
+          <Property Name="kartlagtTilDato" Type="datetime" Nullable="false" />
+          <Property Name="kartleggingsmålestokk" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="oppløsning" Type="nvarchar(max)" />
+          <Property Name="geometri" Type="geometry" Nullable="false" />
+          <Property Name="målemetode" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="nøyaktighet" Type="int" />
+          <Property Name="visibility" Type="nvarchar(max)" />
+          <Property Name="målemetodeHøyde" Type="nvarchar(max)" />
+          <Property Name="nøyaktighetHøyde" Type="int" />
+          <Property Name="maksimaltAvvik" Type="int" />
+          <Property Name="bruksbegrensning" Type="int" Nullable="false" />
+          <Property Name="totalklassifikasjonskvalitet" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kontakt">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firmanavn" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="kontaktperson" Type="nvarchar(max)" />
+          <Property Name="epost" Type="nvarchar(max)" />
+          <Property Name="telefon" Type="nvarchar(max)" />
+          <Property Name="hjemmeside" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Naturnivå">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="type" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Naturområde">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kartlagtOmråde_id" Type="int" Nullable="false" />
+          <Property Name="localId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="navnerom" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="versjonId" Type="nvarchar(max)" />
+          <Property Name="versjon" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="naturnivå_id" Type="int" Nullable="false" />
+          <Property Name="geometri" Type="geometry" Nullable="false" />
+          <Property Name="geometriSenterpunkt" Type="geometry" Nullable="false" />
+          <Property Name="kartlegger_id" Type="int" />
+          <Property Name="kartlagt" Type="datetime" />
+          <Property Name="beskrivelse" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="institusjon" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="stedfestingskvalitet" Type="int" Nullable="false" />
+          <Property Name="tematiskId" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="NaturområdeType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="naturområde_id" Type="int" Nullable="false" />
+          <Property Name="tematiskId" Type="nvarchar(max)" />
+          <Property Name="kode" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="kartlegger_id" Type="int" />
+          <Property Name="kartlagt" Type="datetime" />
+          <Property Name="andel" Type="float" Nullable="false" />
+          <Property Name="totalklassifikasjonskvalitet" Type="int" Nullable="false" />
+          <Property Name="localId" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Område">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="geometriType_id" Type="int" Nullable="false" />
+          <Property Name="nummer" Type="int" />
+          <Property Name="navn" Type="nvarchar(max)" />
+          <Property Name="kategori" Type="varchar" MaxLength="16" />
+          <Property Name="geometri" Type="geometry" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Områdekart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="områdeKartType_id" Type="int" Nullable="false" />
+          <Property Name="geometri_id" Type="int" Nullable="false" />
+          <Property Name="trinn" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OmrådekartType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="doc_guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="navn" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="koderegister" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="kodeversjon" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="kode" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="minimumsverdi" Type="nvarchar(max)" />
+          <Property Name="maksimumsverdi" Type="nvarchar(max)" />
+          <Property Name="beskrivelse" Type="nvarchar(max)" />
+          <Property Name="etablert" Type="datetime" Nullable="false" />
+          <Property Name="eier_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OmrådeLink">
+          <Key>
+            <PropertyRef Name="geometri_id" />
+            <PropertyRef Name="naturområde_id" />
+          </Key>
+          <Property Name="geometri_id" Type="int" Nullable="false" />
+          <Property Name="naturområde_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OmrådeType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="type" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rutenett">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rutenettype_id" Type="int" />
+          <Property Name="geometrieId" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="geometri" Type="geometry" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rutenettkart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rutenettkartType_id" Type="int" Nullable="false" />
+          <Property Name="rutenett_id" Type="int" Nullable="false" />
+          <Property Name="trinn" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RutenettkartType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="doc_guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="navn" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="koderegister" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="kodeversjon" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="kode" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="minimumsverdi" Type="nvarchar(max)" />
+          <Property Name="maksimumsverdi" Type="nvarchar(max)" />
+          <Property Name="beskrivelse" Type="nvarchar(max)" />
+          <Property Name="etablert" Type="datetime" Nullable="false" />
+          <Property Name="eier_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rutenettype">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="type" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Standardvariabel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kartlagtOmråde_id" Type="int" Nullable="false" />
+          <Property Name="koderegister" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="kodeversjon" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="kode" Type="varchar" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Beskrivelsesvariabel_Kontakt">
+          <End Role="Kontakt" Type="Self.Kontakt" Multiplicity="0..1" />
+          <End Role="Beskrivelsesvariabel" Type="Self.Beskrivelsesvariabel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Beskrivelsesvariabel">
+              <PropertyRef Name="kartlegger_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Beskrivelsesvariabel_Naturområde">
+          <End Role="Naturområde" Type="Self.Naturområde" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Beskrivelsesvariabel" Type="Self.Beskrivelsesvariabel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Naturområde">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Beskrivelsesvariabel">
+              <PropertyRef Name="naturområde_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Beskrivelsesvariabel_NaturområdeType">
+          <End Role="NaturområdeType" Type="Self.NaturområdeType" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Beskrivelsesvariabel" Type="Self.Beskrivelsesvariabel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NaturområdeType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Beskrivelsesvariabel">
+              <PropertyRef Name="naturområdetype_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dataleveranse_Kontakt">
+          <End Role="Kontakt" Type="Self.Kontakt" Multiplicity="1" />
+          <End Role="Dataleveranse" Type="Self.Dataleveranse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Dataleveranse">
+              <PropertyRef Name="operatør_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dokument_KartlagtOmråde">
+          <End Role="KartlagtOmråde" Type="Self.KartlagtOmråde" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Dokument" Type="Self.Dokument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KartlagtOmråde">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Dokument">
+              <PropertyRef Name="kartlagtOmråde_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dokument_Kontakt">
+          <End Role="Kontakt" Type="Self.Kontakt" Multiplicity="0..1" />
+          <End Role="Dokument" Type="Self.Dokument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Dokument">
+              <PropertyRef Name="kartlegger_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dokument_Naturområde">
+          <End Role="Naturområde" Type="Self.Naturområde" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Dokument" Type="Self.Dokument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Naturområde">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Dokument">
+              <PropertyRef Name="naturområde_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dokument_OmrådekartType">
+          <End Role="OmrådekartType" Type="Self.OmrådekartType" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Dokument" Type="Self.Dokument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OmrådekartType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Dokument">
+              <PropertyRef Name="områdeKartType_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dokument_RutenettkartType">
+          <End Role="RutenettkartType" Type="Self.RutenettkartType" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Dokument" Type="Self.Dokument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RutenettkartType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Dokument">
+              <PropertyRef Name="rutenettkartType_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EgendefinertVariabel_NaturområdeType">
+          <End Role="NaturområdeType" Type="Self.NaturområdeType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EgendefinertVariabel" Type="Self.EgendefinertVariabel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NaturområdeType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EgendefinertVariabel">
+              <PropertyRef Name="naturområdetype_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EgendefinertVariabelDefinisjon_KartlagtOmråde">
+          <End Role="KartlagtOmråde" Type="Self.KartlagtOmråde" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EgendefinertVariabelDefinisjon" Type="Self.EgendefinertVariabelDefinisjon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KartlagtOmråde">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EgendefinertVariabelDefinisjon">
+              <PropertyRef Name="kartlagtOmråde_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KartlagtOmråde_Dataleveranse">
+          <End Role="Dataleveranse" Type="Self.Dataleveranse" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="KartlagtOmråde" Type="Self.KartlagtOmråde" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dataleveranse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="KartlagtOmråde">
+              <PropertyRef Name="dataleveranse_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KartlagtOmrådeOwner_Kontakt">
+          <End Role="Kontakt" Type="Self.Kontakt" Multiplicity="1" />
+          <End Role="KartlagtOmråde" Type="Self.KartlagtOmråde" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="KartlagtOmråde">
+              <PropertyRef Name="eier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Naturområde_KartlagtOmråde">
+          <End Role="KartlagtOmråde" Type="Self.KartlagtOmråde" Multiplicity="1" />
+          <End Role="Naturområde" Type="Self.Naturområde" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KartlagtOmråde">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Naturområde">
+              <PropertyRef Name="kartlagtOmråde_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Naturområde_Kontakt">
+          <End Role="Kontakt" Type="Self.Kontakt" Multiplicity="0..1" />
+          <End Role="Naturområde" Type="Self.Naturområde" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Naturområde">
+              <PropertyRef Name="kartlegger_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Naturområde_Naturnivå">
+          <End Role="Naturnivå" Type="Self.Naturnivå" Multiplicity="1" />
+          <End Role="Naturområde" Type="Self.Naturområde" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Naturnivå">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Naturområde">
+              <PropertyRef Name="naturnivå_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NaturområdeType_Kontakt">
+          <End Role="Kontakt" Type="Self.Kontakt" Multiplicity="0..1" />
+          <End Role="NaturområdeType" Type="Self.NaturområdeType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="NaturområdeType">
+              <PropertyRef Name="kartlegger_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NaturområdeType_Naturområdea">
+          <End Role="Naturområde" Type="Self.Naturområde" Multiplicity="1" />
+          <End Role="NaturområdeType" Type="Self.NaturområdeType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Naturområde">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="NaturområdeType">
+              <PropertyRef Name="naturområde_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Område_OmrådeType">
+          <End Role="OmrådeType" Type="Self.OmrådeType" Multiplicity="1" />
+          <End Role="Område" Type="Self.Område" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OmrådeType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Område">
+              <PropertyRef Name="geometriType_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Områdekart_Område">
+          <End Role="Område" Type="Self.Område" Multiplicity="1" />
+          <End Role="Områdekart" Type="Self.Områdekart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Område">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Områdekart">
+              <PropertyRef Name="geometri_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Områdekart_OmrådekartType">
+          <End Role="OmrådekartType" Type="Self.OmrådekartType" Multiplicity="1" />
+          <End Role="Områdekart" Type="Self.Områdekart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OmrådekartType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Områdekart">
+              <PropertyRef Name="områdeKartType_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OmrådekartType_Kontakt">
+          <End Role="Kontakt" Type="Self.Kontakt" Multiplicity="1" />
+          <End Role="OmrådekartType" Type="Self.OmrådekartType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OmrådekartType">
+              <PropertyRef Name="eier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OmrådeLink_Naturområde">
+          <End Role="Naturområde" Type="Self.Naturområde" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OmrådeLink" Type="Self.OmrådeLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Naturområde">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OmrådeLink">
+              <PropertyRef Name="naturområde_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OmrådeLink_Område">
+          <End Role="Område" Type="Self.Område" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OmrådeLink" Type="Self.OmrådeLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Område">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OmrådeLink">
+              <PropertyRef Name="geometri_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rutenett_Rutenettype">
+          <End Role="Rutenettype" Type="Self.Rutenettype" Multiplicity="0..1" />
+          <End Role="Rutenett" Type="Self.Rutenett" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rutenettype">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rutenett">
+              <PropertyRef Name="rutenettype_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rutenettkart_Rutenett">
+          <End Role="Rutenett" Type="Self.Rutenett" Multiplicity="1" />
+          <End Role="Rutenettkart" Type="Self.Rutenettkart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rutenett">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rutenettkart">
+              <PropertyRef Name="rutenett_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rutenettkart_RutenettkartType">
+          <End Role="RutenettkartType" Type="Self.RutenettkartType" Multiplicity="1" />
+          <End Role="Rutenettkart" Type="Self.Rutenettkart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RutenettkartType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rutenettkart">
+              <PropertyRef Name="rutenettkartType_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RutenettkartType_Kontakt">
+          <End Role="Kontakt" Type="Self.Kontakt" Multiplicity="1" />
+          <End Role="RutenettkartType" Type="Self.RutenettkartType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RutenettkartType">
+              <PropertyRef Name="eier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Standardvariabel_KartlagtOmråde">
+          <End Role="KartlagtOmråde" Type="Self.KartlagtOmråde" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Standardvariabel" Type="Self.Standardvariabel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KartlagtOmråde">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Standardvariabel">
+              <PropertyRef Name="kartlagtOmråde_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NiNCore_norskModelStoreContainer">
+          <EntitySet Name="Beskrivelsesvariabel" EntityType="Self.Beskrivelsesvariabel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dataleveranse" EntityType="Self.Dataleveranse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dokument" EntityType="Self.Dokument" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EgendefinertVariabel" EntityType="Self.EgendefinertVariabel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EgendefinertVariabelDefinisjon" EntityType="Self.EgendefinertVariabelDefinisjon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KartlagtOmråde" EntityType="Self.KartlagtOmråde" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kontakt" EntityType="Self.Kontakt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Naturnivå" EntityType="Self.Naturnivå" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Naturområde" EntityType="Self.Naturområde" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NaturområdeType" EntityType="Self.NaturområdeType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Område" EntityType="Self.Område" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Områdekart" EntityType="Self.Områdekart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OmrådekartType" EntityType="Self.OmrådekartType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OmrådeLink" EntityType="Self.OmrådeLink" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OmrådeType" EntityType="Self.OmrådeType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rutenett" EntityType="Self.Rutenett" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rutenettkart" EntityType="Self.Rutenettkart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RutenettkartType" EntityType="Self.RutenettkartType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rutenettype" EntityType="Self.Rutenettype" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Standardvariabel" EntityType="Self.Standardvariabel" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Beskrivelsesvariabel_Kontakt" Association="Self.FK_Beskrivelsesvariabel_Kontakt">
+            <End Role="Kontakt" EntitySet="Kontakt" />
+            <End Role="Beskrivelsesvariabel" EntitySet="Beskrivelsesvariabel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Beskrivelsesvariabel_Naturområde" Association="Self.FK_Beskrivelsesvariabel_Naturområde">
+            <End Role="Naturområde" EntitySet="Naturområde" />
+            <End Role="Beskrivelsesvariabel" EntitySet="Beskrivelsesvariabel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Beskrivelsesvariabel_NaturområdeType" Association="Self.FK_Beskrivelsesvariabel_NaturområdeType">
+            <End Role="NaturområdeType" EntitySet="NaturområdeType" />
+            <End Role="Beskrivelsesvariabel" EntitySet="Beskrivelsesvariabel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dataleveranse_Kontakt" Association="Self.FK_Dataleveranse_Kontakt">
+            <End Role="Kontakt" EntitySet="Kontakt" />
+            <End Role="Dataleveranse" EntitySet="Dataleveranse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dokument_KartlagtOmråde" Association="Self.FK_Dokument_KartlagtOmråde">
+            <End Role="KartlagtOmråde" EntitySet="KartlagtOmråde" />
+            <End Role="Dokument" EntitySet="Dokument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dokument_Kontakt" Association="Self.FK_Dokument_Kontakt">
+            <End Role="Kontakt" EntitySet="Kontakt" />
+            <End Role="Dokument" EntitySet="Dokument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dokument_Naturområde" Association="Self.FK_Dokument_Naturområde">
+            <End Role="Naturområde" EntitySet="Naturområde" />
+            <End Role="Dokument" EntitySet="Dokument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dokument_OmrådekartType" Association="Self.FK_Dokument_OmrådekartType">
+            <End Role="OmrådekartType" EntitySet="OmrådekartType" />
+            <End Role="Dokument" EntitySet="Dokument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dokument_RutenettkartType" Association="Self.FK_Dokument_RutenettkartType">
+            <End Role="RutenettkartType" EntitySet="RutenettkartType" />
+            <End Role="Dokument" EntitySet="Dokument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EgendefinertVariabel_NaturområdeType" Association="Self.FK_EgendefinertVariabel_NaturområdeType">
+            <End Role="NaturområdeType" EntitySet="NaturområdeType" />
+            <End Role="EgendefinertVariabel" EntitySet="EgendefinertVariabel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EgendefinertVariabelDefinisjon_KartlagtOmråde" Association="Self.FK_EgendefinertVariabelDefinisjon_KartlagtOmråde">
+            <End Role="KartlagtOmråde" EntitySet="KartlagtOmråde" />
+            <End Role="EgendefinertVariabelDefinisjon" EntitySet="EgendefinertVariabelDefinisjon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KartlagtOmråde_Dataleveranse" Association="Self.FK_KartlagtOmråde_Dataleveranse">
+            <End Role="Dataleveranse" EntitySet="Dataleveranse" />
+            <End Role="KartlagtOmråde" EntitySet="KartlagtOmråde" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KartlagtOmrådeOwner_Kontakt" Association="Self.FK_KartlagtOmrådeOwner_Kontakt">
+            <End Role="Kontakt" EntitySet="Kontakt" />
+            <End Role="KartlagtOmråde" EntitySet="KartlagtOmråde" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Naturområde_KartlagtOmråde" Association="Self.FK_Naturområde_KartlagtOmråde">
+            <End Role="KartlagtOmråde" EntitySet="KartlagtOmråde" />
+            <End Role="Naturområde" EntitySet="Naturområde" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Naturområde_Kontakt" Association="Self.FK_Naturområde_Kontakt">
+            <End Role="Kontakt" EntitySet="Kontakt" />
+            <End Role="Naturområde" EntitySet="Naturområde" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Naturområde_Naturnivå" Association="Self.FK_Naturområde_Naturnivå">
+            <End Role="Naturnivå" EntitySet="Naturnivå" />
+            <End Role="Naturområde" EntitySet="Naturområde" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NaturområdeType_Kontakt" Association="Self.FK_NaturområdeType_Kontakt">
+            <End Role="Kontakt" EntitySet="Kontakt" />
+            <End Role="NaturområdeType" EntitySet="NaturområdeType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NaturområdeType_Naturområdea" Association="Self.FK_NaturområdeType_Naturområdea">
+            <End Role="Naturområde" EntitySet="Naturområde" />
+            <End Role="NaturområdeType" EntitySet="NaturområdeType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Område_OmrådeType" Association="Self.FK_Område_OmrådeType">
+            <End Role="OmrådeType" EntitySet="OmrådeType" />
+            <End Role="Område" EntitySet="Område" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Områdekart_Område" Association="Self.FK_Områdekart_Område">
+            <End Role="Område" EntitySet="Område" />
+            <End Role="Områdekart" EntitySet="Områdekart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Områdekart_OmrådekartType" Association="Self.FK_Områdekart_OmrådekartType">
+            <End Role="OmrådekartType" EntitySet="OmrådekartType" />
+            <End Role="Områdekart" EntitySet="Områdekart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OmrådekartType_Kontakt" Association="Self.FK_OmrådekartType_Kontakt">
+            <End Role="Kontakt" EntitySet="Kontakt" />
+            <End Role="OmrådekartType" EntitySet="OmrådekartType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OmrådeLink_Naturområde" Association="Self.FK_OmrådeLink_Naturområde">
+            <End Role="Naturområde" EntitySet="Naturområde" />
+            <End Role="OmrådeLink" EntitySet="OmrådeLink" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OmrådeLink_Område" Association="Self.FK_OmrådeLink_Område">
+            <End Role="Område" EntitySet="Område" />
+            <End Role="OmrådeLink" EntitySet="OmrådeLink" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rutenett_Rutenettype" Association="Self.FK_Rutenett_Rutenettype">
+            <End Role="Rutenettype" EntitySet="Rutenettype" />
+            <End Role="Rutenett" EntitySet="Rutenett" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rutenettkart_Rutenett" Association="Self.FK_Rutenettkart_Rutenett">
+            <End Role="Rutenett" EntitySet="Rutenett" />
+            <End Role="Rutenettkart" EntitySet="Rutenettkart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rutenettkart_RutenettkartType" Association="Self.FK_Rutenettkart_RutenettkartType">
+            <End Role="RutenettkartType" EntitySet="RutenettkartType" />
+            <End Role="Rutenettkart" EntitySet="Rutenettkart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RutenettkartType_Kontakt" Association="Self.FK_RutenettkartType_Kontakt">
+            <End Role="Kontakt" EntitySet="Kontakt" />
+            <End Role="RutenettkartType" EntitySet="RutenettkartType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Standardvariabel_KartlagtOmråde" Association="Self.FK_Standardvariabel_KartlagtOmråde">
+            <End Role="KartlagtOmråde" EntitySet="KartlagtOmråde" />
+            <End Role="Standardvariabel" EntitySet="Standardvariabel" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NiNCore_norskModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Beskrivelsesvariabel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naturområde_id" Type="Int32" />
+          <Property Name="naturområdetype_id" Type="Int32" />
+          <Property Name="tematiskId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="kode" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kartlegger_id" Type="Int32" />
+          <Property Name="kartlagt" Type="DateTime" Precision="3" />
+          <Property Name="trinn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="beskrivelse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="opprinneligKode" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="totalklassifikasjonskvalitet" Type="Int32" Nullable="false" />
+          <Property Name="localId" Type="Guid" />
+          <NavigationProperty Name="Kontakt" Relationship="Self.FK_Beskrivelsesvariabel_Kontakt" FromRole="Beskrivelsesvariabel" ToRole="Kontakt" />
+          <NavigationProperty Name="Naturområde" Relationship="Self.FK_Beskrivelsesvariabel_Naturområde" FromRole="Beskrivelsesvariabel" ToRole="Naturområde" />
+          <NavigationProperty Name="NaturområdeType" Relationship="Self.FK_Beskrivelsesvariabel_NaturområdeType" FromRole="Beskrivelsesvariabel" ToRole="NaturområdeType" />
+        </EntityType>
+        <EntityType Name="Dataleveranse">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="doc_id" Type="Int32" Nullable="false" />
+          <Property Name="navn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="leveranseDato" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="operatør_id" Type="Int32" Nullable="false" />
+          <Property Name="begrunnelseForEndring" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="beskrivelse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="parent_id" Type="Int32" />
+          <Property Name="opprettet" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Kontakt" Relationship="Self.FK_Dataleveranse_Kontakt" FromRole="Dataleveranse" ToRole="Kontakt" />
+          <NavigationProperty Name="KartlagtOmråde" Relationship="Self.FK_KartlagtOmråde_Dataleveranse" FromRole="Dataleveranse" ToRole="KartlagtOmråde" />
+        </EntityType>
+        <EntityType Name="Dokument">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="doc_guid" Type="Guid" Nullable="false" />
+          <Property Name="kartlagtOmråde_id" Type="Int32" />
+          <Property Name="naturområde_id" Type="Int32" />
+          <Property Name="områdeKartType_id" Type="Int32" />
+          <Property Name="rutenettkartType_id" Type="Int32" />
+          <Property Name="tittel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="beskrivelse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="kartlegger_id" Type="Int32" />
+          <Property Name="filsti" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="KartlagtOmråde" Relationship="Self.FK_Dokument_KartlagtOmråde" FromRole="Dokument" ToRole="KartlagtOmråde" />
+          <NavigationProperty Name="Kontakt" Relationship="Self.FK_Dokument_Kontakt" FromRole="Dokument" ToRole="Kontakt" />
+          <NavigationProperty Name="Naturområde" Relationship="Self.FK_Dokument_Naturområde" FromRole="Dokument" ToRole="Naturområde" />
+          <NavigationProperty Name="OmrådekartType" Relationship="Self.FK_Dokument_OmrådekartType" FromRole="Dokument" ToRole="OmrådekartType" />
+          <NavigationProperty Name="RutenettkartType" Relationship="Self.FK_Dokument_RutenettkartType" FromRole="Dokument" ToRole="RutenettkartType" />
+        </EntityType>
+        <EntityType Name="EgendefinertVariabel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naturområdetype_id" Type="Int32" Nullable="false" />
+          <Property Name="spesifikasjon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="trinn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kartlegger_id" Type="Int32" />
+          <Property Name="localId" Type="Guid" />
+          <Property Name="tematiskId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NaturområdeType" Relationship="Self.FK_EgendefinertVariabel_NaturområdeType" FromRole="EgendefinertVariabel" ToRole="NaturområdeType" />
+        </EntityType>
+        <EntityType Name="EgendefinertVariabelDefinisjon">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kartlagtOmråde_id" Type="Int32" Nullable="false" />
+          <Property Name="spesifikasjon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="beskrivelse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="KartlagtOmråde" Relationship="Self.FK_EgendefinertVariabelDefinisjon_KartlagtOmråde" FromRole="EgendefinertVariabelDefinisjon" ToRole="KartlagtOmråde" />
+        </EntityType>
+        <EntityType Name="KartlagtOmråde">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dataleveranse_id" Type="Int32" Nullable="false" />
+          <Property Name="localId" Type="Guid" Nullable="false" />
+          <Property Name="navnerom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="versjonId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="opprinneligReferansesystem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="program" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="prosjekt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="prosjektbeskrivelse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="formål" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="oppdragsgiver_id" Type="Int32" Nullable="false" />
+          <Property Name="eier_id" Type="Int32" Nullable="false" />
+          <Property Name="kartlagtFraDato" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="kartlagtTilDato" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="kartleggingsmålestokk" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="oppløsning" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="geometri" Type="Geometry" Nullable="false" />
+          <Property Name="målemetode" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="nøyaktighet" Type="Int32" />
+          <Property Name="visibility" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="målemetodeHøyde" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="nøyaktighetHøyde" Type="Int32" />
+          <Property Name="maksimaltAvvik" Type="Int32" />
+          <Property Name="bruksbegrensning" Type="Int32" Nullable="false" />
+          <Property Name="totalklassifikasjonskvalitet" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dataleveranse" Relationship="Self.FK_KartlagtOmråde_Dataleveranse" FromRole="KartlagtOmråde" ToRole="Dataleveranse" />
+          <NavigationProperty Name="Dokument" Relationship="Self.FK_Dokument_KartlagtOmråde" FromRole="KartlagtOmråde" ToRole="Dokument" />
+          <NavigationProperty Name="EgendefinertVariabelDefinisjon" Relationship="Self.FK_EgendefinertVariabelDefinisjon_KartlagtOmråde" FromRole="KartlagtOmråde" ToRole="EgendefinertVariabelDefinisjon" />
+          <NavigationProperty Name="Kontakt" Relationship="Self.FK_KartlagtOmrådeOwner_Kontakt" FromRole="KartlagtOmråde" ToRole="Kontakt" />
+          <NavigationProperty Name="Naturområde" Relationship="Self.FK_Naturområde_KartlagtOmråde" FromRole="KartlagtOmråde" ToRole="Naturområde" />
+          <NavigationProperty Name="Standardvariabel" Relationship="Self.FK_Standardvariabel_KartlagtOmråde" FromRole="KartlagtOmråde" ToRole="Standardvariabel" />
+        </EntityType>
+        <EntityType Name="Kontakt">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firmanavn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kontaktperson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="epost" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="telefon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="hjemmeside" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Beskrivelsesvariabel" Relationship="Self.FK_Beskrivelsesvariabel_Kontakt" FromRole="Kontakt" ToRole="Beskrivelsesvariabel" />
+          <NavigationProperty Name="Dataleveranse" Relationship="Self.FK_Dataleveranse_Kontakt" FromRole="Kontakt" ToRole="Dataleveranse" />
+          <NavigationProperty Name="Dokument" Relationship="Self.FK_Dokument_Kontakt" FromRole="Kontakt" ToRole="Dokument" />
+          <NavigationProperty Name="KartlagtOmråde" Relationship="Self.FK_KartlagtOmrådeOwner_Kontakt" FromRole="Kontakt" ToRole="KartlagtOmråde" />
+          <NavigationProperty Name="Naturområde" Relationship="Self.FK_Naturområde_Kontakt" FromRole="Kontakt" ToRole="Naturområde" />
+          <NavigationProperty Name="NaturområdeType" Relationship="Self.FK_NaturområdeType_Kontakt" FromRole="Kontakt" ToRole="NaturområdeType" />
+          <NavigationProperty Name="OmrådekartType" Relationship="Self.FK_OmrådekartType_Kontakt" FromRole="Kontakt" ToRole="OmrådekartType" />
+          <NavigationProperty Name="RutenettkartType" Relationship="Self.FK_RutenettkartType_Kontakt" FromRole="Kontakt" ToRole="RutenettkartType" />
+        </EntityType>
+        <EntityType Name="Naturnivå">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Naturområde" Relationship="Self.FK_Naturområde_Naturnivå" FromRole="Naturnivå" ToRole="Naturområde" />
+        </EntityType>
+        <EntityType Name="Naturområde">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kartlagtOmråde_id" Type="Int32" Nullable="false" />
+          <Property Name="localId" Type="Guid" Nullable="false" />
+          <Property Name="navnerom" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="versjonId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="versjon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="naturnivå_id" Type="Int32" Nullable="false" />
+          <Property Name="geometri" Type="Geometry" Nullable="false" />
+          <Property Name="geometriSenterpunkt" Type="Geometry" Nullable="false" />
+          <Property Name="kartlegger_id" Type="Int32" />
+          <Property Name="kartlagt" Type="DateTime" Precision="3" />
+          <Property Name="beskrivelse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="institusjon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="stedfestingskvalitet" Type="Int32" Nullable="false" />
+          <Property Name="tematiskId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Beskrivelsesvariabel" Relationship="Self.FK_Beskrivelsesvariabel_Naturområde" FromRole="Naturområde" ToRole="Beskrivelsesvariabel" />
+          <NavigationProperty Name="Dokument" Relationship="Self.FK_Dokument_Naturområde" FromRole="Naturområde" ToRole="Dokument" />
+          <NavigationProperty Name="KartlagtOmråde" Relationship="Self.FK_Naturområde_KartlagtOmråde" FromRole="Naturområde" ToRole="KartlagtOmråde" />
+          <NavigationProperty Name="Kontakt" Relationship="Self.FK_Naturområde_Kontakt" FromRole="Naturområde" ToRole="Kontakt" />
+          <NavigationProperty Name="Naturnivå" Relationship="Self.FK_Naturområde_Naturnivå" FromRole="Naturområde" ToRole="Naturnivå" />
+          <NavigationProperty Name="NaturområdeType" Relationship="Self.FK_NaturområdeType_Naturområdea" FromRole="Naturområde" ToRole="NaturområdeType" />
+          <NavigationProperty Name="Område" Relationship="Self.OmrådeLink" FromRole="Naturområde" ToRole="Område" />
+        </EntityType>
+        <EntityType Name="NaturområdeType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="naturområde_id" Type="Int32" Nullable="false" />
+          <Property Name="tematiskId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="kode" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="kartlegger_id" Type="Int32" />
+          <Property Name="kartlagt" Type="DateTime" Precision="3" />
+          <Property Name="andel" Type="Double" Nullable="false" />
+          <Property Name="totalklassifikasjonskvalitet" Type="Int32" Nullable="false" />
+          <Property Name="localId" Type="Guid" />
+          <NavigationProperty Name="Beskrivelsesvariabel" Relationship="Self.FK_Beskrivelsesvariabel_NaturområdeType" FromRole="NaturområdeType" ToRole="Beskrivelsesvariabel" />
+          <NavigationProperty Name="EgendefinertVariabel" Relationship="Self.FK_EgendefinertVariabel_NaturområdeType" FromRole="NaturområdeType" ToRole="EgendefinertVariabel" />
+          <NavigationProperty Name="Kontakt" Relationship="Self.FK_NaturområdeType_Kontakt" FromRole="NaturområdeType" ToRole="Kontakt" />
+          <NavigationProperty Name="Naturområde" Relationship="Self.FK_NaturområdeType_Naturområdea" FromRole="NaturområdeType" ToRole="Naturområde" />
+        </EntityType>
+        <EntityType Name="Område">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="geometriType_id" Type="Int32" Nullable="false" />
+          <Property Name="nummer" Type="Int32" />
+          <Property Name="navn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="kategori" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="geometri" Type="Geometry" Nullable="false" />
+          <NavigationProperty Name="OmrådeType" Relationship="Self.FK_Område_OmrådeType" FromRole="Område" ToRole="OmrådeType" />
+          <NavigationProperty Name="Områdekart" Relationship="Self.FK_Områdekart_Område" FromRole="Område" ToRole="Områdekart" />
+          <NavigationProperty Name="Naturområde" Relationship="Self.OmrådeLink" FromRole="Område" ToRole="Naturområde" />
+        </EntityType>
+        <EntityType Name="Områdekart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="områdeKartType_id" Type="Int32" Nullable="false" />
+          <Property Name="geometri_id" Type="Int32" Nullable="false" />
+          <Property Name="trinn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Område" Relationship="Self.FK_Områdekart_Område" FromRole="Områdekart" ToRole="Område" />
+          <NavigationProperty Name="OmrådekartType" Relationship="Self.FK_Områdekart_OmrådekartType" FromRole="Områdekart" ToRole="OmrådekartType" />
+        </EntityType>
+        <EntityType Name="OmrådekartType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="doc_guid" Type="Guid" Nullable="false" />
+          <Property Name="navn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="koderegister" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kodeversjon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kode" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="minimumsverdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="maksimumsverdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="beskrivelse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="etablert" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="eier_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dokument" Relationship="Self.FK_Dokument_OmrådekartType" FromRole="OmrådekartType" ToRole="Dokument" />
+          <NavigationProperty Name="Kontakt" Relationship="Self.FK_OmrådekartType_Kontakt" FromRole="OmrådekartType" ToRole="Kontakt" />
+          <NavigationProperty Name="Områdekart" Relationship="Self.FK_Områdekart_OmrådekartType" FromRole="OmrådekartType" ToRole="Områdekart" />
+        </EntityType>
+        <EntityType Name="OmrådeType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Område" Relationship="Self.FK_Område_OmrådeType" FromRole="OmrådeType" ToRole="Område" />
+        </EntityType>
+        <EntityType Name="Rutenett">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rutenettype_id" Type="Int32" />
+          <Property Name="geometrieId" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="geometri" Type="Geometry" Nullable="false" />
+          <NavigationProperty Name="Rutenettype" Relationship="Self.FK_Rutenett_Rutenettype" FromRole="Rutenett" ToRole="Rutenettype" />
+          <NavigationProperty Name="Rutenettkart" Relationship="Self.FK_Rutenettkart_Rutenett" FromRole="Rutenett" ToRole="Rutenettkart" />
+        </EntityType>
+        <EntityType Name="Rutenettkart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rutenettkartType_id" Type="Int32" Nullable="false" />
+          <Property Name="rutenett_id" Type="Int32" Nullable="false" />
+          <Property Name="trinn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Rutenett" Relationship="Self.FK_Rutenettkart_Rutenett" FromRole="Rutenettkart" ToRole="Rutenett" />
+          <NavigationProperty Name="RutenettkartType" Relationship="Self.FK_Rutenettkart_RutenettkartType" FromRole="Rutenettkart" ToRole="RutenettkartType" />
+        </EntityType>
+        <EntityType Name="RutenettkartType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="doc_guid" Type="Guid" Nullable="false" />
+          <Property Name="navn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="koderegister" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kodeversjon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kode" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="minimumsverdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="maksimumsverdi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="beskrivelse" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="etablert" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="eier_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Dokument" Relationship="Self.FK_Dokument_RutenettkartType" FromRole="RutenettkartType" ToRole="Dokument" />
+          <NavigationProperty Name="Kontakt" Relationship="Self.FK_RutenettkartType_Kontakt" FromRole="RutenettkartType" ToRole="Kontakt" />
+          <NavigationProperty Name="Rutenettkart" Relationship="Self.FK_Rutenettkart_RutenettkartType" FromRole="RutenettkartType" ToRole="Rutenettkart" />
+        </EntityType>
+        <EntityType Name="Rutenettype">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Rutenett" Relationship="Self.FK_Rutenett_Rutenettype" FromRole="Rutenettype" ToRole="Rutenett" />
+        </EntityType>
+        <EntityType Name="Standardvariabel">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kartlagtOmråde_id" Type="Int32" Nullable="false" />
+          <Property Name="koderegister" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kodeversjon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="kode" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="KartlagtOmråde" Relationship="Self.FK_Standardvariabel_KartlagtOmråde" FromRole="Standardvariabel" ToRole="KartlagtOmråde" />
+        </EntityType>
+        <Association Name="FK_Beskrivelsesvariabel_Kontakt">
+          <End Role="Kontakt" Type="Self.Kontakt" Multiplicity="0..1" />
+          <End Role="Beskrivelsesvariabel" Type="Self.Beskrivelsesvariabel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Beskrivelsesvariabel">
+              <PropertyRef Name="kartlegger_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Beskrivelsesvariabel_Naturområde">
+          <End Role="Naturområde" Type="Self.Naturområde" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Beskrivelsesvariabel" Type="Self.Beskrivelsesvariabel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Naturområde">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Beskrivelsesvariabel">
+              <PropertyRef Name="naturområde_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Beskrivelsesvariabel_NaturområdeType">
+          <End Role="NaturområdeType" Type="Self.NaturområdeType" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Beskrivelsesvariabel" Type="Self.Beskrivelsesvariabel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NaturområdeType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Beskrivelsesvariabel">
+              <PropertyRef Name="naturområdetype_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dataleveranse_Kontakt">
+          <End Role="Kontakt" Type="Self.Kontakt" Multiplicity="1" />
+          <End Role="Dataleveranse" Type="Self.Dataleveranse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Dataleveranse">
+              <PropertyRef Name="operatør_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KartlagtOmråde_Dataleveranse">
+          <End Role="Dataleveranse" Type="Self.Dataleveranse" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="KartlagtOmråde" Type="Self.KartlagtOmråde" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dataleveranse">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="KartlagtOmråde">
+              <PropertyRef Name="dataleveranse_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dokument_KartlagtOmråde">
+          <End Role="KartlagtOmråde" Type="Self.KartlagtOmråde" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Dokument" Type="Self.Dokument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KartlagtOmråde">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Dokument">
+              <PropertyRef Name="kartlagtOmråde_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dokument_Kontakt">
+          <End Role="Kontakt" Type="Self.Kontakt" Multiplicity="0..1" />
+          <End Role="Dokument" Type="Self.Dokument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Dokument">
+              <PropertyRef Name="kartlegger_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dokument_Naturområde">
+          <End Role="Naturområde" Type="Self.Naturområde" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Dokument" Type="Self.Dokument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Naturområde">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Dokument">
+              <PropertyRef Name="naturområde_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dokument_OmrådekartType">
+          <End Role="OmrådekartType" Type="Self.OmrådekartType" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Dokument" Type="Self.Dokument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OmrådekartType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Dokument">
+              <PropertyRef Name="områdeKartType_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dokument_RutenettkartType">
+          <End Role="RutenettkartType" Type="Self.RutenettkartType" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Dokument" Type="Self.Dokument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RutenettkartType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Dokument">
+              <PropertyRef Name="rutenettkartType_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EgendefinertVariabel_NaturområdeType">
+          <End Role="NaturområdeType" Type="Self.NaturområdeType" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EgendefinertVariabel" Type="Self.EgendefinertVariabel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NaturområdeType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EgendefinertVariabel">
+              <PropertyRef Name="naturområdetype_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EgendefinertVariabelDefinisjon_KartlagtOmråde">
+          <End Role="KartlagtOmråde" Type="Self.KartlagtOmråde" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EgendefinertVariabelDefinisjon" Type="Self.EgendefinertVariabelDefinisjon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KartlagtOmråde">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EgendefinertVariabelDefinisjon">
+              <PropertyRef Name="kartlagtOmråde_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KartlagtOmrådeOwner_Kontakt">
+          <End Role="Kontakt" Type="Self.Kontakt" Multiplicity="1" />
+          <End Role="KartlagtOmråde" Type="Self.KartlagtOmråde" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="KartlagtOmråde">
+              <PropertyRef Name="eier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Naturområde_KartlagtOmråde">
+          <End Role="KartlagtOmråde" Type="Self.KartlagtOmråde" Multiplicity="1" />
+          <End Role="Naturområde" Type="Self.Naturområde" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KartlagtOmråde">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Naturområde">
+              <PropertyRef Name="kartlagtOmråde_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Standardvariabel_KartlagtOmråde">
+          <End Role="KartlagtOmråde" Type="Self.KartlagtOmråde" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Standardvariabel" Type="Self.Standardvariabel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KartlagtOmråde">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Standardvariabel">
+              <PropertyRef Name="kartlagtOmråde_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Naturområde_Kontakt">
+          <End Role="Kontakt" Type="Self.Kontakt" Multiplicity="0..1" />
+          <End Role="Naturområde" Type="Self.Naturområde" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Naturområde">
+              <PropertyRef Name="kartlegger_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NaturområdeType_Kontakt">
+          <End Role="Kontakt" Type="Self.Kontakt" Multiplicity="0..1" />
+          <End Role="NaturområdeType" Type="Self.NaturområdeType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="NaturområdeType">
+              <PropertyRef Name="kartlegger_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OmrådekartType_Kontakt">
+          <End Role="Kontakt" Type="Self.Kontakt" Multiplicity="1" />
+          <End Role="OmrådekartType" Type="Self.OmrådekartType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="OmrådekartType">
+              <PropertyRef Name="eier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RutenettkartType_Kontakt">
+          <End Role="Kontakt" Type="Self.Kontakt" Multiplicity="1" />
+          <End Role="RutenettkartType" Type="Self.RutenettkartType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kontakt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RutenettkartType">
+              <PropertyRef Name="eier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Naturområde_Naturnivå">
+          <End Role="Naturnivå" Type="Self.Naturnivå" Multiplicity="1" />
+          <End Role="Naturområde" Type="Self.Naturområde" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Naturnivå">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Naturområde">
+              <PropertyRef Name="naturnivå_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NaturområdeType_Naturområdea">
+          <End Role="Naturområde" Type="Self.Naturområde" Multiplicity="1" />
+          <End Role="NaturområdeType" Type="Self.NaturområdeType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Naturområde">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="NaturområdeType">
+              <PropertyRef Name="naturområde_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Område_OmrådeType">
+          <End Role="OmrådeType" Type="Self.OmrådeType" Multiplicity="1" />
+          <End Role="Område" Type="Self.Område" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OmrådeType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Område">
+              <PropertyRef Name="geometriType_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Områdekart_Område">
+          <End Role="Område" Type="Self.Område" Multiplicity="1" />
+          <End Role="Områdekart" Type="Self.Områdekart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Område">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Områdekart">
+              <PropertyRef Name="geometri_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Områdekart_OmrådekartType">
+          <End Role="OmrådekartType" Type="Self.OmrådekartType" Multiplicity="1" />
+          <End Role="Områdekart" Type="Self.Områdekart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OmrådekartType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Områdekart">
+              <PropertyRef Name="områdeKartType_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rutenett_Rutenettype">
+          <End Role="Rutenettype" Type="Self.Rutenettype" Multiplicity="0..1" />
+          <End Role="Rutenett" Type="Self.Rutenett" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rutenettype">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rutenett">
+              <PropertyRef Name="rutenettype_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rutenettkart_Rutenett">
+          <End Role="Rutenett" Type="Self.Rutenett" Multiplicity="1" />
+          <End Role="Rutenettkart" Type="Self.Rutenettkart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rutenett">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rutenettkart">
+              <PropertyRef Name="rutenett_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rutenettkart_RutenettkartType">
+          <End Role="RutenettkartType" Type="Self.RutenettkartType" Multiplicity="1" />
+          <End Role="Rutenettkart" Type="Self.Rutenettkart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RutenettkartType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rutenettkart">
+              <PropertyRef Name="rutenettkartType_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OmrådeLink">
+          <End Role="Naturområde" Type="Self.Naturområde" Multiplicity="*" />
+          <End Role="Område" Type="Self.Område" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="NiNCore_norskEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Beskrivelsesvariabel" EntityType="Self.Beskrivelsesvariabel" />
+          <EntitySet Name="Dataleveranse" EntityType="Self.Dataleveranse" />
+          <EntitySet Name="Dokument" EntityType="Self.Dokument" />
+          <EntitySet Name="EgendefinertVariabel" EntityType="Self.EgendefinertVariabel" />
+          <EntitySet Name="EgendefinertVariabelDefinisjon" EntityType="Self.EgendefinertVariabelDefinisjon" />
+          <EntitySet Name="KartlagtOmråde" EntityType="Self.KartlagtOmråde" />
+          <EntitySet Name="Kontakt" EntityType="Self.Kontakt" />
+          <EntitySet Name="Naturnivå" EntityType="Self.Naturnivå" />
+          <EntitySet Name="Naturområde" EntityType="Self.Naturområde" />
+          <EntitySet Name="NaturområdeType" EntityType="Self.NaturområdeType" />
+          <EntitySet Name="Område" EntityType="Self.Område" />
+          <EntitySet Name="Områdekart" EntityType="Self.Områdekart" />
+          <EntitySet Name="OmrådekartType" EntityType="Self.OmrådekartType" />
+          <EntitySet Name="OmrådeType" EntityType="Self.OmrådeType" />
+          <EntitySet Name="Rutenett" EntityType="Self.Rutenett" />
+          <EntitySet Name="Rutenettkart" EntityType="Self.Rutenettkart" />
+          <EntitySet Name="RutenettkartType" EntityType="Self.RutenettkartType" />
+          <EntitySet Name="Rutenettype" EntityType="Self.Rutenettype" />
+          <EntitySet Name="Standardvariabel" EntityType="Self.Standardvariabel" />
+          <AssociationSet Name="FK_Beskrivelsesvariabel_Kontakt" Association="Self.FK_Beskrivelsesvariabel_Kontakt">
+            <End Role="Kontakt" EntitySet="Kontakt" />
+            <End Role="Beskrivelsesvariabel" EntitySet="Beskrivelsesvariabel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Beskrivelsesvariabel_Naturområde" Association="Self.FK_Beskrivelsesvariabel_Naturområde">
+            <End Role="Naturområde" EntitySet="Naturområde" />
+            <End Role="Beskrivelsesvariabel" EntitySet="Beskrivelsesvariabel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Beskrivelsesvariabel_NaturområdeType" Association="Self.FK_Beskrivelsesvariabel_NaturområdeType">
+            <End Role="NaturområdeType" EntitySet="NaturområdeType" />
+            <End Role="Beskrivelsesvariabel" EntitySet="Beskrivelsesvariabel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dataleveranse_Kontakt" Association="Self.FK_Dataleveranse_Kontakt">
+            <End Role="Kontakt" EntitySet="Kontakt" />
+            <End Role="Dataleveranse" EntitySet="Dataleveranse" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KartlagtOmråde_Dataleveranse" Association="Self.FK_KartlagtOmråde_Dataleveranse">
+            <End Role="Dataleveranse" EntitySet="Dataleveranse" />
+            <End Role="KartlagtOmråde" EntitySet="KartlagtOmråde" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dokument_KartlagtOmråde" Association="Self.FK_Dokument_KartlagtOmråde">
+            <End Role="KartlagtOmråde" EntitySet="KartlagtOmråde" />
+            <End Role="Dokument" EntitySet="Dokument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dokument_Kontakt" Association="Self.FK_Dokument_Kontakt">
+            <End Role="Kontakt" EntitySet="Kontakt" />
+            <End Role="Dokument" EntitySet="Dokument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dokument_Naturområde" Association="Self.FK_Dokument_Naturområde">
+            <End Role="Naturområde" EntitySet="Naturområde" />
+            <End Role="Dokument" EntitySet="Dokument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dokument_OmrådekartType" Association="Self.FK_Dokument_OmrådekartType">
+            <End Role="OmrådekartType" EntitySet="OmrådekartType" />
+            <End Role="Dokument" EntitySet="Dokument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dokument_RutenettkartType" Association="Self.FK_Dokument_RutenettkartType">
+            <End Role="RutenettkartType" EntitySet="RutenettkartType" />
+            <End Role="Dokument" EntitySet="Dokument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EgendefinertVariabel_NaturområdeType" Association="Self.FK_EgendefinertVariabel_NaturområdeType">
+            <End Role="NaturområdeType" EntitySet="NaturområdeType" />
+            <End Role="EgendefinertVariabel" EntitySet="EgendefinertVariabel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EgendefinertVariabelDefinisjon_KartlagtOmråde" Association="Self.FK_EgendefinertVariabelDefinisjon_KartlagtOmråde">
+            <End Role="KartlagtOmråde" EntitySet="KartlagtOmråde" />
+            <End Role="EgendefinertVariabelDefinisjon" EntitySet="EgendefinertVariabelDefinisjon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KartlagtOmrådeOwner_Kontakt" Association="Self.FK_KartlagtOmrådeOwner_Kontakt">
+            <End Role="Kontakt" EntitySet="Kontakt" />
+            <End Role="KartlagtOmråde" EntitySet="KartlagtOmråde" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Naturområde_KartlagtOmråde" Association="Self.FK_Naturområde_KartlagtOmråde">
+            <End Role="KartlagtOmråde" EntitySet="KartlagtOmråde" />
+            <End Role="Naturområde" EntitySet="Naturområde" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Standardvariabel_KartlagtOmråde" Association="Self.FK_Standardvariabel_KartlagtOmråde">
+            <End Role="KartlagtOmråde" EntitySet="KartlagtOmråde" />
+            <End Role="Standardvariabel" EntitySet="Standardvariabel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Naturområde_Kontakt" Association="Self.FK_Naturområde_Kontakt">
+            <End Role="Kontakt" EntitySet="Kontakt" />
+            <End Role="Naturområde" EntitySet="Naturområde" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NaturområdeType_Kontakt" Association="Self.FK_NaturområdeType_Kontakt">
+            <End Role="Kontakt" EntitySet="Kontakt" />
+            <End Role="NaturområdeType" EntitySet="NaturområdeType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OmrådekartType_Kontakt" Association="Self.FK_OmrådekartType_Kontakt">
+            <End Role="Kontakt" EntitySet="Kontakt" />
+            <End Role="OmrådekartType" EntitySet="OmrådekartType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RutenettkartType_Kontakt" Association="Self.FK_RutenettkartType_Kontakt">
+            <End Role="Kontakt" EntitySet="Kontakt" />
+            <End Role="RutenettkartType" EntitySet="RutenettkartType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Naturområde_Naturnivå" Association="Self.FK_Naturområde_Naturnivå">
+            <End Role="Naturnivå" EntitySet="Naturnivå" />
+            <End Role="Naturområde" EntitySet="Naturområde" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NaturområdeType_Naturområdea" Association="Self.FK_NaturområdeType_Naturområdea">
+            <End Role="Naturområde" EntitySet="Naturområde" />
+            <End Role="NaturområdeType" EntitySet="NaturområdeType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Område_OmrådeType" Association="Self.FK_Område_OmrådeType">
+            <End Role="OmrådeType" EntitySet="OmrådeType" />
+            <End Role="Område" EntitySet="Område" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Områdekart_Område" Association="Self.FK_Områdekart_Område">
+            <End Role="Område" EntitySet="Område" />
+            <End Role="Områdekart" EntitySet="Områdekart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Områdekart_OmrådekartType" Association="Self.FK_Områdekart_OmrådekartType">
+            <End Role="OmrådekartType" EntitySet="OmrådekartType" />
+            <End Role="Områdekart" EntitySet="Områdekart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rutenett_Rutenettype" Association="Self.FK_Rutenett_Rutenettype">
+            <End Role="Rutenettype" EntitySet="Rutenettype" />
+            <End Role="Rutenett" EntitySet="Rutenett" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rutenettkart_Rutenett" Association="Self.FK_Rutenettkart_Rutenett">
+            <End Role="Rutenett" EntitySet="Rutenett" />
+            <End Role="Rutenettkart" EntitySet="Rutenettkart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rutenettkart_RutenettkartType" Association="Self.FK_Rutenettkart_RutenettkartType">
+            <End Role="RutenettkartType" EntitySet="RutenettkartType" />
+            <End Role="Rutenettkart" EntitySet="Rutenettkart" />
+          </AssociationSet>
+          <AssociationSet Name="OmrådeLink" Association="Self.OmrådeLink">
+            <End Role="Naturområde" EntitySet="Naturområde" />
+            <End Role="Område" EntitySet="Område" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NiNCore_norskModelStoreContainer" CdmEntityContainer="NiNCore_norskEntities">
+          <EntitySetMapping Name="Beskrivelsesvariabel">
+            <EntityTypeMapping TypeName="NiNCore_norskModel.Beskrivelsesvariabel">
+              <MappingFragment StoreEntitySet="Beskrivelsesvariabel">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="naturområde_id" ColumnName="naturområde_id" />
+                <ScalarProperty Name="naturområdetype_id" ColumnName="naturområdetype_id" />
+                <ScalarProperty Name="tematiskId" ColumnName="tematiskId" />
+                <ScalarProperty Name="kode" ColumnName="kode" />
+                <ScalarProperty Name="kartlegger_id" ColumnName="kartlegger_id" />
+                <ScalarProperty Name="kartlagt" ColumnName="kartlagt" />
+                <ScalarProperty Name="trinn" ColumnName="trinn" />
+                <ScalarProperty Name="beskrivelse" ColumnName="beskrivelse" />
+                <ScalarProperty Name="opprinneligKode" ColumnName="opprinneligKode" />
+                <ScalarProperty Name="totalklassifikasjonskvalitet" ColumnName="totalklassifikasjonskvalitet" />
+                <ScalarProperty Name="localId" ColumnName="localId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dataleveranse">
+            <EntityTypeMapping TypeName="NiNCore_norskModel.Dataleveranse">
+              <MappingFragment StoreEntitySet="Dataleveranse">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="doc_id" ColumnName="doc_id" />
+                <ScalarProperty Name="navn" ColumnName="navn" />
+                <ScalarProperty Name="leveranseDato" ColumnName="leveranseDato" />
+                <ScalarProperty Name="operatør_id" ColumnName="operatør_id" />
+                <ScalarProperty Name="begrunnelseForEndring" ColumnName="begrunnelseForEndring" />
+                <ScalarProperty Name="beskrivelse" ColumnName="beskrivelse" />
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="opprettet" ColumnName="opprettet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dokument">
+            <EntityTypeMapping TypeName="NiNCore_norskModel.Dokument">
+              <MappingFragment StoreEntitySet="Dokument">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="doc_guid" ColumnName="doc_guid" />
+                <ScalarProperty Name="kartlagtOmråde_id" ColumnName="kartlagtOmråde_id" />
+                <ScalarProperty Name="naturområde_id" ColumnName="naturområde_id" />
+                <ScalarProperty Name="områdeKartType_id" ColumnName="områdeKartType_id" />
+                <ScalarProperty Name="rutenettkartType_id" ColumnName="rutenettkartType_id" />
+                <ScalarProperty Name="tittel" ColumnName="tittel" />
+                <ScalarProperty Name="beskrivelse" ColumnName="beskrivelse" />
+                <ScalarProperty Name="kartlegger_id" ColumnName="kartlegger_id" />
+                <ScalarProperty Name="filsti" ColumnName="filsti" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EgendefinertVariabel">
+            <EntityTypeMapping TypeName="NiNCore_norskModel.EgendefinertVariabel">
+              <MappingFragment StoreEntitySet="EgendefinertVariabel">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="naturområdetype_id" ColumnName="naturområdetype_id" />
+                <ScalarProperty Name="spesifikasjon" ColumnName="spesifikasjon" />
+                <ScalarProperty Name="trinn" ColumnName="trinn" />
+                <ScalarProperty Name="kartlegger_id" ColumnName="kartlegger_id" />
+                <ScalarProperty Name="localId" ColumnName="localId" />
+                <ScalarProperty Name="tematiskId" ColumnName="tematiskId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EgendefinertVariabelDefinisjon">
+            <EntityTypeMapping TypeName="NiNCore_norskModel.EgendefinertVariabelDefinisjon">
+              <MappingFragment StoreEntitySet="EgendefinertVariabelDefinisjon">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="kartlagtOmråde_id" ColumnName="kartlagtOmråde_id" />
+                <ScalarProperty Name="spesifikasjon" ColumnName="spesifikasjon" />
+                <ScalarProperty Name="beskrivelse" ColumnName="beskrivelse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KartlagtOmråde">
+            <EntityTypeMapping TypeName="NiNCore_norskModel.KartlagtOmråde">
+              <MappingFragment StoreEntitySet="KartlagtOmråde">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="dataleveranse_id" ColumnName="dataleveranse_id" />
+                <ScalarProperty Name="localId" ColumnName="localId" />
+                <ScalarProperty Name="navnerom" ColumnName="navnerom" />
+                <ScalarProperty Name="versjonId" ColumnName="versjonId" />
+                <ScalarProperty Name="opprinneligReferansesystem" ColumnName="opprinneligReferansesystem" />
+                <ScalarProperty Name="program" ColumnName="program" />
+                <ScalarProperty Name="prosjekt" ColumnName="prosjekt" />
+                <ScalarProperty Name="prosjektbeskrivelse" ColumnName="prosjektbeskrivelse" />
+                <ScalarProperty Name="formål" ColumnName="formål" />
+                <ScalarProperty Name="oppdragsgiver_id" ColumnName="oppdragsgiver_id" />
+                <ScalarProperty Name="eier_id" ColumnName="eier_id" />
+                <ScalarProperty Name="kartlagtFraDato" ColumnName="kartlagtFraDato" />
+                <ScalarProperty Name="kartlagtTilDato" ColumnName="kartlagtTilDato" />
+                <ScalarProperty Name="kartleggingsmålestokk" ColumnName="kartleggingsmålestokk" />
+                <ScalarProperty Name="oppløsning" ColumnName="oppløsning" />
+                <ScalarProperty Name="geometri" ColumnName="geometri" />
+                <ScalarProperty Name="målemetode" ColumnName="målemetode" />
+                <ScalarProperty Name="nøyaktighet" ColumnName="nøyaktighet" />
+                <ScalarProperty Name="visibility" ColumnName="visibility" />
+                <ScalarProperty Name="målemetodeHøyde" ColumnName="målemetodeHøyde" />
+                <ScalarProperty Name="nøyaktighetHøyde" ColumnName="nøyaktighetHøyde" />
+                <ScalarProperty Name="maksimaltAvvik" ColumnName="maksimaltAvvik" />
+                <ScalarProperty Name="bruksbegrensning" ColumnName="bruksbegrensning" />
+                <ScalarProperty Name="totalklassifikasjonskvalitet" ColumnName="totalklassifikasjonskvalitet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kontakt">
+            <EntityTypeMapping TypeName="NiNCore_norskModel.Kontakt">
+              <MappingFragment StoreEntitySet="Kontakt">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="firmanavn" ColumnName="firmanavn" />
+                <ScalarProperty Name="kontaktperson" ColumnName="kontaktperson" />
+                <ScalarProperty Name="epost" ColumnName="epost" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="hjemmeside" ColumnName="hjemmeside" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Naturnivå">
+            <EntityTypeMapping TypeName="NiNCore_norskModel.Naturnivå">
+              <MappingFragment StoreEntitySet="Naturnivå">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Naturområde">
+            <EntityTypeMapping TypeName="NiNCore_norskModel.Naturområde">
+              <MappingFragment StoreEntitySet="Naturområde">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="kartlagtOmråde_id" ColumnName="kartlagtOmråde_id" />
+                <ScalarProperty Name="localId" ColumnName="localId" />
+                <ScalarProperty Name="navnerom" ColumnName="navnerom" />
+                <ScalarProperty Name="versjonId" ColumnName="versjonId" />
+                <ScalarProperty Name="versjon" ColumnName="versjon" />
+                <ScalarProperty Name="naturnivå_id" ColumnName="naturnivå_id" />
+                <ScalarProperty Name="geometri" ColumnName="geometri" />
+                <ScalarProperty Name="geometriSenterpunkt" ColumnName="geometriSenterpunkt" />
+                <ScalarProperty Name="kartlegger_id" ColumnName="kartlegger_id" />
+                <ScalarProperty Name="kartlagt" ColumnName="kartlagt" />
+                <ScalarProperty Name="beskrivelse" ColumnName="beskrivelse" />
+                <ScalarProperty Name="institusjon" ColumnName="institusjon" />
+                <ScalarProperty Name="stedfestingskvalitet" ColumnName="stedfestingskvalitet" />
+                <ScalarProperty Name="tematiskId" ColumnName="tematiskId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NaturområdeType">
+            <EntityTypeMapping TypeName="NiNCore_norskModel.NaturområdeType">
+              <MappingFragment StoreEntitySet="NaturområdeType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="naturområde_id" ColumnName="naturområde_id" />
+                <ScalarProperty Name="tematiskId" ColumnName="tematiskId" />
+                <ScalarProperty Name="kode" ColumnName="kode" />
+                <ScalarProperty Name="kartlegger_id" ColumnName="kartlegger_id" />
+                <ScalarProperty Name="kartlagt" ColumnName="kartlagt" />
+                <ScalarProperty Name="andel" ColumnName="andel" />
+                <ScalarProperty Name="totalklassifikasjonskvalitet" ColumnName="totalklassifikasjonskvalitet" />
+                <ScalarProperty Name="localId" ColumnName="localId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Område">
+            <EntityTypeMapping TypeName="NiNCore_norskModel.Område">
+              <MappingFragment StoreEntitySet="Område">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="geometriType_id" ColumnName="geometriType_id" />
+                <ScalarProperty Name="nummer" ColumnName="nummer" />
+                <ScalarProperty Name="navn" ColumnName="navn" />
+                <ScalarProperty Name="kategori" ColumnName="kategori" />
+                <ScalarProperty Name="geometri" ColumnName="geometri" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Områdekart">
+            <EntityTypeMapping TypeName="NiNCore_norskModel.Områdekart">
+              <MappingFragment StoreEntitySet="Områdekart">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="områdeKartType_id" ColumnName="områdeKartType_id" />
+                <ScalarProperty Name="geometri_id" ColumnName="geometri_id" />
+                <ScalarProperty Name="trinn" ColumnName="trinn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OmrådekartType">
+            <EntityTypeMapping TypeName="NiNCore_norskModel.OmrådekartType">
+              <MappingFragment StoreEntitySet="OmrådekartType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="doc_guid" ColumnName="doc_guid" />
+                <ScalarProperty Name="navn" ColumnName="navn" />
+                <ScalarProperty Name="koderegister" ColumnName="koderegister" />
+                <ScalarProperty Name="kodeversjon" ColumnName="kodeversjon" />
+                <ScalarProperty Name="kode" ColumnName="kode" />
+                <ScalarProperty Name="minimumsverdi" ColumnName="minimumsverdi" />
+                <ScalarProperty Name="maksimumsverdi" ColumnName="maksimumsverdi" />
+                <ScalarProperty Name="beskrivelse" ColumnName="beskrivelse" />
+                <ScalarProperty Name="etablert" ColumnName="etablert" />
+                <ScalarProperty Name="eier_id" ColumnName="eier_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OmrådeType">
+            <EntityTypeMapping TypeName="NiNCore_norskModel.OmrådeType">
+              <MappingFragment StoreEntitySet="OmrådeType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rutenett">
+            <EntityTypeMapping TypeName="NiNCore_norskModel.Rutenett">
+              <MappingFragment StoreEntitySet="Rutenett">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="rutenettype_id" ColumnName="rutenettype_id" />
+                <ScalarProperty Name="geometrieId" ColumnName="geometrieId" />
+                <ScalarProperty Name="geometri" ColumnName="geometri" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rutenettkart">
+            <EntityTypeMapping TypeName="NiNCore_norskModel.Rutenettkart">
+              <MappingFragment StoreEntitySet="Rutenettkart">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="rutenettkartType_id" ColumnName="rutenettkartType_id" />
+                <ScalarProperty Name="rutenett_id" ColumnName="rutenett_id" />
+                <ScalarProperty Name="trinn" ColumnName="trinn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RutenettkartType">
+            <EntityTypeMapping TypeName="NiNCore_norskModel.RutenettkartType">
+              <MappingFragment StoreEntitySet="RutenettkartType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="doc_guid" ColumnName="doc_guid" />
+                <ScalarProperty Name="navn" ColumnName="navn" />
+                <ScalarProperty Name="koderegister" ColumnName="koderegister" />
+                <ScalarProperty Name="kodeversjon" ColumnName="kodeversjon" />
+                <ScalarProperty Name="kode" ColumnName="kode" />
+                <ScalarProperty Name="minimumsverdi" ColumnName="minimumsverdi" />
+                <ScalarProperty Name="maksimumsverdi" ColumnName="maksimumsverdi" />
+                <ScalarProperty Name="beskrivelse" ColumnName="beskrivelse" />
+                <ScalarProperty Name="etablert" ColumnName="etablert" />
+                <ScalarProperty Name="eier_id" ColumnName="eier_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rutenettype">
+            <EntityTypeMapping TypeName="NiNCore_norskModel.Rutenettype">
+              <MappingFragment StoreEntitySet="Rutenettype">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Standardvariabel">
+            <EntityTypeMapping TypeName="NiNCore_norskModel.Standardvariabel">
+              <MappingFragment StoreEntitySet="Standardvariabel">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="kartlagtOmråde_id" ColumnName="kartlagtOmråde_id" />
+                <ScalarProperty Name="koderegister" ColumnName="koderegister" />
+                <ScalarProperty Name="kodeversjon" ColumnName="kodeversjon" />
+                <ScalarProperty Name="kode" ColumnName="kode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="OmrådeLink" TypeName="NiNCore_norskModel.OmrådeLink" StoreEntitySet="OmrådeLink">
+            <EndProperty Name="Naturområde">
+              <ScalarProperty Name="id" ColumnName="naturområde_id" />
+            </EndProperty>
+            <EndProperty Name="Område">
+              <ScalarProperty Name="id" ColumnName="geometri_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
