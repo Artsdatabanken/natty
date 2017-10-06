@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Forms_dev3.Properties
+namespace RødlisteKlassifiserer.Properties
 {
 
 

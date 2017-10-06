@@ -4,7 +4,7 @@ using System.Net;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace Forms_dev3
+namespace RødlisteKlassifiserer
 {
     public static class CodeDeserializer
     {

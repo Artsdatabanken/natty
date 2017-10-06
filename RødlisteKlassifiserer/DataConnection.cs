@@ -3,7 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace Forms_dev3
+namespace RødlisteKlassifiserer
 {
     internal static class DataConnection
     {

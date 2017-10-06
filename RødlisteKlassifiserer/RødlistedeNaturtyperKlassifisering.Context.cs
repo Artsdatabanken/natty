@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Forms_dev3
+namespace RødlisteKlassifiserer
 {
     using System;
     using System.Data.Entity;

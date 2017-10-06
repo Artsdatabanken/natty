@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Forms_dev3
+namespace RødlisteKlassifiserer
 {
     static class Program
     {

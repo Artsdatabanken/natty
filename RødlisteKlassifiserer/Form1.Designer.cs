@@ -1,4 +1,4 @@
-﻿namespace Forms_dev3
+﻿namespace RødlisteKlassifiserer
 {
     partial class Form1
     {

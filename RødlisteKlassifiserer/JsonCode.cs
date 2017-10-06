@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Forms_dev3
+namespace RødlisteKlassifiserer
 {
     public class JsonCode
     {
