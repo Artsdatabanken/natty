@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/09/2017 10:05:37
+-- Date Created: 10/09/2017 13:48:32
 -- Generated from EDMX file: C:\Users\japed\source\repos\RødlistedeNaturområder\RødlisteKlassifiserer\RødlistedeNaturtyperKlassifisering.edmx
 -- --------------------------------------------------
 
@@ -159,7 +159,8 @@ CREATE TABLE [dbo].[KartleggingsKodeSet] (
     [verdi] smallint  NULL,
     [nivå] nvarchar(max)  NULL,
     [navn] nvarchar(max)  NOT NULL,
-    [NaturområdeTypeKode_Id] int  NOT NULL
+    [NaturområdeTypeKode_Id] int  NOT NULL,
+    [KartleggingsKodeAggregate_Id] int  NULL
 );
 GO
 
@@ -615,6 +616,21 @@ GO
 CREATE INDEX [IX_FK_RødlisteKlassifiseringNaturområde_RødlisteKlassifisering]
 ON [dbo].[Naturområde_RødlisteKlassifiseringSet]
     ([RødlisteKlassifisering_Id]);
+GO
+
+-- Creating foreign key on [KartleggingsKodeAggregate_Id] in table 'KartleggingsKodeSet'
+ALTER TABLE [dbo].[KartleggingsKodeSet]
+ADD CONSTRAINT [FK_KartleggingsKodeKartleggingsKode]
+    FOREIGN KEY ([KartleggingsKodeAggregate_Id])
+    REFERENCES [dbo].[KartleggingsKodeSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_KartleggingsKodeKartleggingsKode'
+CREATE INDEX [IX_FK_KartleggingsKodeKartleggingsKode]
+ON [dbo].[KartleggingsKodeSet]
+    ([KartleggingsKodeAggregate_Id]);
 GO
 
 -- --------------------------------------------------

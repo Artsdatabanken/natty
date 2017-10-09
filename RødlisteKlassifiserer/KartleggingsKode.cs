@@ -18,6 +18,7 @@ namespace Forms_dev3
         public KartleggingsKode()
         {
             this.RødlisteKlassifisering = new HashSet<RødlisteKlassifisering>();
+            this.KartleggingsKodeAggregateDefinitions = new HashSet<KartleggingsKode>();
         }
     
         public int Id { get; set; }
@@ -28,5 +29,8 @@ namespace Forms_dev3
         public virtual NaturområdeTypeKode NaturområdeTypeKode { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RødlisteKlassifisering> RødlisteKlassifisering { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KartleggingsKode> KartleggingsKodeAggregateDefinitions { get; set; }
+        public virtual KartleggingsKode KartleggingsKodeAggregate { get; set; }
     }
 }

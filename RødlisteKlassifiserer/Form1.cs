@@ -618,5 +618,63 @@ namespace RødlisteKlassifiserer
             }
             PopulateInnsnevrendeBeskrivelsesVariabler(beskrivelsesvariabler);
         }
+
+        private void buttonAggregates_Click(object sender, EventArgs e)
+        {
+            buttonAggregates.Enabled = false;
+            var location = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            var path = System.IO.Path.GetDirectoryName(location);
+            var xlApp = new Excel.Application();
+            var xlWorkbook = xlApp.Workbooks.Open(path + @"\Data\20171005_naturomradetypekoder_c_TIL_a.xlsx");
+            var xlWorksheet = (Excel.Worksheet)xlWorkbook.Sheets.get_Item(1);
+            var xlRange = xlWorksheet.UsedRange;
+            var valueArray = (object[,])xlRange.get_Value(
+                Excel.XlRangeValueDataType.xlRangeValueDefault);
+
+            var columns = new Dictionary<int, string>();
+
+            for (var row = 1; row <= xlWorksheet.UsedRange.Rows.Count; ++row)
+            {
+                var rowValues = new Dictionary<string, string>();
+                for (var col = 1; col <= xlWorksheet.UsedRange.Columns.Count; ++col)
+                {
+                    if (row == 1) columns[col] = valueArray[row, col].ToString();
+                    else rowValues[columns[col]] = valueArray[row, col]?.ToString();
+                }
+                if (row <= 1) continue;
+
+                var hovedType = rowValues["Hovedtype-kode"];
+                var aggregateTypeKode = rowValues["Kode"];
+                var aggregateType = aggregateTypeKode.Split('-')[0];
+                var aggregateNivå = aggregateTypeKode.Split('-')[1];
+                var aggregateKartleggingsKode = aggregateTypeKode.Split('-')[2];
+                var aggregateDefinitions = rowValues["Grunntypenr"].Split(',');
+
+                var naturområdeTypeKode =
+                    DataConnection.Context.NaturområdeTypeKodeSet.First(d => d.verdi == hovedType);
+
+                var kartleggingsKodeAggregate = DataConnection.Context.KartleggingsKodeSet.First(d => 
+                d.nivå == aggregateNivå &&
+                d.verdi.ToString() == aggregateKartleggingsKode &&
+                d.NaturområdeTypeKode.verdi == aggregateType);
+
+                foreach (var kartleggingsKode in naturområdeTypeKode.KartleggingsKode)
+                {
+                    if (kartleggingsKode.nivå != "A") continue;
+                    if (aggregateDefinitions.Contains(kartleggingsKode.verdi.ToString()))
+                    {
+                        kartleggingsKodeAggregate.KartleggingsKodeAggregateDefinitions.Add(kartleggingsKode);
+                    }
+                }
+            }
+            DataConnection.Context.SaveChanges();
+
+            xlWorkbook.Close(false);
+            Marshal.ReleaseComObject(xlWorkbook);
+            xlApp.Quit();
+            Marshal.FinalReleaseComObject(xlApp);
+
+            buttonAggregates.Enabled = true;
+        }
     }
 }

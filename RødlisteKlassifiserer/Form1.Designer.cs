@@ -60,6 +60,8 @@
             this.labelAntallKlasser = new System.Windows.Forms.Label();
             this.checkBoxANDPermutations = new System.Windows.Forms.CheckBox();
             this.checkBoxORPermutations = new System.Windows.Forms.CheckBox();
+            this.buttonAggregates = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRødlisteKlassifisering)).BeginInit();
             this.SuspendLayout();
             // 
@@ -345,11 +347,32 @@
             this.checkBoxORPermutations.Text = "Lage permutasjoner (OR)";
             this.checkBoxORPermutations.UseVisualStyleBackColor = true;
             // 
+            // buttonAggregates
+            // 
+            this.buttonAggregates.Location = new System.Drawing.Point(485, 541);
+            this.buttonAggregates.Name = "buttonAggregates";
+            this.buttonAggregates.Size = new System.Drawing.Size(75, 23);
+            this.buttonAggregates.TabIndex = 32;
+            this.buttonAggregates.Text = "Update";
+            this.buttonAggregates.UseVisualStyleBackColor = true;
+            this.buttonAggregates.Click += new System.EventHandler(this.buttonAggregates_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(342, 546);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(133, 13);
+            this.label8.TabIndex = 33;
+            this.label8.Text = "NaturområdeTypeMapping";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(892, 601);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.buttonAggregates);
             this.Controls.Add(this.checkBoxORPermutations);
             this.Controls.Add(this.checkBoxANDPermutations);
             this.Controls.Add(this.labelAntallKlasser);
@@ -419,6 +442,8 @@
         private System.Windows.Forms.Label labelAntallKlasser;
         private System.Windows.Forms.CheckBox checkBoxANDPermutations;
         private System.Windows.Forms.CheckBox checkBoxORPermutations;
+        private System.Windows.Forms.Button buttonAggregates;
+        private System.Windows.Forms.Label label8;
     }
 }
 

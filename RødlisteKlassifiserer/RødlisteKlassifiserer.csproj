@@ -136,6 +136,9 @@
     <None Include="Data\20170912_RL_2011_nin2_1_oversettelse_ØG.xlsx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Data\20171005_naturomradetypekoder_c_TIL_a.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
