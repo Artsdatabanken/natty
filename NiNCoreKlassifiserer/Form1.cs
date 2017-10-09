@@ -91,27 +91,14 @@ namespace NiNCoreKlassifiserer
                 case 0:
                     SaveRødlistedeNaturområder(rødlisteKlassifisering, naturområder);
                     return;
-                case 1:
-                    var rødlistedeNaturområder = naturområder.Where(d =>
-                        d.Beskrivelsesvariabel.Any(e =>
-                            e.kode == rødlisteKlassifisering.Beskrivelsesvariabel.First().verdi));
-                    SaveRødlistedeNaturområder(rødlisteKlassifisering, rødlistedeNaturområder);
-                    return;
                 default:
                 {
-                    foreach (var naturområde in naturområder)
-                    {
-                        var allBeskrivelsesvariablerPresent = true;
-                        foreach (var beskrivelsesvariabel in rødlisteKlassifisering.Beskrivelsesvariabel)
-                        {
-                            if (naturområde.Beskrivelsesvariabel.Any(d => d.kode == beskrivelsesvariabel.verdi))
-                                continue;
-                            allBeskrivelsesvariablerPresent = false;
-                            break;
-                        }
-                        if (allBeskrivelsesvariablerPresent)
-                            SaveRødlistedeNaturområde(rødlisteKlassifisering, naturområde);
-                    }
+                    naturområder = rødlisteKlassifisering.Beskrivelsesvariabel.Aggregate(naturområder,
+                        (current, beskrivelsesvariabel) => current.Where(d =>
+                            d.Beskrivelsesvariabel.Any(e => e.kode == beskrivelsesvariabel.verdi)));
+
+                    SaveRødlistedeNaturområder(rødlisteKlassifisering, naturområder);
+
                     return;
                 }
             }
