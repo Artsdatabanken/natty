@@ -67,6 +67,15 @@ namespace NiNCoreKlassifiserer
         }
 
         private static void SaveRødlistedeNaturområder(RødlisteKlassifisering rødlisteKlassifisering,
+            IEnumerable<Naturområde> naturområder)
+        {
+            foreach (var naturområde in naturområder)
+            {
+                SaveRødlistedeNaturområde(rødlisteKlassifisering, naturområde);
+            }
+        }
+
+        private static void SaveRødlistedeNaturområde(RødlisteKlassifisering rødlisteKlassifisering,
             Naturområde naturområde)
         {
             RødlisteKlassifiserer.DataConnection.Context.Naturområde_RødlisteKlassifiseringSet.Add(
@@ -80,32 +89,34 @@ namespace NiNCoreKlassifiserer
         private static void CheckNaturområdeTypeForBeskrivelsesvariabel(RødlisteKlassifisering rødlisteKlassifisering,
             IEnumerable<Naturområde> naturområder)
         {
-            foreach (var naturområde in naturområder)
+            switch (rødlisteKlassifisering.Beskrivelsesvariabel.Count)
             {
-                if (rødlisteKlassifisering.Beskrivelsesvariabel.Count <= 0)
+                case 0:
+                    SaveRødlistedeNaturområder(rødlisteKlassifisering, naturområder);
+                    return;
+                case 1:
+                    var rødlistedeNaturområder = naturområder.Where(d =>
+                        d.Beskrivelsesvariabel.Any(e =>
+                            e.kode == rødlisteKlassifisering.Beskrivelsesvariabel.First().verdi));
+                    SaveRødlistedeNaturområder(rødlisteKlassifisering, rødlistedeNaturområder);
+                    return;
+                default:
                 {
-                    SaveRødlistedeNaturområder(rødlisteKlassifisering, naturområde);
-                    continue;
-                }
-                if (rødlisteKlassifisering.Beskrivelsesvariabel.Count == 1)
-                    if (naturområde.Beskrivelsesvariabel.Any(d =>
-                        d.kode == rødlisteKlassifisering.Beskrivelsesvariabel.First().verdi))
+                    foreach (var naturområde in naturområder)
                     {
-                        SaveRødlistedeNaturområder(rødlisteKlassifisering, naturområde);
-                        continue;
+                        var allBeskrivelsesvariablerPresent = true;
+                        foreach (var beskrivelsesvariabel in rødlisteKlassifisering.Beskrivelsesvariabel)
+                        {
+                            if (naturområde.Beskrivelsesvariabel.Any(d => d.kode == beskrivelsesvariabel.verdi))
+                                continue;
+                            allBeskrivelsesvariablerPresent = false;
+                            break;
+                        }
+                        if (allBeskrivelsesvariablerPresent)
+                            SaveRødlistedeNaturområde(rødlisteKlassifisering, naturområde);
                     }
-                    else continue;
-
-                var allBeskrivelsesvariablerPresent = true;
-                foreach (var beskrivelsesvariabel in rødlisteKlassifisering.Beskrivelsesvariabel)
-                {
-                    if (naturområde.Beskrivelsesvariabel.Any(d => d.kode == beskrivelsesvariabel.verdi))
-                        continue;
-                    allBeskrivelsesvariablerPresent = false;
-                    break;
+                    return;
                 }
-                if (allBeskrivelsesvariablerPresent)
-                    SaveRødlistedeNaturområder(rødlisteKlassifisering, naturområde);
             }
         }
 
