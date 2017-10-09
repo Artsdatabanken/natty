@@ -648,7 +648,8 @@ namespace RødlisteKlassifiserer
                 var aggregateType = aggregateTypeKode.Split('-')[0];
                 var aggregateNivå = aggregateTypeKode.Split('-')[1];
                 var aggregateKartleggingsKode = aggregateTypeKode.Split('-')[2];
-                var aggregateDefinitions = rowValues["Grunntypenr"].Split(',');
+
+                var aggregateDefinitions = rowValues["Grunntypenr"].Split(rowValues["Grunntypenr"].Contains('.') ? ',' : '.');
 
                 var naturområdeTypeKode =
                     DataConnection.Context.NaturområdeTypeKodeSet.First(d => d.verdi == hovedType);
