@@ -27,7 +27,7 @@ namespace NiNCoreKlassifiserer
             {
                 string naturområdeTypeKodeVerdi;
 
-                List<Naturområde> naturområder = null;
+                var naturområder = new List<Naturområde>();
 
                 if (rødlisteKlassifisering.NaturområdeTypeKode != null)
                 {
@@ -43,21 +43,18 @@ namespace NiNCoreKlassifiserer
                         naturområdeTypeKodeVerdi = kartleggingsKode.NaturområdeTypeKode.nivå + "_" +
                                                    kartleggingsKode.NaturområdeTypeKode.verdi + "-" +
                                                    kartleggingsKode.verdi;
-                        naturområder = GetNaturområder(naturområdeTypeKodeVerdi).ToList();
-                        if (kartleggingsKode.KartleggingsKodeAggregate != null)
-                        {
-                            naturområdeTypeKodeVerdi =
-                                kartleggingsKode.KartleggingsKodeAggregate.NaturområdeTypeKode.nivå + "_" +
-                                kartleggingsKode.KartleggingsKodeAggregate.NaturområdeTypeKode.verdi + "-" +
-                                kartleggingsKode.KartleggingsKodeAggregate.nivå + "-" +
-                                kartleggingsKode.KartleggingsKodeAggregate.verdi;
-                            naturområder.AddRange(GetNaturområder(naturområdeTypeKodeVerdi).ToList());
-                        }
-
+                        naturområder.AddRange(GetNaturområder(naturområdeTypeKodeVerdi).ToList());
+                        if (kartleggingsKode.KartleggingsKodeAggregate == null) continue;
+                        naturområdeTypeKodeVerdi =
+                            kartleggingsKode.KartleggingsKodeAggregate.NaturområdeTypeKode.nivå + "_" +
+                            kartleggingsKode.KartleggingsKodeAggregate.NaturområdeTypeKode.verdi + "-" +
+                            kartleggingsKode.KartleggingsKodeAggregate.nivå + "-" +
+                            kartleggingsKode.KartleggingsKodeAggregate.verdi;
+                        naturområder.AddRange(GetNaturområder(naturområdeTypeKodeVerdi).ToList());
                     }
                 }
 
-                if (naturområder == null) continue;
+                if (naturområder.Count == 0) continue;
 
                 CheckNaturområdeTypeForBeskrivelsesvariabel(rødlisteKlassifisering, naturområder);
 
