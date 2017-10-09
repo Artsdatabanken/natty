@@ -63,45 +63,27 @@ namespace NiNCoreKlassifiserer
             RødlisteKlassifiserer.DataConnection.Context.SaveChanges();
         }
 
-        private static void SaveRødlistedeNaturområder(RødlisteKlassifisering rødlisteKlassifisering,
+        private static IEnumerable<Naturområde_RødlisteKlassifisering> SaveRødlistedeNaturområder(RødlisteKlassifisering rødlisteKlassifisering,
             IEnumerable<Naturområde> naturområder)
         {
-            foreach (var naturområde in naturområder)
+            return naturområder.Select(naturområde => new Naturområde_RødlisteKlassifisering
             {
-                SaveRødlistedeNaturområde(rødlisteKlassifisering, naturområde);
-            }
-        }
-
-        private static void SaveRødlistedeNaturområde(RødlisteKlassifisering rødlisteKlassifisering,
-            Naturområde naturområde)
-        {
-            RødlisteKlassifiserer.DataConnection.Context.Naturområde_RødlisteKlassifiseringSet.Add(
-                new Naturområde_RødlisteKlassifisering
-                {
-                    naturområde_id = naturområde.id,
-                    RødlisteKlassifisering = rødlisteKlassifisering
-                });
+                naturområde_id = naturområde.id,
+                RødlisteKlassifisering = rødlisteKlassifisering
+            });
         }
 
         private static void CheckNaturområdeTypeForBeskrivelsesvariabel(RødlisteKlassifisering rødlisteKlassifisering,
             IEnumerable<Naturområde> naturområder)
         {
-            switch (rødlisteKlassifisering.Beskrivelsesvariabel.Count)
+            if (rødlisteKlassifisering.Beskrivelsesvariabel.Count > 0)
             {
-                case 0:
-                    SaveRødlistedeNaturområder(rødlisteKlassifisering, naturområder);
-                    return;
-                default:
-                {
-                    naturområder = rødlisteKlassifisering.Beskrivelsesvariabel.Aggregate(naturområder,
-                        (current, beskrivelsesvariabel) => current.Where(d =>
-                            d.Beskrivelsesvariabel.Any(e => e.kode == beskrivelsesvariabel.verdi)));
-
-                    SaveRødlistedeNaturområder(rødlisteKlassifisering, naturområder);
-
-                    return;
-                }
+                naturområder = rødlisteKlassifisering.Beskrivelsesvariabel.Aggregate(naturområder,
+                    (current, beskrivelsesvariabel) => current.Where(d =>
+                        d.Beskrivelsesvariabel.Any(e => e.kode == beskrivelsesvariabel.verdi)));
             }
+            RødlisteKlassifiserer.DataConnection.Context.Naturområde_RødlisteKlassifiseringSet.AddRange(
+                SaveRødlistedeNaturområder(rødlisteKlassifisering, naturområder));
         }
 
         private static IEnumerable<Naturområde> GetNaturområder(string naturområdeTypeKodeVerdi)
