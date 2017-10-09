@@ -4,15 +4,12 @@ using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Windows.Forms;
-using RødlisteKlassifiserer;
+using Forms_dev3;
 
 namespace NiNCoreKlassifiserer
 {
     public partial class Form1 : Form
     {
-        private static readonly Dictionary<RødlisteKlassifisering, List<Naturområde>> RødlistedeNaturområderDict =
-            new Dictionary<RødlisteKlassifisering, List<Naturområde>>();
-
         public Form1()
         {
             InitializeComponent();
@@ -30,13 +27,14 @@ namespace NiNCoreKlassifiserer
             {
                 string naturområdeTypeKodeVerdi;
 
-                List<NaturområdeType> naturområdeTyper = null;
+                List<Naturområde> naturområder = null;
 
                 if (rødlisteKlassifisering.NaturområdeTypeKode != null)
                 {
                     naturområdeTypeKodeVerdi = rødlisteKlassifisering.NaturområdeTypeKode.nivå + "_" +
                                                rødlisteKlassifisering.NaturområdeTypeKode.verdi;
-                    naturområdeTyper = GetNaturområdeTyper(naturområdeTypeKodeVerdi).ToList();
+                    naturområder = GetNaturområderLike(naturområdeTypeKodeVerdi).ToList();
+                    naturområder.AddRange(GetNaturområder(naturområdeTypeKodeVerdi));
                 }
                 else
                 {
@@ -45,58 +43,73 @@ namespace NiNCoreKlassifiserer
                         naturområdeTypeKodeVerdi = kartleggingsKode.NaturområdeTypeKode.nivå + "_" +
                                                    kartleggingsKode.NaturområdeTypeKode.verdi + "-" +
                                                    kartleggingsKode.verdi;
-                        naturområdeTyper = GetNaturområdeTyper(naturområdeTypeKodeVerdi).ToList();
+                        naturområder = GetNaturområder(naturområdeTypeKodeVerdi).ToList();
                     }
                 }
 
-                if (naturområdeTyper == null) continue;
+                if (naturområder == null) continue;
 
-                CheckNaturområdeTypeForBeskrivelsesvariabel(rødlisteKlassifisering, naturområdeTyper);
+                CheckNaturområdeTypeForBeskrivelsesvariabel(rødlisteKlassifisering, naturområder);
+
+
             }
+            RødlisteKlassifiserer.DataConnection.Context.SaveChanges();
+        }
+
+        private static void SaveRødlistedeNaturområder(RødlisteKlassifisering rødlisteKlassifisering,
+            Naturområde naturområde)
+        {
+            RødlisteKlassifiserer.DataConnection.Context.Naturområde_RødlisteKlassifiseringSet.Add(
+                new Naturområde_RødlisteKlassifisering
+                {
+                    naturområde_id = naturområde.id,
+                    RødlisteKlassifisering = rødlisteKlassifisering
+                });
         }
 
         private static void CheckNaturområdeTypeForBeskrivelsesvariabel(RødlisteKlassifisering rødlisteKlassifisering,
-            List<NaturområdeType> naturområdeTyper)
+            IEnumerable<Naturområde> naturområder)
         {
-            foreach (var naturområdeType in naturområdeTyper)
+            foreach (var naturområde in naturområder)
             {
                 if (rødlisteKlassifisering.Beskrivelsesvariabel.Count <= 0)
                 {
-                    AddNaturområdeToDictionary(rødlisteKlassifisering, naturområdeType.Naturområde);
+                    SaveRødlistedeNaturområder(rødlisteKlassifisering, naturområde);
                     continue;
                 }
-                if (rødlisteKlassifisering.Beskrivelsesvariabel.Count == 1 &&
-                    naturområdeType.Beskrivelsesvariabel.Any(d =>
+                if (rødlisteKlassifisering.Beskrivelsesvariabel.Count == 1)
+                    if (naturområde.Beskrivelsesvariabel.Any(d =>
                         d.kode == rødlisteKlassifisering.Beskrivelsesvariabel.First().verdi))
-                {
-                    AddNaturområdeToDictionary(rødlisteKlassifisering, naturområdeType.Naturområde);
-                    continue;
-                }
+                    {
+                        SaveRødlistedeNaturområder(rødlisteKlassifisering, naturområde);
+                        continue;
+                    }
+                    else continue;
+
                 var allBeskrivelsesvariablerPresent = true;
                 foreach (var beskrivelsesvariabel in rødlisteKlassifisering.Beskrivelsesvariabel)
                 {
-                    if (naturområdeType.Beskrivelsesvariabel.Any(d => d.kode == beskrivelsesvariabel.verdi))
+                    if (naturområde.Beskrivelsesvariabel.Any(d => d.kode == beskrivelsesvariabel.verdi))
                         continue;
                     allBeskrivelsesvariablerPresent = false;
                     break;
                 }
                 if (allBeskrivelsesvariablerPresent)
-                    AddNaturområdeToDictionary(rødlisteKlassifisering, naturområdeType.Naturområde);
+                    SaveRødlistedeNaturområder(rødlisteKlassifisering, naturområde);
             }
         }
 
-        private static void AddNaturområdeToDictionary(RødlisteKlassifisering rødlisteKlassifisering,
-            Naturområde naturområde)
+        private static IEnumerable<Naturområde> GetNaturområder(string naturområdeTypeKodeVerdi)
         {
-            if (!RødlistedeNaturområderDict.ContainsKey(rødlisteKlassifisering))
-                RødlistedeNaturområderDict[rødlisteKlassifisering] = new List<Naturområde>();
-            RødlistedeNaturområderDict[rødlisteKlassifisering].Add(naturområde);
+            return DataConnection.Context.Naturområde.Where(d =>
+                d.NaturområdeType.Any(e => e.kode == naturområdeTypeKodeVerdi));
         }
 
-        private static IEnumerable<NaturområdeType> GetNaturområdeTyper(string naturområdeTypeKodeVerdi)
+
+        private static IEnumerable<Naturområde> GetNaturområderLike(string naturområdeTypeKodeVerdi)
         {
-            return DataConnection.Context.NaturområdeType.Where(d =>
-                d.kode == naturområdeTypeKodeVerdi);
+            return DataConnection.Context.Naturområde.Where(d =>
+                d.NaturområdeType.Any(e => e.kode.StartsWith(naturområdeTypeKodeVerdi + "-")));
         }
     }
 
