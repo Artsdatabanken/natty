@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RødlisteKlassifiserer
+namespace Forms_dev3
 {
     using System;
     using System.Collections.Generic;
@@ -20,6 +20,7 @@ namespace RødlisteKlassifiserer
             this.Beskrivelsesvariabel = new HashSet<Beskrivelsesvariabel>();
             this.KartleggingsKode = new HashSet<KartleggingsKode>();
             this.InnsnevrendeBeskrivelsesvariabel = new HashSet<Beskrivelsesvariabel>();
+            this.Naturområde_RødlisteKlassifisering = new HashSet<Naturområde_RødlisteKlassifisering>();
         }
     
         public int Id { get; set; }
@@ -32,5 +33,7 @@ namespace RødlisteKlassifiserer
         public virtual NaturområdeTypeKode NaturområdeTypeKode { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Beskrivelsesvariabel> InnsnevrendeBeskrivelsesvariabel { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Naturområde_RødlisteKlassifisering> Naturområde_RødlisteKlassifisering { get; set; }
     }
 }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RødlisteKlassifiserer
+namespace Forms_dev3
 {
     using System;
     using System.Collections.Generic;

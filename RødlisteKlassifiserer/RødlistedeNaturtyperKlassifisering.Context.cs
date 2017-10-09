@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace RødlisteKlassifiserer
+namespace Forms_dev3
 {
     using System;
     using System.Data.Entity;
@@ -35,5 +35,6 @@ namespace RødlisteKlassifiserer
         public virtual DbSet<RødlisteVurdeingsenhetVersjon> RødlisteVurdeingsenhetVersjonSet { get; set; }
         public virtual DbSet<Naturnivå> NaturnivåSet { get; set; }
         public virtual DbSet<KodeVersjon> KodeVersjonSet { get; set; }
+        public virtual DbSet<Naturområde_RødlisteKlassifisering> Naturområde_RødlisteKlassifiseringSet { get; set; }
     }
 }

@@ -28,6 +28,8 @@
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.KodeVersjonNaturområdeTypeKode" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.KodeVersjonBeskrivelsesvariabel" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.BeskrivelsesvariabelRødlisteKlassifisering1" />
+        <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.Naturområde_RødlisteKlassifisering" Width="1.5" PointX="0.5" PointY="7.375" />
+        <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.RødlisteKlassifiseringNaturområde_RødlisteKlassifisering" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

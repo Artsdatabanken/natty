@@ -4,6 +4,7 @@ using Excel = Microsoft.Office.Interop.Excel;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Forms_dev3;
 
 namespace RødlisteKlassifiserer
 {
@@ -263,7 +264,7 @@ namespace RødlisteKlassifiserer
                 if (!selectedKartleggingsKoder.Any())
                     rødlisteKlassifisering.NaturområdeTypeKode =
                         DataConnection.Context.NaturområdeTypeKodeSet.First(d =>
-                            d.verdi == comboBoxNaturområdetyper.SelectedItem);
+                            d.verdi == comboBoxNaturområdetyper.SelectedItem.ToString());
 
                 else
                     rødlisteKlassifisering.KartleggingsKode = selectedKartleggingsKoder.ToList();
@@ -381,7 +382,7 @@ namespace RødlisteKlassifiserer
         {
             if (!selectedKartleggingsKoder.Any())
                 selectedKartleggingsKoder = DataConnection.Context.NaturområdeTypeKodeSet.First(d =>
-                    d.verdi == comboBoxNaturområdetyper.SelectedItem).KartleggingsKode;
+                    d.verdi == comboBoxNaturområdetyper.SelectedItem.ToString()).KartleggingsKode;
             return selectedKartleggingsKoder;
         }
 
