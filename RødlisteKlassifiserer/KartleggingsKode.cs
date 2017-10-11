@@ -23,8 +23,8 @@ namespace Forms_dev3
     
         public int Id { get; set; }
         public Nullable<short> verdi { get; set; }
-        public string nivå { get; set; }
         public string navn { get; set; }
+        public string nivå { get; set; }
     
         public virtual NaturområdeTypeKode NaturområdeTypeKode { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

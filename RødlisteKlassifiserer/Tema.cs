@@ -12,21 +12,18 @@ namespace Forms_dev3
     using System;
     using System.Collections.Generic;
     
-    public partial class Naturnivå
+    public partial class Tema
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Naturnivå()
+        public Tema()
         {
-            this.RødlisteVurderingsenhet = new HashSet<RødlisteVurderingsenhet>();
-            this.NaturområdeTypeKode = new HashSet<NaturområdeTypeKode>();
+            this.RødlisteVurderingsenhetKategori = new HashSet<Kategori>();
         }
     
         public int Id { get; set; }
         public string verdi { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RødlisteVurderingsenhet> RødlisteVurderingsenhet { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NaturområdeTypeKode> NaturområdeTypeKode { get; set; }
+        public virtual ICollection<Kategori> RødlisteVurderingsenhetKategori { get; set; }
     }
 }

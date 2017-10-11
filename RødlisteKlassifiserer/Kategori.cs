@@ -12,13 +12,12 @@ namespace Forms_dev3
     using System;
     using System.Collections.Generic;
     
-    public partial class Naturnivå
+    public partial class Kategori
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Naturnivå()
+        public Kategori()
         {
             this.RødlisteVurderingsenhet = new HashSet<RødlisteVurderingsenhet>();
-            this.NaturområdeTypeKode = new HashSet<NaturområdeTypeKode>();
         }
     
         public int Id { get; set; }
@@ -26,7 +25,6 @@ namespace Forms_dev3
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RødlisteVurderingsenhet> RødlisteVurderingsenhet { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NaturområdeTypeKode> NaturområdeTypeKode { get; set; }
+        public virtual Tema RødlisteVurderingsenhetTema { get; set; }
     }
 }

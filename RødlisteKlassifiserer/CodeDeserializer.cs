@@ -17,7 +17,7 @@ namespace RødlisteKlassifiserer
             {
                 var naturområdeType = ConvertToNaturområdeType(code);
                 var existingRow = DataConnection.Context.NaturområdeTypeKodeSet.Where(d =>
-                    d.nivå == naturområdeType.nivå &&
+                    d.Naturnivå.verdi == naturområdeType.Naturnivå.verdi &&
                     d.verdi == naturområdeType.verdi &&
                     d.KodeVersjon.verdi == naturområdeType.KodeVersjon.verdi);
 
@@ -63,10 +63,12 @@ namespace RødlisteKlassifiserer
 
             var kartlaggingsKode = new KartleggingsKode {nivå = "A", navn = code.Navn};
 
+            var naturNivå= new Naturnivå{ verdi = codeSplit[0] };
+
             var naturområdeTypeKode = new NaturområdeTypeKode
             {
                 KodeVersjon = GetKodeVersjon(),
-                nivå = codeSplit[0],
+                Naturnivå = DataConnection.Context.NaturnivåSet.AddIfNotExists(naturNivå, d => d.verdi == naturNivå.verdi),
                 verdi = mappingSplit[0]
             };
 
@@ -80,7 +82,7 @@ namespace RødlisteKlassifiserer
 
             var existingNaturområdeTypeKodes = DataConnection.Context.NaturområdeTypeKodeSet.Where(d =>
                 d.verdi == naturområdeTypeKode.verdi &&
-                d.nivå == naturområdeTypeKode.nivå &&
+                d.Naturnivå.verdi == naturområdeTypeKode.Naturnivå.verdi &&
                 d.KodeVersjon.verdi == naturområdeTypeKode.KodeVersjon.verdi);
 
             if (existingNaturområdeTypeKodes.Any())

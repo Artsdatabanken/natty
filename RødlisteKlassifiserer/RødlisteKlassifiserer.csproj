@@ -97,6 +97,9 @@
     <Compile Include="KartleggingsKode.cs">
       <DependentUpon>RødlistedeNaturtyperKlassifisering.tt</DependentUpon>
     </Compile>
+    <Compile Include="Kategori.cs">
+      <DependentUpon>RødlistedeNaturtyperKlassifisering.tt</DependentUpon>
+    </Compile>
     <Compile Include="KodeVersjon.cs">
       <DependentUpon>RødlistedeNaturtyperKlassifisering.tt</DependentUpon>
     </Compile>
@@ -139,6 +142,9 @@
       <DependentUpon>RødlistedeNaturtyperKlassifisering.tt</DependentUpon>
     </Compile>
     <Compile Include="RødlisteVurderingsenhet.cs">
+      <DependentUpon>RødlistedeNaturtyperKlassifisering.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tema.cs">
       <DependentUpon>RødlistedeNaturtyperKlassifisering.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">

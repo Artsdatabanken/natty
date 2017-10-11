@@ -26,8 +26,6 @@ namespace Forms_dev3
     
         public int Id { get; set; }
         public string verdi { get; set; }
-        public string tema { get; set; }
-        public string kategori { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RødlisteVurderingsenhet> children { get; set; }
@@ -41,5 +39,6 @@ namespace Forms_dev3
         public virtual ICollection<Påvirkning> Påvirkning { get; set; }
         public virtual RødlisteVurdeingsenhetVersjon RødlisteVurdeingsenhetVersjon { get; set; }
         public virtual Naturnivå Naturnivå { get; set; }
+        public virtual Kategori Kategori { get; set; }
     }
 }

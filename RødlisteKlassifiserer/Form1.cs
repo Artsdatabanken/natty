@@ -181,14 +181,32 @@ namespace RødlisteKlassifiserer
                 }
                 if (row <= 1) continue;
 
+                var tema = new Tema { verdi = rowValues["Tema"] };
+
+                tema = DataConnection.Context.TemaSet.AddIfNotExists(tema);
+
+                var kategori = tema.RødlisteVurderingsenhetKategori.First(d =>
+                    d.verdi == rowValues["Rødlistekategori"]);
+
+                if (kategori == null)
+                {
+                    kategori = new Kategori
+                    {
+                        verdi = rowValues["Rødlistekategori"],
+                        RødlisteVurderingsenhetTema = tema
+                    };
+                    kategori = DataConnection.Context.KategoriSet.AddIfNotExists(kategori);
+                    tema.RødlisteVurderingsenhetKategori.Add(kategori);
+                    kategori.RødlisteVurderingsenhetTema = tema;
+                }
+
                 var rødlisteVurderingsenhet = new RødlisteVurderingsenhet
                 {
-                    tema = rowValues["Tema"],
                     RødlisteVurdeingsenhetVersjon =
                         DataConnection.Context.RødlisteVurdeingsenhetVersjonSet.AddIfNotExists(
                             new RødlisteVurdeingsenhetVersjon {verdi = rowValues["Rødlisteversjon"]}),
                     verdi = rowValues["Vurderingsenhet"],
-                    kategori = rowValues["Rødlistekategori"],
+                    Kategori = kategori,
                     Naturnivå = DataConnection.Context.NaturnivåSet.AddIfNotExists(new Naturnivå
                     {
                         verdi = rowValues["Naturnivå"]

@@ -31,7 +31,7 @@ namespace NiNCoreKlassifiserer
 
                 if (rødlisteKlassifisering.NaturområdeTypeKode != null)
                 {
-                    naturområdeTypeKodeVerdi = rødlisteKlassifisering.NaturområdeTypeKode.nivå + "_" +
+                    naturområdeTypeKodeVerdi = rødlisteKlassifisering.NaturområdeTypeKode.Naturnivå.verdi + "_" +
                                                rødlisteKlassifisering.NaturområdeTypeKode.verdi;
                     naturområder = GetNaturområderLike(naturområdeTypeKodeVerdi).ToList();
                     naturområder.AddRange(GetNaturområder(naturområdeTypeKodeVerdi));
@@ -40,13 +40,13 @@ namespace NiNCoreKlassifiserer
                 {
                     foreach (var kartleggingsKode in rødlisteKlassifisering.KartleggingsKode)
                     {
-                        naturområdeTypeKodeVerdi = kartleggingsKode.NaturområdeTypeKode.nivå + "_" +
+                        naturområdeTypeKodeVerdi = kartleggingsKode.NaturområdeTypeKode.Naturnivå.verdi + "_" +
                                                    kartleggingsKode.NaturområdeTypeKode.verdi + "-" +
                                                    kartleggingsKode.verdi;
                         naturområder.AddRange(GetNaturområder(naturområdeTypeKodeVerdi).ToList());
                         if (kartleggingsKode.KartleggingsKodeAggregate == null) continue;
                         naturområdeTypeKodeVerdi =
-                            kartleggingsKode.KartleggingsKodeAggregate.NaturområdeTypeKode.nivå + "_" +
+                            kartleggingsKode.KartleggingsKodeAggregate.NaturområdeTypeKode.Naturnivå.verdi + "_" +
                             kartleggingsKode.KartleggingsKodeAggregate.NaturområdeTypeKode.verdi + "-" +
                             kartleggingsKode.KartleggingsKodeAggregate.nivå + "-" +
                             kartleggingsKode.KartleggingsKodeAggregate.verdi;

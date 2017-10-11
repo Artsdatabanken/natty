@@ -36,5 +36,7 @@ namespace Forms_dev3
         public virtual DbSet<Naturnivå> NaturnivåSet { get; set; }
         public virtual DbSet<KodeVersjon> KodeVersjonSet { get; set; }
         public virtual DbSet<Naturområde_RødlisteKlassifisering> Naturområde_RødlisteKlassifiseringSet { get; set; }
+        public virtual DbSet<Tema> TemaSet { get; set; }
+        public virtual DbSet<Kategori> KategoriSet { get; set; }
     }
 }
