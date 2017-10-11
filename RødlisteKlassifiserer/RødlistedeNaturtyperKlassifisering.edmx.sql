@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/11/2017 14:06:44
+-- Date Created: 10/11/2017 15:14:26
 -- Generated from EDMX file: C:\Users\japed\source\repos\RødlistedeNaturområder\RødlisteKlassifiserer\RødlistedeNaturtyperKlassifisering.edmx
 -- --------------------------------------------------
 
@@ -65,11 +65,11 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_KodeVersjonBeskrivelsesvariabel]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[BeskrivelsesvariabelSet] DROP CONSTRAINT [FK_KodeVersjonBeskrivelsesvariabel];
 GO
-IF OBJECT_ID(N'[dbo].[FK_BeskrivelsesvariabelRødlisteKlassifisering1_Beskrivelsesvariabel]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[InnsnevrendeBeskrivelsesvariabelRødlisteKlassifisering] DROP CONSTRAINT [FK_BeskrivelsesvariabelRødlisteKlassifisering1_Beskrivelsesvariabel];
+IF OBJECT_ID(N'[dbo].[FK_InnsnevrendeBeskrivelsesvariabelRødlisteKlassifisering_Beskrivelsesvariabel]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[InnsnevrendeBeskrivelsesvariabelRødlisteKlassifisering] DROP CONSTRAINT [FK_InnsnevrendeBeskrivelsesvariabelRødlisteKlassifisering_Beskrivelsesvariabel];
 GO
-IF OBJECT_ID(N'[dbo].[FK_BeskrivelsesvariabelRødlisteKlassifisering1_RødlisteKlassifisering]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[InnsnevrendeBeskrivelsesvariabelRødlisteKlassifisering] DROP CONSTRAINT [FK_BeskrivelsesvariabelRødlisteKlassifisering1_RødlisteKlassifisering];
+IF OBJECT_ID(N'[dbo].[FK_InnsnevrendeBeskrivelsesvariabelRødlisteKlassifisering_RødlisteKlassifisering]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[InnsnevrendeBeskrivelsesvariabelRødlisteKlassifisering] DROP CONSTRAINT [FK_InnsnevrendeBeskrivelsesvariabelRødlisteKlassifisering_RødlisteKlassifisering];
 GO
 IF OBJECT_ID(N'[dbo].[FK_RødlisteKlassifiseringNaturområde_RødlisteKlassifisering]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Naturområde_RødlisteKlassifiseringSet] DROP CONSTRAINT [FK_RødlisteKlassifiseringNaturområde_RødlisteKlassifisering];
@@ -83,8 +83,8 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_RødlisteVurderingsenhetTemaRødlisteVurderingsenhetKategori]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[KategoriSet] DROP CONSTRAINT [FK_RødlisteVurderingsenhetTemaRødlisteVurderingsenhetKategori];
 GO
-IF OBJECT_ID(N'[dbo].[FK_NaturnivåKartleggingsKode]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[KartleggingsKodeSet] DROP CONSTRAINT [FK_NaturnivåKartleggingsKode];
+IF OBJECT_ID(N'[dbo].[FK_NaturnivåNaturområdeTypeKode]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[NaturområdeTypeKodeSet] DROP CONSTRAINT [FK_NaturnivåNaturområdeTypeKode];
 GO
 
 -- --------------------------------------------------
