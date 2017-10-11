@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/11/2017 15:14:26
+-- Date Created: 10/11/2017 17:31:31
 -- Generated from EDMX file: C:\Users\japed\source\repos\RødlistedeNaturområder\RødlisteKlassifiserer\RødlistedeNaturtyperKlassifisering.edmx
 -- --------------------------------------------------
 
@@ -166,7 +166,8 @@ CREATE TABLE [dbo].[RødlisteVurderingsenhetSet] (
     [RødlisteVurderingsenhetRødlisteVurderingsenhet_RødlisteVurderingsenhet1_Id] int  NULL,
     [RødlisteVurdeingsenhetVersjon_Id] int  NOT NULL,
     [Naturnivå_Id] int  NOT NULL,
-    [Kategori_Id] int  NOT NULL
+    [Kategori_Id] int  NOT NULL,
+    [Tema_Id] int  NOT NULL
 );
 GO
 
@@ -251,8 +252,7 @@ GO
 -- Creating table 'KategoriSet'
 CREATE TABLE [dbo].[KategoriSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [verdi] nvarchar(max)  NOT NULL,
-    [RødlisteVurderingsenhetTema_Id] int  NOT NULL
+    [verdi] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -692,21 +692,6 @@ ON [dbo].[RødlisteVurderingsenhetSet]
     ([Kategori_Id]);
 GO
 
--- Creating foreign key on [RødlisteVurderingsenhetTema_Id] in table 'KategoriSet'
-ALTER TABLE [dbo].[KategoriSet]
-ADD CONSTRAINT [FK_RødlisteVurderingsenhetTemaRødlisteVurderingsenhetKategori]
-    FOREIGN KEY ([RødlisteVurderingsenhetTema_Id])
-    REFERENCES [dbo].[TemaSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_RødlisteVurderingsenhetTemaRødlisteVurderingsenhetKategori'
-CREATE INDEX [IX_FK_RødlisteVurderingsenhetTemaRødlisteVurderingsenhetKategori]
-ON [dbo].[KategoriSet]
-    ([RødlisteVurderingsenhetTema_Id]);
-GO
-
 -- Creating foreign key on [Naturnivå_Id] in table 'NaturområdeTypeKodeSet'
 ALTER TABLE [dbo].[NaturområdeTypeKodeSet]
 ADD CONSTRAINT [FK_NaturnivåNaturområdeTypeKode]
@@ -720,6 +705,21 @@ GO
 CREATE INDEX [IX_FK_NaturnivåNaturområdeTypeKode]
 ON [dbo].[NaturområdeTypeKodeSet]
     ([Naturnivå_Id]);
+GO
+
+-- Creating foreign key on [Tema_Id] in table 'RødlisteVurderingsenhetSet'
+ALTER TABLE [dbo].[RødlisteVurderingsenhetSet]
+ADD CONSTRAINT [FK_TemaRødlisteVurderingsenhet]
+    FOREIGN KEY ([Tema_Id])
+    REFERENCES [dbo].[TemaSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TemaRødlisteVurderingsenhet'
+CREATE INDEX [IX_FK_TemaRødlisteVurderingsenhet]
+ON [dbo].[RødlisteVurderingsenhetSet]
+    ([Tema_Id]);
 GO
 
 -- --------------------------------------------------

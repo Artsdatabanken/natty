@@ -36,7 +36,7 @@ namespace RødlisteKlassifiserer
             if (!DataConnection.Context.RødlisteVurderingsenhetSet.Any())
             {
                 buttonUpdateValideringsenheter.Enabled = false;
-                buttonUpdateValideringsenheter_Click(null, null);
+                buttonUpdateRødlisteVurdeingsenhetVersjon_Click(null, null);
                 buttonUpdateValideringsenheter.Enabled = true;
             }
 
@@ -154,7 +154,7 @@ namespace RødlisteKlassifiserer
             buttonUpdateKodelister.Enabled = true;
         }
 
-        private void buttonUpdateValideringsenheter_Click(object sender, EventArgs e)
+        private void buttonUpdateRødlisteVurdeingsenhetVersjon_Click(object sender, EventArgs e)
         {
             DataConnection.Context.Database.ExecuteSqlCommand("DELETE FROM [dbo].RødlisteVurderingsenhetSet");
             buttonUpdateValideringsenheter.Enabled = false;
@@ -181,36 +181,33 @@ namespace RødlisteKlassifiserer
                 }
                 if (row <= 1) continue;
 
-                var tema = new Tema { verdi = rowValues["Tema"] };
+                var tema = new Tema {verdi = rowValues["Tema"]};
+                if (DataConnection.Context.TemaSet.Any(d => d.verdi == tema.verdi))
+                    tema = DataConnection.Context.TemaSet.First(d => d.verdi == tema.verdi);
 
-                tema = DataConnection.Context.TemaSet.AddIfNotExists(tema);
+                var kategori = new Kategori {verdi = rowValues["Rødlistekategori"]};
+                if (DataConnection.Context.KategoriSet.Any(d => d.verdi == kategori.verdi))
+                    kategori = DataConnection.Context.KategoriSet.First(d => d.verdi == kategori.verdi);
 
-                var kategori = tema.RødlisteVurderingsenhetKategori.First(d =>
-                    d.verdi == rowValues["Rødlistekategori"]);
+                var rødlisteVurdeingsenhetVersjon =
+                    new RødlisteVurdeingsenhetVersjon {verdi = rowValues["Rødlisteversjon"]};
+                if (DataConnection.Context.RødlisteVurdeingsenhetVersjonSet.Any(d =>
+                    d.verdi == rødlisteVurdeingsenhetVersjon.verdi))
+                    rødlisteVurdeingsenhetVersjon =
+                        DataConnection.Context.RødlisteVurdeingsenhetVersjonSet.First(d =>
+                            d.verdi == rødlisteVurdeingsenhetVersjon.verdi);
 
-                if (kategori == null)
-                {
-                    kategori = new Kategori
-                    {
-                        verdi = rowValues["Rødlistekategori"],
-                        RødlisteVurderingsenhetTema = tema
-                    };
-                    kategori = DataConnection.Context.KategoriSet.AddIfNotExists(kategori);
-                    tema.RødlisteVurderingsenhetKategori.Add(kategori);
-                    kategori.RødlisteVurderingsenhetTema = tema;
-                }
+                var naturnivå = new Naturnivå {verdi = rowValues["Naturnivå"]};
+                if (DataConnection.Context.NaturnivåSet.Any(d => d.verdi == naturnivå.verdi))
+                    naturnivå = DataConnection.Context.NaturnivåSet.First(d => d.verdi == naturnivå.verdi);
 
                 var rødlisteVurderingsenhet = new RødlisteVurderingsenhet
                 {
-                    RødlisteVurdeingsenhetVersjon =
-                        DataConnection.Context.RødlisteVurdeingsenhetVersjonSet.AddIfNotExists(
-                            new RødlisteVurdeingsenhetVersjon {verdi = rowValues["Rødlisteversjon"]}),
                     verdi = rowValues["Vurderingsenhet"],
+                    RødlisteVurdeingsenhetVersjon = rødlisteVurdeingsenhetVersjon,
                     Kategori = kategori,
-                    Naturnivå = DataConnection.Context.NaturnivåSet.AddIfNotExists(new Naturnivå
-                    {
-                        verdi = rowValues["Naturnivå"]
-                    })
+                    Tema = tema,
+                    Naturnivå = naturnivå
                 };
 
                 if (rødlisteVurderingsenhet.verdi.StartsWith("*"))
@@ -221,8 +218,10 @@ namespace RødlisteKlassifiserer
                 else parentVurderingsenhet = rødlisteVurderingsenhet;
 
                 DataConnection.Context.RødlisteVurderingsenhetSet.Add(rødlisteVurderingsenhet);
+
+                DataConnection.Context.SaveChanges();
             }
-            DataConnection.Context.SaveChanges();
+            
 
             xlWorkbook.Close(false);
             Marshal.ReleaseComObject(xlWorkbook);

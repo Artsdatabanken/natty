@@ -31,11 +31,11 @@
         <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.Naturområde_RødlisteKlassifisering" Width="1.5" PointX="7.25" PointY="7.875" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.RødlisteKlassifiseringNaturområde_RødlisteKlassifisering" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.KartleggingsKodeKartleggingsKode" />
-        <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.Tema" Width="1.5" PointX="15.375" PointY="3.875" />
-        <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.Kategori" Width="1.5" PointX="13.125" PointY="3.875" />
+        <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.Tema" Width="1.5" PointX="13.5" PointY="2.75" />
+        <EntityTypeShape EntityType="RødlistedeNaturtyperKlassifisering.Kategori" Width="1.5" PointX="13.5" PointY="4.875" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.RødlisteVurderingsenhetKategoriRødlisteVurderingsenhet" />
-        <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.RødlisteVurderingsenhetTemaRødlisteVurderingsenhetKategori" />
         <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.NaturnivåNaturområdeTypeKode" />
+        <AssociationConnector Association="RødlistedeNaturtyperKlassifisering.TemaRødlisteVurderingsenhet" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

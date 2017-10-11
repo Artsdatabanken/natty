@@ -25,6 +25,5 @@ namespace Forms_dev3
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RødlisteVurderingsenhet> RødlisteVurderingsenhet { get; set; }
-        public virtual Tema RødlisteVurderingsenhetTema { get; set; }
     }
 }

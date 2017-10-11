@@ -40,5 +40,6 @@ namespace Forms_dev3
         public virtual RødlisteVurdeingsenhetVersjon RødlisteVurdeingsenhetVersjon { get; set; }
         public virtual Naturnivå Naturnivå { get; set; }
         public virtual Kategori Kategori { get; set; }
+        public virtual Tema Tema { get; set; }
     }
 }

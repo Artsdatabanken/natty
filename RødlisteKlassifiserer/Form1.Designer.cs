@@ -135,7 +135,7 @@
             this.buttonUpdateValideringsenheter.TabIndex = 10;
             this.buttonUpdateValideringsenheter.Text = "Update";
             this.buttonUpdateValideringsenheter.UseVisualStyleBackColor = true;
-            this.buttonUpdateValideringsenheter.Click += new System.EventHandler(this.buttonUpdateValideringsenheter_Click);
+            this.buttonUpdateValideringsenheter.Click += new System.EventHandler(this.buttonUpdateRødlisteVurdeingsenhetVersjon_Click);
             // 
             // comboBoxVurderingsenhet
             // 
