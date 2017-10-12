@@ -20,6 +20,7 @@ namespace RødlisteKlassifiserer
 
         private void PopulateAll()
         {
+            UpdateRødlisteKategori();
 
             buttonUpdateKodelister.Enabled = false;
 
@@ -47,6 +48,17 @@ namespace RødlisteKlassifiserer
             PopulateNaturområdeComboBox();
 
             PopulateBeskrivelsesVariabler();
+        }
+
+        private static void UpdateRødlisteKategori()
+        {
+            var kategoriVerdier = new []{"RE","CR","EN","VU","NT","DD","LC","NA","NE"};
+            foreach (var kategoriVerdi in kategoriVerdier)
+            {
+                var kategori = new Kategori {verdi = kategoriVerdi};
+                DataConnection.Context.KategoriSet.AddIfNotExists(kategori, d => d.verdi == kategori.verdi);
+            }
+            DataConnection.Context.SaveChanges();
         }
 
         private void PopulateNaturnivåCombobox()
