@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Excel = Microsoft.Office.Interop.Excel;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -764,6 +765,17 @@ namespace RødlisteKlassifiserer
                 {
                     NullValueHandling = NullValueHandling.Ignore
                 });
+            using (var sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "json (*.json)|*.json|All files (*.*)|*.*";
+                sfd.FilterIndex = 2;
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    File.WriteAllText(sfd.FileName, output);
+                }
+            }
+
         }
     }
 
