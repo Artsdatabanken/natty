@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using Forms_dev3;
+using Newtonsoft.Json;
 
 namespace RødlisteKlassifiserer
 {
@@ -52,7 +53,7 @@ namespace RødlisteKlassifiserer
 
         private static void UpdateRødlisteKategori()
         {
-            var kategoriVerdier = new []{"RE","CR","EN","VU","NT","DD","LC","NA","NE"};
+            var kategoriVerdier = new[] { "RE", "CR", "EN", "VU", "NT", "DD", "LC", "NA", "NE" };
             foreach (var kategoriVerdi in kategoriVerdier)
             {
                 var kategori = new Kategori {verdi = kategoriVerdi};
@@ -233,7 +234,7 @@ namespace RødlisteKlassifiserer
 
                 DataConnection.Context.SaveChanges();
             }
-            
+
 
             xlWorkbook.Close(false);
             Marshal.ReleaseComObject(xlWorkbook);
@@ -277,7 +278,7 @@ namespace RødlisteKlassifiserer
             var selectedRødlisteVurderingsenhet = GetSelectedRødlisteVurderingsEnhet();
 
             var selectedInnsnevrendeBeskrivelsesvariabler = GetSelectedInnsnevrendeBeskrivelsesvariablerValues();
-            
+
             if (checkBoxANDPermutations.Checked)
             {
                 AddANDPermutation(selectedKartleggingsKoder, selectedBeskrivelsesvariabler, selectedRødlisteVurderingsenhet, selectedInnsnevrendeBeskrivelsesvariabler);
@@ -334,7 +335,7 @@ namespace RødlisteKlassifiserer
                             new List<Beskrivelsesvariabel> {beskrivelsesvariabel});
                     }
                 }
-                
+
             }
         }
 
@@ -402,8 +403,8 @@ namespace RødlisteKlassifiserer
             };
             if (selectedInnsnevrendeBeskrivelsesvariabler != null)
                 if (selectedInnsnevrendeBeskrivelsesvariabler.Any())
-                rødlisteKlassifisering.InnsnevrendeBeskrivelsesvariabel =
-                    selectedInnsnevrendeBeskrivelsesvariabler.ToList();
+                    rødlisteKlassifisering.InnsnevrendeBeskrivelsesvariabel =
+                        selectedInnsnevrendeBeskrivelsesvariabler.ToList();
             DataConnection.Context.RødlisteKlassifiseringSet.Add(rødlisteKlassifisering);
         }
 
@@ -504,10 +505,10 @@ namespace RødlisteKlassifiserer
         {
             var concatinatedString = "";
             if(beskrivelsesvariabelList != null)
-            foreach (var beskrivelsesvariabel in beskrivelsesvariabelList)
-            {
-                concatinatedString += beskrivelsesvariabel.verdi + ",";
-            }
+                foreach (var beskrivelsesvariabel in beskrivelsesvariabelList)
+                {
+                    concatinatedString += beskrivelsesvariabel.verdi + ",";
+                }
             return concatinatedString.TrimEnd(',');
         }
 
@@ -683,10 +684,10 @@ namespace RødlisteKlassifiserer
                 var naturområdeTypeKode =
                     DataConnection.Context.NaturområdeTypeKodeSet.First(d => d.verdi == hovedType);
 
-                var kartleggingsKodeAggregate = DataConnection.Context.KartleggingsKodeSet.First(d => 
-                d.nivå == aggregateNivå &&
-                d.verdi.ToString() == aggregateKartleggingsKode &&
-                d.NaturområdeTypeKode.verdi == aggregateType);
+                var kartleggingsKodeAggregate = DataConnection.Context.KartleggingsKodeSet.First(d =>
+                    d.nivå == aggregateNivå &&
+                    d.verdi.ToString() == aggregateKartleggingsKode &&
+                    d.NaturområdeTypeKode.verdi == aggregateType);
 
                 foreach (var kartleggingsKode in naturområdeTypeKode.KartleggingsKode)
                 {
@@ -706,5 +707,78 @@ namespace RødlisteKlassifiserer
 
             buttonAggregates.Enabled = true;
         }
+
+        private void buttonExport_Click(object sender, EventArgs e)
+        {
+            var definitions = new List<Theme>();
+            foreach (var tema in DataConnection.Context.TemaSet)
+            {
+                if(!tema.RødlisteVurderingsenhet.Any( r => r.RødlisteKlassifisering.Any()))
+                    continue;
+                var theme = new Theme {Navn = tema.verdi};
+                foreach (var rødlisteVurderingsenhet in tema.RødlisteVurderingsenhet.Where(r =>
+                    r.Naturnivå.verdi == "NA" && r.RødlisteKlassifisering.Any()))
+                {
+                    var definition = new VurderingsEnhet {Navn = rødlisteVurderingsenhet.verdi};
+                    foreach (var rødlisteKlassifisering in rødlisteVurderingsenhet.RødlisteKlassifisering)
+                    {
+                        var rule = new Regel();
+                        if (rødlisteKlassifisering.NaturområdeTypeKode != null)
+                            rule.Natursystem = rødlisteKlassifisering.NaturområdeTypeKode.verdi;
+
+                        foreach (var kartleggingsKode in rødlisteKlassifisering.KartleggingsKode)
+                        {
+                            rule.Natursystem = kartleggingsKode.NaturområdeTypeKode.verdi + "-" +
+                                               kartleggingsKode.verdi;
+                        }
+                        if (rødlisteKlassifisering.Beskrivelsesvariabel.Any())
+                        {
+                            rule.BeskrivelsesVariabler = new List<string>();
+                            foreach (var beskrivelsesvariabel in rødlisteKlassifisering.Beskrivelsesvariabel)
+                            {
+                                rule.BeskrivelsesVariabler.Add(beskrivelsesvariabel.verdi);
+                            }
+                        }
+                        if (rødlisteKlassifisering.InnsnevrendeBeskrivelsesvariabel.Any())
+                        {
+                            rule.InnsnevrendeBeskrivelsesVariabler = new List<string>();
+                            foreach (var beskrivelsesvariabel in rødlisteKlassifisering.InnsnevrendeBeskrivelsesvariabel
+                            )
+                            {
+                                rule.InnsnevrendeBeskrivelsesVariabler.Add(beskrivelsesvariabel.verdi);
+                            }
+                        }
+                        definition.Regler.Add(rule);
+                    }
+                    theme.Vurderingsenheter.Add(definition);
+                }
+                definitions.Add(theme);
+            }
+            var output = JsonConvert.SerializeObject(definitions,
+                Formatting.None,
+                new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore
+                });
+        }
+    }
+
+    internal class Theme
+    {
+        public string Navn { get; set; }
+        public List<VurderingsEnhet> Vurderingsenheter = new List<VurderingsEnhet>();
+    }
+
+    internal class VurderingsEnhet
+    {
+        public List<Regel> Regler = new List<Regel>();
+        public string Navn { get; set; }
+    }
+
+    internal class Regel
+    {
+        public string Natursystem { get; set; }
+        public List<string> BeskrivelsesVariabler { get; set; }
+        public List<string> InnsnevrendeBeskrivelsesVariabler { get; set; }
     }
 }

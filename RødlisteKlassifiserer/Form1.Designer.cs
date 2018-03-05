@@ -62,6 +62,7 @@
             this.checkBoxORPermutations = new System.Windows.Forms.CheckBox();
             this.buttonAggregates = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
+            this.buttonExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRødlisteKlassifisering)).BeginInit();
             this.SuspendLayout();
             // 
@@ -366,11 +367,22 @@
             this.label8.TabIndex = 33;
             this.label8.Text = "NaturområdeTypeMapping";
             // 
+            // buttonExport
+            // 
+            this.buttonExport.Location = new System.Drawing.Point(400, 460);
+            this.buttonExport.Name = "buttonExport";
+            this.buttonExport.Size = new System.Drawing.Size(75, 23);
+            this.buttonExport.TabIndex = 34;
+            this.buttonExport.Text = "Export";
+            this.buttonExport.UseVisualStyleBackColor = true;
+            this.buttonExport.Click += new System.EventHandler(this.buttonExport_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(892, 601);
+            this.Controls.Add(this.buttonExport);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.buttonAggregates);
             this.Controls.Add(this.checkBoxORPermutations);
@@ -444,6 +456,7 @@
         private System.Windows.Forms.CheckBox checkBoxORPermutations;
         private System.Windows.Forms.Button buttonAggregates;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button buttonExport;
     }
 }
 
