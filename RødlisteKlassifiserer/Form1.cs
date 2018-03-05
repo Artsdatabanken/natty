@@ -715,11 +715,15 @@ namespace RødlisteKlassifiserer
             {
                 if(!tema.RødlisteVurderingsenhet.Any( r => r.RødlisteKlassifisering.Any()))
                     continue;
-                var theme = new Theme {Navn = tema.verdi};
+                var theme = new Theme { Tema = tema.verdi};
                 foreach (var rødlisteVurderingsenhet in tema.RødlisteVurderingsenhet.Where(r =>
                     r.Naturnivå.verdi == "NA" && r.RødlisteKlassifisering.Any()))
                 {
-                    var definition = new VurderingsEnhet {Navn = rødlisteVurderingsenhet.verdi};
+                    var definition = new VurderingsEnhet
+                    {
+                        Navn = rødlisteVurderingsenhet.verdi,
+                        Rødlistekategori = rødlisteVurderingsenhet.Kategori.verdi
+                    };
                     foreach (var rødlisteKlassifisering in rødlisteVurderingsenhet.RødlisteKlassifisering)
                     {
                         var rule = new Regel();
@@ -765,7 +769,7 @@ namespace RødlisteKlassifiserer
 
     internal class Theme
     {
-        public string Navn { get; set; }
+        public string Tema { get; set; }
         public List<VurderingsEnhet> Vurderingsenheter = new List<VurderingsEnhet>();
     }
 
@@ -773,6 +777,7 @@ namespace RødlisteKlassifiserer
     {
         public List<Regel> Regler = new List<Regel>();
         public string Navn { get; set; }
+        public string Rødlistekategori { get; set; }
     }
 
     internal class Regel
