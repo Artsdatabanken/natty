@@ -1,0 +1,2863 @@
+[
+    {
+        "Vurderingsenheter": [
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T1-69"
+                    },
+                    {
+                        "Natursystem": "T1-70"
+                    },
+                    {
+                        "Natursystem": "T1-71"
+                    },
+                    {
+                        "Natursystem": "T1-72"
+                    },
+                    {
+                        "Natursystem": "T1-73"
+                    },
+                    {
+                        "Natursystem": "T1-74"
+                    },
+                    {
+                        "Natursystem": "T1-75"
+                    },
+                    {
+                        "Natursystem": "T1-76"
+                    },
+                    {
+                        "Natursystem": "T15"
+                    }
+                ],
+                "Navn": "Fosseberg og fosse-eng",
+                "Rødlistekategori": "NT"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T18"
+                    }
+                ],
+                "Navn": "Åpen flomfastmark",
+                "Rødlistekategori": "NT"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T2-7",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T2-8",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    }
+                ],
+                "Navn": "Åpen grunnlendt kalkmark i boreonemoral sone",
+                "Rødlistekategori": "VU"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T20"
+                    }
+                ],
+                "Navn": "Isinnfrysingsmark",
+                "Rødlistekategori": "DD"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T5-4"
+                    },
+                    {
+                        "Natursystem": "T5-7"
+                    }
+                ],
+                "Navn": "Grotte",
+                "Rødlistekategori": "VU"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T17-3",
+                        "BeskrivelsesVariabler": [
+                            "3ER_JP"
+                        ]
+                    }
+                ],
+                "Navn": "Jordpyramide",
+                "Rødlistekategori": "CR"
+            }
+        ],
+        "Tema": "Fjell, rasmark og annen grunnlendt mark "
+    },
+    {
+        "Vurderingsenheter": [
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T21-5",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T21-6",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    }
+                ],
+                "Navn": "Sørlig etablert sanddynemark",
+                "Rødlistekategori": "EN"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T21-2"
+                    },
+                    {
+                        "Natursystem": "T21-3"
+                    },
+                    {
+                        "Natursystem": "T21-4"
+                    },
+                    {
+                        "Natursystem": "T21-5"
+                    },
+                    {
+                        "Natursystem": "T21-6"
+                    },
+                    {
+                        "Natursystem": "T21-7"
+                    },
+                    {
+                        "Natursystem": "T21-8"
+                    }
+                ],
+                "Navn": "Sanddynemark",
+                "Rødlistekategori": "VU"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T12",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T33",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    }
+                ],
+                "Navn": "Sørlig strandeng",
+                "Rødlistekategori": "EN"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T12",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T12",
+                        "BeskrivelsesVariabler": [
+                            "6SO-3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T12",
+                        "BeskrivelsesVariabler": [
+                            "6SO-4"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T33",
+                        "BeskrivelsesVariabler": [
+                            "6SO-4"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T33",
+                        "BeskrivelsesVariabler": [
+                            "6SO-3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T33",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T33",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T33",
+                        "BeskrivelsesVariabler": [
+                            "6SX-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T12",
+                        "BeskrivelsesVariabler": [
+                            "6SX-1"
+                        ]
+                    }
+                ],
+                "Navn": "Strandeng",
+                "Rødlistekategori": "NT"
+            }
+        ],
+        "Tema": "Fjæresone"
+    },
+    {
+        "Vurderingsenheter": [
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "V7"
+                    }
+                ],
+                "Navn": "Arktisk permafrost-våtmark",
+                "Rødlistekategori": "NT"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "V1-1",
+                        "BeskrivelsesVariabler": [
+                            "6SX-3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-1",
+                        "BeskrivelsesVariabler": [
+                            "6SX-4"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-1",
+                        "BeskrivelsesVariabler": [
+                            "6SX-5"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-2",
+                        "BeskrivelsesVariabler": [
+                            "6SX-5"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-2",
+                        "BeskrivelsesVariabler": [
+                            "6SX-4"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-2",
+                        "BeskrivelsesVariabler": [
+                            "6SX-3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-3",
+                        "BeskrivelsesVariabler": [
+                            "6SX-3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-3",
+                        "BeskrivelsesVariabler": [
+                            "6SX-4"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-3",
+                        "BeskrivelsesVariabler": [
+                            "6SX-5"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-4",
+                        "BeskrivelsesVariabler": [
+                            "6SX-5"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-4",
+                        "BeskrivelsesVariabler": [
+                            "6SX-4"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-4",
+                        "BeskrivelsesVariabler": [
+                            "6SX-3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-5",
+                        "BeskrivelsesVariabler": [
+                            "6SX-3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-5",
+                        "BeskrivelsesVariabler": [
+                            "6SX-4"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-5",
+                        "BeskrivelsesVariabler": [
+                            "6SX-5"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-6",
+                        "BeskrivelsesVariabler": [
+                            "6SX-5"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-6",
+                        "BeskrivelsesVariabler": [
+                            "6SX-4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-6",
+                        "BeskrivelsesVariabler": [
+                            "6SX-3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-7",
+                        "BeskrivelsesVariabler": [
+                            "6SX-3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-7",
+                        "BeskrivelsesVariabler": [
+                            "6SX-4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-7",
+                        "BeskrivelsesVariabler": [
+                            "6SX-5"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-8",
+                        "BeskrivelsesVariabler": [
+                            "6SX-5"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-8",
+                        "BeskrivelsesVariabler": [
+                            "6SX-4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-8",
+                        "BeskrivelsesVariabler": [
+                            "6SX-3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-9",
+                        "BeskrivelsesVariabler": [
+                            "6SX-3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-9",
+                        "BeskrivelsesVariabler": [
+                            "6SX-4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-9",
+                        "BeskrivelsesVariabler": [
+                            "6SX-5"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-c"
+                        ]
+                    }
+                ],
+                "Navn": "Fattigmyr",
+                "Rødlistekategori": "NT"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "V5"
+                    }
+                ],
+                "Navn": "Varm kilde",
+                "Rødlistekategori": "VU"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T10-2"
+                    }
+                ],
+                "Navn": "Avblåst normal arktisk steppe",
+                "Rødlistekategori": "VU"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T28"
+                    }
+                ],
+                "Navn": "Polarørken",
+                "Rødlistekategori": "NT"
+            }
+        ],
+        "Tema": "Høgarktiske terrestriske områder"
+    },
+    {
+        "Vurderingsenheter": [
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T34"
+                    }
+                ],
+                "Navn": "Kystlynghei",
+                "Rødlistekategori": "EN"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T32",
+                        "BeskrivelsesVariabler": [
+                            "SP-a"
+                        ]
+                    }
+                ],
+                "Navn": "Slåtteeng",
+                "Rødlistekategori": "EN"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T32"
+                    }
+                ],
+                "Navn": "Kulturmarkseng",
+                "Rødlistekategori": "VU"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T31"
+                    }
+                ],
+                "Navn": "Boreal hei",
+                "Rødlistekategori": "DD"
+            }
+        ],
+        "Tema": "Kulturmark og boreal hei"
+    },
+    {
+        "Vurderingsenheter": [
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "M5-21",
+                        "BeskrivelsesVariabler": [
+                            "1AR-H-H_1",
+                            "6KS-4"
+                        ]
+                    },
+                    {
+                        "Natursystem": "M5-21",
+                        "BeskrivelsesVariabler": [
+                            "1AR-H-H_2",
+                            "6KS-4"
+                        ]
+                    },
+                    {
+                        "Natursystem": "M5-21",
+                        "BeskrivelsesVariabler": [
+                            "1AR-H-H_3",
+                            "6KS-4"
+                        ]
+                    },
+                    {
+                        "Natursystem": "M5-21",
+                        "BeskrivelsesVariabler": [
+                            "1AR-H-H_4",
+                            "6KS-4"
+                        ]
+                    }
+                ],
+                "Navn": "Grisehalekorallbunn",
+                "Rødlistekategori": "VU"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "M2-7",
+                        "BeskrivelsesVariabler": [
+                            "1AR-H-H_1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "M2-7",
+                        "BeskrivelsesVariabler": [
+                            "1AR-H-H_2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "M2-7",
+                        "BeskrivelsesVariabler": [
+                            "1AR-H-H_3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "M2-7",
+                        "BeskrivelsesVariabler": [
+                            "1AR-H-H_4"
+                        ]
+                    },
+                    {
+                        "Natursystem": "M2-8",
+                        "BeskrivelsesVariabler": [
+                            "1AR-H-H_4"
+                        ]
+                    },
+                    {
+                        "Natursystem": "M2-8",
+                        "BeskrivelsesVariabler": [
+                            "1AR-H-H_3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "M2-8",
+                        "BeskrivelsesVariabler": [
+                            "1AR-H-H_2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "M2-8",
+                        "BeskrivelsesVariabler": [
+                            "1AR-H-H_1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "M5",
+                        "BeskrivelsesVariabler": [
+                            "1AR-H-H_1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "M5",
+                        "BeskrivelsesVariabler": [
+                            "1AR-H-H_2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "M5",
+                        "BeskrivelsesVariabler": [
+                            "1AR-H-H_3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "M5",
+                        "BeskrivelsesVariabler": [
+                            "1AR-H-H_4"
+                        ]
+                    }
+                ],
+                "Navn": "Korallskogsbunn",
+                "Rødlistekategori": "NT"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "M12"
+                    }
+                ],
+                "Navn": "Varm havkildebunn",
+                "Rødlistekategori": "NT"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "M11-7"
+                    }
+                ],
+                "Navn": "Muddervulkan-bunn",
+                "Rødlistekategori": "VU"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "M11"
+                    }
+                ],
+                "Navn": "Kald havkildebunn",
+                "Rødlistekategori": "DD"
+            }
+        ],
+        "Tema": "Marine dypvannsområder "
+    },
+    {
+        "Vurderingsenheter": [
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "M4-11"
+                    },
+                    {
+                        "Natursystem": "M4-20"
+                    }
+                ],
+                "Navn": "Kalkalgebunn",
+                "Rødlistekategori": "DD"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "M1-3",
+                        "BeskrivelsesVariabler": [
+                            "6KE-1",
+                            "6KS-1"
+                        ]
+                    }
+                ],
+                "Navn": "Sukkertareskog, Nordsjøen",
+                "Rødlistekategori": "VU"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "M1-3",
+                        "BeskrivelsesVariabler": [
+                            "6KE-2"
+                        ]
+                    }
+                ],
+                "Navn": "Sukkertareskog, Skagerrak",
+                "Rødlistekategori": "EN"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "M1-3"
+                    },
+                    {
+                        "Natursystem": "M1-4"
+                    },
+                    {
+                        "Natursystem": "M1-5"
+                    }
+                ],
+                "Navn": "Tareskogsbunn",
+                "Rødlistekategori": "NT"
+            }
+        ],
+        "Tema": "Marine gruntvannsområder "
+    },
+    {
+        "Vurderingsenheter": [
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T30-7",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-SAda_3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T30-7",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-SAda_4"
+                        ]
+                    }
+                ],
+                "Navn": "Doggpilkratt",
+                "Rødlistekategori": "NT"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T30-4",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-SAtr_3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T30-4",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-SAtr_4"
+                        ]
+                    }
+                ],
+                "Navn": "Mandelpilkratt",
+                "Rødlistekategori": "NT"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T4-18",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-f",
+                            "KA-g",
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-18",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-f",
+                            "KA-g",
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-19",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-f",
+                            "KA-g",
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-19",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-f",
+                            "KA-g",
+                            "UF-c"
+                        ]
+                    }
+                ],
+                "Navn": "Høgstaudegranskog",
+                "Rødlistekategori": "NT"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T4-4",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-4",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_4"
+                        ]
+                    }
+                ],
+                "Navn": "Lågurt-grankalkskog",
+                "Rødlistekategori": "VU"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T4-18",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-FAsy_3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-18",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-FAsy_4"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-3",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-FAsy_3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-3",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-FAsy_4"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-19",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-FAsy_3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-19",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-FAsy_4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-7",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-FAsy_3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-7",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-FAsy_4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    }
+                ],
+                "Navn": "Kalkrik bøkeskog",
+                "Rødlistekategori": "VU"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T4-18",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_2",
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-18",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_3",
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-18",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_4",
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-18",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_2",
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-18",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_3",
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-18",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_4",
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-18",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_2",
+                            "6SO-3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-18",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_3",
+                            "6SO-3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-18",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_4",
+                            "6SO-3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-3",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_2",
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-3",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_3",
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-3",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_4",
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-3",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_2",
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-3",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_3",
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-3",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_4",
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-3",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_2",
+                            "6SO-3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-3",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_3",
+                            "6SO-3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-3",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_4",
+                            "6SO-3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-4",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_2",
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-4",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_3",
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-4",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_4",
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-4",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_2",
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-4",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_3",
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-4",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_4",
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-4",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_2",
+                            "6SO-3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-4",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_3",
+                            "6SO-3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-4",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_4",
+                            "6SO-3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-19",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_2",
+                            "6SO-1"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-19",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_3",
+                            "6SO-1"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-19",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_4",
+                            "6SO-1"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-19",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_2",
+                            "6SO-2"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-19",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_3",
+                            "6SO-2"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-19",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_4",
+                            "6SO-2"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-19",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_2",
+                            "6SO-3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-19",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_3",
+                            "6SO-3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-19",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_4",
+                            "6SO-3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-7",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_2",
+                            "6SO-1"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-7",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_3",
+                            "6SO-1"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-7",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_4",
+                            "6SO-1"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-7",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_2",
+                            "6SO-2"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-7",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_3",
+                            "6SO-2"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-7",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_4",
+                            "6SO-2"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-7",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_2",
+                            "6SO-3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-7",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_3",
+                            "6SO-3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-7",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_4",
+                            "6SO-3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-8",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_2",
+                            "6SO-1"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-8",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_3",
+                            "6SO-1"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-8",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_4",
+                            "6SO-1"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-8",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_2",
+                            "6SO-2"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-8",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_3",
+                            "6SO-2"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-8",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_4",
+                            "6SO-2"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-8",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_2",
+                            "6SO-3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-8",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_3",
+                            "6SO-3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-8",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-L_4",
+                            "6SO-3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-c"
+                        ]
+                    }
+                ],
+                "Navn": "Rik boreal frisk lauvskog",
+                "Rødlistekategori": "DD"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T4-12",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-f"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-12",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-f"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-16",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_4"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-16",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_3"
+                        ]
+                    }
+                ],
+                "Navn": "Lav-furukalkskog",
+                "Rødlistekategori": "NT"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T4-10",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-f"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-10",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-f"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-11",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-f"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-11",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-f"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-14",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-14",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_4"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-15",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_4"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-15",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_3"
+                        ]
+                    }
+                ],
+                "Navn": "Kalkrik lavfuruskog",
+                "Rødlistekategori": "NT"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T4-5",
+                        "BeskrivelsesVariabler": [
+                            "BK-a"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-6",
+                        "BeskrivelsesVariabler": [
+                            "BK-a"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-7",
+                        "BeskrivelsesVariabler": [
+                            "BK-a"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-9",
+                        "BeskrivelsesVariabler": [
+                            "BK-a"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-10",
+                        "BeskrivelsesVariabler": [
+                            "BK-a"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-11",
+                        "BeskrivelsesVariabler": [
+                            "BK-a"
+                        ]
+                    }
+                ],
+                "Navn": "Olivinskog",
+                "Rødlistekategori": "EN"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T4-8",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-d"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-8",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-d"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-12",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-e"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-12",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-e"
+                        ]
+                    }
+                ],
+                "Navn": "Lågurt-lyngfurukalkskog",
+                "Rødlistekategori": "NT"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T4-4",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-COav_3",
+                            "1AR-A-TIco_3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-f"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-4",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-COav_3",
+                            "1AR-A-TIco_4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-f"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-4",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-COav_4",
+                            "1AR-A-TIco_4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-f"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-4",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-COav_4",
+                            "1AR-A-TIco_3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-f"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-8",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-COav_4",
+                            "1AR-A-TIco_3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-f"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-8",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-COav_4",
+                            "1AR-A-TIco_4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-f"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-8",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-COav_3",
+                            "1AR-A-TIco_4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-f"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-8",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-COav_3",
+                            "1AR-A-TIco_3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-f"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-12",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-COav_3",
+                            "1AR-A-TIco_3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-f"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-12",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-COav_3",
+                            "1AR-A-TIco_4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-f"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-12",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-COav_4",
+                            "1AR-A-TIco_4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-f"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-12",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-COav_4",
+                            "1AR-A-TIco_3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-f"
+                        ]
+                    }
+                ],
+                "Navn": "Kalklindeskog",
+                "Rødlistekategori": "VU"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T4-6",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-d"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-7",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-d"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-7",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-d"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-6",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-d"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-10",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-e"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-11",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-e"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-11",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-e"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-10",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "UF-e"
+                        ]
+                    }
+                ],
+                "Navn": "Lågurt-lyngfuruskog",
+                "Rødlistekategori": "NT"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T4-2",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-QU_3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-3",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-QU_3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-6",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-QU_3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-7",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-QU_3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-10",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-QU_3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-11",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-QU_3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-11",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-QU_4"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-10",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-QU_4"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-7",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-QU_4"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-6",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-QU_4"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-3",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-QU_4"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-2",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-QU_4"
+                        ]
+                    }
+                ],
+                "Navn": "Lågurt-eikeskog",
+                "Rødlistekategori": "NT"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T4-18",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-h",
+                            "KA-i",
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-19",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_3"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-h",
+                            "KA-i",
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-19",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-h",
+                            "KA-i",
+                            "UF-c"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-18",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_4"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-h",
+                            "KA-i",
+                            "UF-c"
+                        ]
+                    }
+                ],
+                "Navn": "Høgstaude-grankalkskog",
+                "Rødlistekategori": "NT"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T4-1",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_3",
+                            "6SE-1",
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-5",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_3",
+                            "6SE-1",
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-5",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_3",
+                            "6SE-1",
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-1",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_3",
+                            "6SE-1",
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-1",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_4",
+                            "6SE-1",
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-5",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_4",
+                            "6SE-1",
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-5",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_4",
+                            "6SE-1",
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-1",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PUsy_4",
+                            "6SE-1",
+                            "6SO-1"
+                        ]
+                    }
+                ],
+                "Navn": "Temperert kystfuruskog",
+                "Rødlistekategori": "EN"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T4",
+                        "BeskrivelsesVariabler": [
+                            "HI-a"
+                        ]
+                    }
+                ],
+                "Navn": "Beiteskog",
+                "Rødlistekategori": "NT"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "T4-1",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_3",
+                            "6SE-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-2",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_3",
+                            "6SE-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-3",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_3",
+                            "6SE-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-4",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_3",
+                            "6SE-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-4",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_3",
+                            "6SE-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-3",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_3",
+                            "6SE-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-2",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_3",
+                            "6SE-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-1",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_3",
+                            "6SE-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-1",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_4",
+                            "6SE-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-2",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_4",
+                            "6SE-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-3",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_4",
+                            "6SE-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-4",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_4",
+                            "6SE-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-4",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_4",
+                            "6SE-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-3",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_4",
+                            "6SE-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-2",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_4",
+                            "6SE-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "T4-1",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-PIab_4",
+                            "6SE-1"
+                        ]
+                    }
+                ],
+                "Navn": "Kystgranskog",
+                "Rødlistekategori": "EN"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "V8-3"
+                    },
+                    {
+                        "Natursystem": "T30"
+                    }
+                ],
+                "Navn": "Fjæresone-skogsmark",
+                "Rødlistekategori": "NT"
+            }
+        ],
+        "Tema": "Skog"
+    },
+    {
+        "Vurderingsenheter": [
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "V6-1"
+                    },
+                    {
+                        "Natursystem": "V6-2"
+                    }
+                ],
+                "Navn": "Arktisk-alpin grunn våtmark",
+                "Rødlistekategori": "NT"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "V1-23",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-d"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-23",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-d"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-24",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-d"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-24",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-d"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-25",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-25",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-26",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-26",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-27",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-27",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-28",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-28",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-29",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-29",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-30",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-30",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-31",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-31",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    }
+                ],
+                "Navn": "Rikere myrkantmark i låglandet",
+                "Rødlistekategori": "EN"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "V9",
+                        "BeskrivelsesVariabler": [
+                            "MF-c",
+                            "SP-a"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V9",
+                        "BeskrivelsesVariabler": [
+                            "MF-d",
+                            "SP-a"
+                        ]
+                    }
+                ],
+                "Navn": "Slåttemyrkant",
+                "Rødlistekategori": "CR"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "V1-21"
+                    },
+                    {
+                        "Natursystem": "V1-22"
+                    },
+                    {
+                        "Natursystem": "V1-23"
+                    },
+                    {
+                        "Natursystem": "V1-24"
+                    },
+                    {
+                        "Natursystem": "V1-25"
+                    },
+                    {
+                        "Natursystem": "V1-26"
+                    },
+                    {
+                        "Natursystem": "V1-27"
+                    },
+                    {
+                        "Natursystem": "V1-28"
+                    },
+                    {
+                        "Natursystem": "V1-29"
+                    },
+                    {
+                        "Natursystem": "V1-30"
+                    },
+                    {
+                        "Natursystem": "V2"
+                    },
+                    {
+                        "Natursystem": "V3-6"
+                    },
+                    {
+                        "Natursystem": "V8-1"
+                    },
+                    {
+                        "Natursystem": "V8-2"
+                    },
+                    {
+                        "Natursystem": "V9"
+                    }
+                ],
+                "Navn": "Flommyr, myrkant og myrskogsmark",
+                "Rødlistekategori": "NT"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "V1-6",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-d"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-6",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-d"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-7",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-d"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-7",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-d"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-8",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-d"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-8",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-d"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-9",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-d"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-9",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ],
+                        "InnsnevrendeBeskrivelsesVariabler": [
+                            "KA-d"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-10",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-10",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-11",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-11",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-12",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-12",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-13",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-13",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-14",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-14",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-15",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-15",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-16",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-16",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-17",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-17",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-18",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-18",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-19",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-19",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-20",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-20",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    }
+                ],
+                "Navn": "Rikere myrflate i låglandet",
+                "Rødlistekategori": "EN"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "V9",
+                        "BeskrivelsesVariabler": [
+                            "MF-e",
+                            "SP-a"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V9",
+                        "BeskrivelsesVariabler": [
+                            "MF-f",
+                            "SP-a"
+                        ]
+                    }
+                ],
+                "Navn": "Slåttemyrflate",
+                "Rødlistekategori": "EN"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "V1-1"
+                    },
+                    {
+                        "Natursystem": "V1-2"
+                    },
+                    {
+                        "Natursystem": "V1-3"
+                    },
+                    {
+                        "Natursystem": "V1-4"
+                    },
+                    {
+                        "Natursystem": "V1-5"
+                    },
+                    {
+                        "Natursystem": "V1-6"
+                    },
+                    {
+                        "Natursystem": "V1-7"
+                    },
+                    {
+                        "Natursystem": "V1-8"
+                    },
+                    {
+                        "Natursystem": "V1-9"
+                    },
+                    {
+                        "Natursystem": "V1-10"
+                    },
+                    {
+                        "Natursystem": "V1-11"
+                    },
+                    {
+                        "Natursystem": "V1-12"
+                    },
+                    {
+                        "Natursystem": "V1-13"
+                    },
+                    {
+                        "Natursystem": "V1-14"
+                    },
+                    {
+                        "Natursystem": "V1-15"
+                    },
+                    {
+                        "Natursystem": "V1-16"
+                    },
+                    {
+                        "Natursystem": "V1-17"
+                    },
+                    {
+                        "Natursystem": "V1-18"
+                    },
+                    {
+                        "Natursystem": "V1-19"
+                    },
+                    {
+                        "Natursystem": "V1-20"
+                    },
+                    {
+                        "Natursystem": "V3-1"
+                    },
+                    {
+                        "Natursystem": "V3-2"
+                    },
+                    {
+                        "Natursystem": "V3-3"
+                    },
+                    {
+                        "Natursystem": "V3-4"
+                    },
+                    {
+                        "Natursystem": "V3-5"
+                    },
+                    {
+                        "Natursystem": "V3-7"
+                    }
+                ],
+                "Navn": "Åpen myrflate",
+                "Rødlistekategori": "NT"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "V4-3",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V4-5",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V4-7",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V4-9",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V4-9",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V4-7",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V4-5",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V4-3",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    }
+                ],
+                "Navn": "Sterk kaldkilde i låglandet",
+                "Rødlistekategori": "DD"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "V4-1",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-E_3",
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V4-2",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-E_3",
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V4-4",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-E_3",
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V4-6",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-E_3",
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V4-8",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-E_3",
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V4-8",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-E_4",
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V4-6",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-E_4",
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V4-4",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-E_4",
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V4-2",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-E_4",
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V4-1",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-E_4",
+                            "6SO-1"
+                        ]
+                    }
+                ],
+                "Navn": "Varmekjær kildelauvskog",
+                "Rødlistekategori": "VU"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "V2-7",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-B_3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V2-8",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-B_3"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V2-8",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-B_4"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V2-7",
+                        "BeskrivelsesVariabler": [
+                            "1AR-A-B_4"
+                        ]
+                    }
+                ],
+                "Navn": "Grankildeskog",
+                "Rødlistekategori": "VU"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "V1-30",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-31",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-31",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V1-30",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V4-6",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V4-8",
+                        "BeskrivelsesVariabler": [
+                            "6SO-2"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V4-8",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    },
+                    {
+                        "Natursystem": "V4-6",
+                        "BeskrivelsesVariabler": [
+                            "6SO-1"
+                        ]
+                    }
+                ],
+                "Navn": "Åpen låglandskildemyr",
+                "Rødlistekategori": "VU"
+            },
+            {
+                "Regler": [
+                    {
+                        "Natursystem": "V4-1"
+                    },
+                    {
+                        "Natursystem": "V4-2"
+                    },
+                    {
+                        "Natursystem": "V4-4"
+                    },
+                    {
+                        "Natursystem": "V4-6"
+                    },
+                    {
+                        "Natursystem": "V4-8"
+                    },
+                    {
+                        "Natursystem": "V1-30"
+                    },
+                    {
+                        "Natursystem": "V1-31"
+                    },
+                    {
+                        "Natursystem": "V2-7"
+                    },
+                    {
+                        "Natursystem": "V2-8"
+                    }
+                ],
+                "Navn": "Svak kilde og kildeskogsmark",
+                "Rødlistekategori": "NT"
+            }
+        ],
+        "Tema": "Våtmark"
+    }
+]
